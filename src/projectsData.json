@@ -1,0 +1,20 @@
+{
+    "message": [
+        {
+            "id": 1,
+            "name": "Name 1",
+            "description": "description 1",
+            "imgs": [ "puppy.jpg" ],
+            "link": "https://1",
+            "linkName": "Link Name 1"
+        },
+        {
+            "id": 2,
+            "name": "Name 2",
+            "description": "description 2",
+            "imgs": [ "img3", "img4" ],
+            "link": "https://2",
+            "linkName": "Link Name 2"
+        }
+      ]
+  }
