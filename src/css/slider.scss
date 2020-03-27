@@ -1,8 +1,3 @@
-/*
-  All of the CSS below is strictly for the demo.  none of the components rely on this for actual
-  functionality.
-*/
-
 $dark: #373737;
 $light: #f4f4f4;
 $white: #fefefe;
@@ -159,12 +154,6 @@ p {
   }
 }
 
-.example {
-  .headline {
-    text-align: left;
-  }
-}
-
 .headline {
   text-align: center;
   color: $highlight1;
@@ -175,7 +164,18 @@ p {
 }
 
 .slider {
-  max-width: 800px;
+  // max-width: 800px;
+  background-color: red;
+}
+
+.sliderImg {
+  width: 50px;
+}
+
+.sliderAnimation___300FY {
+  transition: transform .5s;
+  transition-timing-function: cubic-bezier(.645,.045,.355,1);
+  will-change: transform;
 }
 
 .externalLink {
