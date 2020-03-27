@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { ButtonBack, ButtonFirst, ButtonLast, ButtonNext, CarouselProvider, Slide, Slider, } from 'pure-react-carousel';
 
 import projectsData from "../projectsData"
+
+import s from './../css/slider.css';
 
 export default function Portfolio() {
     const projects = projectsData.message
@@ -12,36 +15,61 @@ export default function Portfolio() {
           <Link to="/">Back</Link>
         </h2>
 
-        {projects.map((project, i) => (
-            <div key={i}>
-                <h3>{project.name}</h3>
-                <div className="content" style={{display: "block"}}>
-                    <p>{project.description}</p>
-                    {project.imgs.map((imgLink, i) => (
-                        <img key={i} style={{width: "100%"}} alt={imgLink} src={imgLink}></img>
-                    ))}                
+        <div style={{display: "none"}}>
+            {projects.map((project, i) => (
+                <div key={i}>
+                    <h3>{project.name}</h3>
+                    <div className="content" style={{display: "block"}}>
+                        <p>{project.description}</p>
+                        {project.imgs.map((imgLink, i) => (
+                            <img key={i} style={{width: "100%"}} alt={imgLink} src={imgLink}></img>
+                        ))}                
+                    </div>
+                    <a href={project.link}>{project.linkName}</a>
                 </div>
-                <a href={project.link}>{project.linkName}</a>
-            </div>
-        ))}
+            ))}
+        </div>        
 
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
-  
-        <h3>Ponominalu 2018</h3>
-        <div className="content" style={{display: "block"}}>
-          <p>lalala</p>
-          <img style={{width: "100%"}} src="puppy.jpg"></img>
+        <div>
+            <CarouselProvider
+                visibleSlides={1}
+                totalSlides={4}
+                step={1}
+                naturalSlideWidth={400}
+                naturalSlideHeight={500}
+                isIntrinsicHeight
+                infinite={true}
+            >
+                {/* <h2 className={s.headline}>With intrinsic axis dimension</h2> */}
+
+                <Slider className={s.slider}>
+
+                {projects.map((project, i) => (                    
+                    <Slide index={i}>
+                        <div key={i}>
+                            <h3>{project.name}</h3>
+                            <div className="content" style={{display: "block"}}>
+                                <p>{project.description}</p>
+                                {project.imgs.map((imgLink, i) => (
+                                    <img key={i} style={{width: "100%"}} alt={imgLink} src={'projects/' + imgLink}></img>
+                                ))}                
+                            </div>
+                            <a href={project.link}>{project.linkName}</a>
+                            <img style={{width: "100%"}} src={'cats/img0'+ i + '.jpeg'}></img>
+                        </div>                        
+                    </Slide>
+                ))}
+                </Slider>
+                <div className="controllButtons">
+                    <ButtonFirst>First</ButtonFirst>
+                    <ButtonBack>Back</ButtonBack>
+                    <ButtonNext>Next</ButtonNext>
+                    <ButtonLast>Last</ButtonLast>
+                </div>
+            </CarouselProvider>
+        
         </div>
-        <h3>A Collapsible:</h3>
-        <button type="button" className="collapsible">Open Collapsible</button>
-        <div className="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <h3>A Collapsible:</h3>
-        <button type="button" className="collapsible">Open Collapsible</button>
-        <div className="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </main>
+
+        </main>
     )
   }
