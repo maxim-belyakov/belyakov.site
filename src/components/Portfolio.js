@@ -4,20 +4,20 @@ import { ButtonBack, ButtonNext, CarouselProvider, Slide, Slider, DotGroup } fro
 
 import projectsData from "../projectsData"
 
-import './../css/slider.scss';
+import './../css/portfolio.scss';
 
 export default function Portfolio() {
     const projects = projectsData.message
 
     return(      
-        <div>
-            <main>
+        <div className="PortfolioContiner">
+            <main className="PortfolioContiner_Back">
                 <h2 className="check">
-                <Link to="/">Back</Link>
+                    <Link to="/">Back</Link>
                 </h2>
             </main>
 
-            <div>
+            <div class="PortfolioContiner_Projects">
                 <CarouselProvider
                     visibleSlides={1}
                     totalSlides={7}
@@ -29,26 +29,32 @@ export default function Portfolio() {
                         {projects.map((project, i) => (                    
                             <Slide index={i} key={i} className="slide">
                                 <div className="slideContent">
-                                    <h3>{project.name}</h3>
-                                    <div className="content" style={{display: "block"}}>
-                                        <p>{project.description}</p>
+                                    <div className="slideContent_picturesSlider" style={{display: "block"}}>
                                         {project.imgs.map((imgLink, i) => (
                                             <img key={i} className="sliderImg" alt={imgLink} src={'projects/' + imgLink}></img>
-                                        ))}                
+                                        ))}
                                     </div>
-                                    <a href={project.link}>{project.linkName}</a>
-                                    <img  className="sliderImg" src={'cats/img0'+ i + '.jpeg'} alt={project.linkName}></img>    
+                                    
+                                    <h3 className="slideContent_name">{project.name}</h3>
+                                    <p className="slideContent_description">{project.description}</p>
+
+                                    <div> 
+                                        {project.tags.map((tag, i) => (
+                                            <span style={{color: tag.color}} >{tag.name}</span>
+                                        ))}
+                                    </div>
+
+                                    <a href={project.link}>{project.linkName}</a> 
                                 </div>                 
                             </Slide>
                         ))}
                     </Slider>
                     <div className="controllButtons">
-                        <ButtonBack>Back</ButtonBack>
-                        <ButtonNext>Next</ButtonNext>
+                        <ButtonBack className="controllButtons_left">{'<'}</ButtonBack>
+                        <ButtonNext className="controllButtons_right">{'>'}</ButtonNext>
                         <DotGroup dotNumbers />
                     </div>
-                </CarouselProvider>
-            
+                </CarouselProvider>            
             </div>            
         </div>
     )

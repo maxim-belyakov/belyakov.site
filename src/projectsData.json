@@ -3,10 +3,24 @@
         {
             "id": 1,
             "name": "InLoop Website",
-            "description": "description about InLoop Website",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
             "imgs": [ "puppy.jpg" ],
             "link": "https://inloop.com",
-            "linkName": "Link Name 1"
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
+            "linkName": "inloop.com"
         },
         {
             "id": 2,
@@ -14,6 +28,20 @@
             "description": "description about Ponominalu Website",
             "imgs": [ "img01.jpeg" ],
             "link": "https://ponominalu.ru",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
             "linkName": "Link Name 2"
         },
         {
@@ -22,6 +50,20 @@
             "description": "description about PN widget angular",
             "imgs": [ "img02.jpeg" ],
             "link": "https://2",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
             "linkName": "Link Name 2"
         },
         {
@@ -30,6 +72,20 @@
             "description": "description about partners.ponominalu.ru",
             "imgs": [ "img03.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
             "linkName": "Link Name 2"
         },
         {
@@ -38,6 +94,20 @@
             "description": "description about PN widget angular",
             "imgs": [ "img04.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
             "linkName": "Link Name 2"
         },
         {
@@ -46,6 +116,20 @@
             "description": "description about ponominalu site 2016",
             "imgs": [ "img05.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
             "linkName": "Link Name 2"
         },
         {
@@ -54,6 +138,20 @@
             "description": "description chitai-gorod",
             "imgs": [ "img06.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ],
             "linkName": "Link Name 2"
         }
       ]

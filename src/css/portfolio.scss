@@ -1,0 +1,101 @@
+$dark: #373737;
+$light: #f4f4f4;
+$white: #fefefe;
+$highlight1: #c0b283;
+$highlight2: #dcd0c0;
+$font-size--large-headline--mobile: 4rem;
+$font-size--large-headline--desktop: 4.8rem;
+$font-size--large-text--mobile: 1.6rem;
+$font-size--large-text--desktop: 2rem;
+
+.PortfolioContiner {
+  position: absolute;
+  height: 100%;
+}
+
+.PortfolioContiner_Back {
+  height: 20%;
+}
+
+.PortfolioContiner_Projects {
+  height: 80%;
+  overflow: hidden;
+}
+
+.controllButtons {
+  height: 20%;
+  bottom: 0;
+}
+
+.controllButtons_left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 100%;
+  background: unset;
+  border: unset;
+}
+
+.controllButtons_right { 
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 100%;
+  background: unset;
+  border: unset;
+}
+
+.carousel {
+  margin: 0 70px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel__dot {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  width: 13vw;
+  height: 5.3vw;
+  transform: scale(0.75, 0.75);
+  border-radius: 3vw;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.slider {
+  background-color: #e8c9c9;
+  height: 80%;
+  overflow: hidden;
+}
+
+.sliderAnimation___300FY {
+  transition: transform .5s;
+  transition-timing-function: cubic-bezier(.645,.045,.355,1);
+  will-change: transform;
+}
+
+.sliderImg {
+  width: 100%;
+}
+
+.slideContent {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 20% 20% 20%;
+}
+
+.slideContent_picturesSlider {
+  grid-row-start: 1;
+  grid-row-end: 5;
+  padding: 40px;
+}
+
+.slideContent_description {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin: 0;
+  font-size: 0.8rem;
+}
