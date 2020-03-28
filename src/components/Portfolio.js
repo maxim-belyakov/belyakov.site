@@ -30,21 +30,23 @@ export default function Portfolio() {
                             <Slide index={i} key={i} className="slide">
                                 <div className="slideContent">
                                     <div className="slideContent_picturesSlider" style={{display: "block"}}>
-                                        {project.imgs.map((imgLink, i) => (
+                                        {/* {project.imgs.map((imgLink, i) => (
                                             <img key={i} className="sliderImg" alt={imgLink} src={'projects/' + imgLink}></img>
-                                        ))}
+                                        ))} */}
+                                        <img className="sliderImg" alt={project.imgs[1]} src={'projects/' + project.imgs[1]}></img>
                                     </div>
-                                    
-                                    <h3 className="slideContent_name">{project.name}</h3>
-                                    <p className="slideContent_description">{project.description}</p>
+                                    <div class="slideContent_text">
+                                        <h3 className="slideContent_name">{project.name}</h3>
+                                        <p className="slideContent_description">{project.description}</p>
 
-                                    <div> 
-                                        {project.tags.map((tag, i) => (
-                                            <span style={{color: tag.color}} >{tag.name}</span>
-                                        ))}
-                                    </div>
+                                        <div className="slideContent_tagContainer"> 
+                                            {project.tags.map((tag, i) => (
+                                                <span className="slideContent_tag" style={{backgroundColor: tag.color}}>{tag.name}</span>
+                                            ))}
+                                        </div>
 
-                                    <a href={project.link}>{project.linkName}</a> 
+                                        <a className="slideContent_link" href={project.link}>{project.linkName}</a> 
+                                    </div>                                    
                                 </div>                 
                             </Slide>
                         ))}

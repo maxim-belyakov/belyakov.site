@@ -2,54 +2,63 @@
     "message": [
         {
             "id": 1,
-            "name": "InLoop Website",
-            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-            "imgs": [ "puppy.jpg" ],
+            "name": "InLoop Website (2019)",
+            "description": "Here I Created the project on React what can get CSV files, merge columns and filter it. Designs, develops and maintains a set of enterprise class web app with AngularJS. Worked with AngularJS include in project based by ASP.NET for rebuild separate web-pages of site. Designing and implementing HTML email templates and newsletters for marketing campaigns. Working in an Agile development cycle using advanced Scrum methodologies. Performing bug fixes and code review",
+            "imgs": [ "1-inloop-2019/1.png", "1-inloop-2019/2.png", "1-inloop-2019/3.png" ],
+            "linkName": "inloop.com",
             "link": "https://inloop.com",
             "tags": [
                 { 
-                    "name": "tag1", 
+                    "name": "React", 
                     "color": "orange" 
                 },
                 { 
-                    "name": "tag2", 
+                    "name": "Redux", 
                     "color": "blue" 
                 },
                 { 
-                    "name": "tag3", 
+                    "name": "AngularJS", 
                     "color": "green" 
                 }
-            ],
-            "linkName": "inloop.com"
-        },
-        {
-            "id": 2,
-            "name": "Ponominalu Website",
-            "description": "description about Ponominalu Website",
-            "imgs": [ "img01.jpeg" ],
-            "link": "https://ponominalu.ru",
-            "tags": [
-                { 
-                    "name": "tag1", 
-                    "color": "blue" 
-                },
-                { 
-                    "name": "tag2", 
-                    "color": "orange" 
-                },
-                { 
-                    "name": "tag3", 
-                    "color": "green" 
-                }
-            ],
-            "linkName": "Link Name 2"
+            ]
         },
         {
             "id": 3,
-            "name": "PN widget angular",
+            "name": "Ponominalu Website (2018)",
+            "description": "Here I Developed the platform as progressive web app with Vue.js for provides event organizers and distributors with several ways to sell tickets. Coordinated a team of 6 people. Lead and execute all phases of event planning and production spanning committee recruitment, training, vendor relationships and on-site facilitation. Recommending solutions for a streamlined, user-friendly interface with the design team.",
+            "imgs": [ 
+                "3-ponominalu-2018/1.png", 
+                "3-ponominalu-2018/2.png", 
+                "3-ponominalu-2018/3.png",
+                "3-ponominalu-2018/4.png",
+                "3-ponominalu-2018/5.png",
+                "3-ponominalu-2018/6.png",
+                "3-ponominalu-2018/7.png"
+            ],
+            "link": "https://ponominalu.ru",
+            "linkName": "Link Name 2",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "PN Widget (2018)",
             "description": "description about PN widget angular",
             "imgs": [ "img02.jpeg" ],
             "link": "https://2",
+            "linkName": "Link Name 2",
             "tags": [
                 { 
                     "name": "tag1", 
@@ -63,8 +72,7 @@
                     "name": "tag3", 
                     "color": "green" 
                 }
-            ],
-            "linkName": "Link Name 2"
+            ]
         },
         {
             "id": 4,
@@ -72,6 +80,7 @@
             "description": "description about partners.ponominalu.ru",
             "imgs": [ "img03.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "linkName": "Link Name 2",
             "tags": [
                 { 
                     "name": "tag1", 
@@ -85,8 +94,7 @@
                     "name": "tag3", 
                     "color": "green" 
                 }
-            ],
-            "linkName": "Link Name 2"
+            ]
         },
         {
             "id": 5,
@@ -94,6 +102,7 @@
             "description": "description about PN widget angular",
             "imgs": [ "img04.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "linkName": "Link Name 2",
             "tags": [
                 { 
                     "name": "tag1", 
@@ -107,8 +116,7 @@
                     "name": "tag3", 
                     "color": "green" 
                 }
-            ],
-            "linkName": "Link Name 2"
+            ]
         },
         {
             "id": 6,
@@ -116,6 +124,7 @@
             "description": "description about ponominalu site 2016",
             "imgs": [ "img05.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "linkName": "Link Name 2",
             "tags": [
                 { 
                     "name": "tag1", 
@@ -129,8 +138,7 @@
                     "name": "tag3", 
                     "color": "green" 
                 }
-            ],
-            "linkName": "Link Name 2"
+            ]
         },
         {
             "id": 7,
@@ -138,6 +146,7 @@
             "description": "description chitai-gorod",
             "imgs": [ "img06.jpeg" ],
             "link": "https://partners.ponominalu.ru",
+            "linkName": "Link Name 2",
             "tags": [
                 { 
                     "name": "tag1", 
@@ -151,8 +160,7 @@
                     "name": "tag3", 
                     "color": "green" 
                 }
-            ],
-            "linkName": "Link Name 2"
+            ]
         }
       ]
   }
