@@ -54,7 +54,9 @@ export default function Portfolio() {
                     <div className="controllButtons">
                         <ButtonBack className="controllButtons_left">{'<'}</ButtonBack>
                         <ButtonNext className="controllButtons_right">{'>'}</ButtonNext>
-                        <DotGroup dotNumbers />
+                        <div className="controllButtons_numbers">
+                            <DotGroup dotNumbers />
+                        </div>
                     </div>
                 </CarouselProvider>            
             </div>            
