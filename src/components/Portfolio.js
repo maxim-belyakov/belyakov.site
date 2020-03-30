@@ -33,7 +33,7 @@ export default function Portfolio() {
                                         {/* {project.imgs.map((imgLink, i) => (
                                             <img key={i} className="sliderImg" alt={imgLink} src={'projects/' + imgLink}></img>
                                         ))} */}
-                                        <img className="sliderImg" alt={project.imgs[1]} src={'projects/' + project.imgs[1]}></img>
+                                        <img className="sliderImg" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
                                     </div>
                                     <div class="slideContent_text">
                                         <h3 className="slideContent_name">{project.name}</h3>
@@ -45,7 +45,7 @@ export default function Portfolio() {
                                             ))}
                                         </div>
 
-                                        <a className="slideContent_link" href={project.link}>{project.linkName}</a> 
+                                        <a className="slideContent_link" target="_blank" href={project.link}>{project.linkName}</a> 
                                     </div>                                    
                                 </div>                 
                             </Slide>

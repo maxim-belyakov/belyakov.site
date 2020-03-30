@@ -4,21 +4,29 @@
             "id": 1,
             "name": "InLoop Website (2019)",
             "description": "Here I Created the project on React what can get CSV files, merge columns and filter it. Designs, develops and maintains a set of enterprise class web app with AngularJS. Worked with AngularJS include in project based by ASP.NET for rebuild separate web-pages of site. Designing and implementing HTML email templates and newsletters for marketing campaigns. Working in an Agile development cycle using advanced Scrum methodologies. Performing bug fixes and code review",
-            "imgs": [ "1-inloop-2019/1.png", "1-inloop-2019/2.png", "1-inloop-2019/3.png" ],
+            "imgs": [ 
+                "1-inloop-2019/1.png", 
+                "1-inloop-2019/2.png", 
+                "1-inloop-2019/3.png" 
+            ],
             "linkName": "inloop.com",
             "link": "https://inloop.com",
             "tags": [
                 { 
                     "name": "React", 
-                    "color": "orange" 
+                    "color": "#5fd2f7" 
                 },
                 { 
                     "name": "Redux", 
-                    "color": "blue" 
+                    "color": "#7348b7" 
                 },
                 { 
                     "name": "AngularJS", 
-                    "color": "green" 
+                    "color": "#c64539" 
+                },
+                { 
+                    "name": "Webpack", 
+                    "color": "#1b75bb" 
                 }
             ]
         },
@@ -36,55 +44,44 @@
                 "3-ponominalu-2018/7.png"
             ],
             "link": "https://ponominalu.ru",
-            "linkName": "Link Name 2",
+            "linkName": "ponominalu.ru",
             "tags": [
                 { 
-                    "name": "tag1", 
-                    "color": "blue" 
+                    "name": "Vue.js", 
+                    "color": "#41b883" 
                 },
                 { 
-                    "name": "tag2", 
-                    "color": "orange" 
+                    "name": "Bootstrap", 
+                    "color": "#543b79" 
                 },
                 { 
-                    "name": "tag3", 
-                    "color": "green" 
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "name": "PN Widget (2018)",
-            "description": "description about PN widget angular",
-            "imgs": [ "img02.jpeg" ],
-            "link": "https://2",
-            "linkName": "Link Name 2",
-            "tags": [
-                { 
-                    "name": "tag1", 
-                    "color": "orange" 
+                    "name": "Lodash", 
+                    "color": "#181818"
                 },
                 { 
-                    "name": "tag2", 
-                    "color": "blue" 
+                    "name": "Gulp", 
+                    "color": "#e54849"
                 },
-                { 
-                    "name": "tag3", 
-                    "color": "green" 
+                {
+                    "name": "Eslint", 
+                    "color": "#5336c4"
                 }
             ]
         },
         {
             "id": 4,
-            "name": "partners.ponominalu.ru",
-            "description": "description about partners.ponominalu.ru",
-            "imgs": [ "img03.jpeg" ],
-            "link": "https://partners.ponominalu.ru",
-            "linkName": "Link Name 2",
-            "tags": [
+            "name": "PN Widget (2018)",
+            "description": "For this product I lead and execute all phases of event planning and production spanning committee recruitment, training, vendor relationships and on-site facilitation, Working on frontend widget based with Angular 6",
+            "imgs": [ 
+                "4-PN-widget-2018/1.png",
+                "4-PN-widget-2018/2.png"
+            ],
+            "link": "https://ponominalu.ru/widget/index.html?options_json={%22orderData%22:{},%22event%22:{%22id%22:756082},%22hideHeader%22:false,%22init%22:{%22token%22:%22f094e983-2eb0-4793-a3ae-8145bb3a455d%22,%22user_session%22:%22pa-385e2ff0-a813-4cbf-8230-ffdff2e0afef-202003251406%22,%22promote%22:%22%22,%22isPonominalu%22:true},%22userParams%22:{%22is_poligon%22:false},%22experimental%22:{%22showSubstratesTime%22:false,%22reviewsVenue%22:false,%22tour%22:false,%22agreedDeclination%22:false,%22announcements%22:false,%22vkOauth%22:false,%22seoCalendar%22:false,%22recomendations%22:false,%22promoIos%22:false,%22ampWidget%22:false,%22storybookLoader%22:false,%22gridCSS%22:false,%22debug%22:false,%22test%22:false,%22artistLineUp%22:false,%22gridcss%22:false},%22excludeDates%22:false,%22gtagId%22:%22UA-36442360-15%22,%22devMode%22:false,%22containerId%22:%22pnWidgetContainer%22,%22gtagSession%22:%22GA1.2.810869581.1585137940%22,%22yaMetrikaIdSession%22:%221585137941561090579%22}#/",
+            "linkName": "Example",
+            "tags": [                
                 { 
-                    "name": "tag1", 
-                    "color": "orange" 
+                    "name": "Angular 6", 
+                    "color": "#c64539"
                 },
                 { 
                     "name": "tag2", 
@@ -98,9 +95,11 @@
         },
         {
             "id": 5,
-            "name": "PN widget angular",
-            "description": "description about PN widget angular",
-            "imgs": [ "img04.jpeg" ],
+            "name": "partners.ponominalu.ru",
+            "description": "description about partners.ponominalu.ru",
+            "imgs": [ 
+                "5-partners-ponominalu-2017/1.png" 
+            ],
             "link": "https://partners.ponominalu.ru",
             "linkName": "Link Name 2",
             "tags": [
@@ -122,7 +121,9 @@
             "id": 6,
             "name": "ponominalu site 2016",
             "description": "description about ponominalu site 2016",
-            "imgs": [ "img05.jpeg" ],
+            "imgs": [ 
+                "6-ponominalu-2016/1.png" 
+            ],
             "link": "https://partners.ponominalu.ru",
             "linkName": "Link Name 2",
             "tags": [
@@ -142,11 +143,37 @@
         },
         {
             "id": 7,
+            "name": "PN widget 1.0.0",
+            "description": "description about PN widget angular",
+            "imgs": [ 
+                "7-PN-widget-2016/1.png" 
+            ],
+            "link": "https://partners.ponominalu.ru",
+            "linkName": "partners.ponominalu.ru",
+            "tags": [
+                { 
+                    "name": "tag1", 
+                    "color": "orange" 
+                },
+                { 
+                    "name": "tag2", 
+                    "color": "blue" 
+                },
+                { 
+                    "name": "tag3", 
+                    "color": "green" 
+                }
+            ]
+        },
+        {
+            "id": 8,
             "name": "chitai-gorod.ru",
             "description": "description chitai-gorod",
-            "imgs": [ "img06.jpeg" ],
+            "imgs": [ 
+                "8-chitai-gorod-2015/1.png" 
+            ],
             "link": "https://partners.ponominalu.ru",
-            "linkName": "Link Name 2",
+            "linkName": "chitai-gorod.ru",
             "tags": [
                 { 
                     "name": "tag1", 
