@@ -2,6 +2,15 @@
     "message": [
         {
             "id": 1,
+            "name": "About me",
+            "description": "",
+            "imgs": [],
+            "linkName": "",
+            "link": "",
+            "tags": []
+        },
+        {
+            "id": 2,
             "name": "InLoop Website (2019)",
             "description": "Here I Created the project on React what can get CSV files, merge columns and filter it. Designs, develops and maintains a set of enterprise class web app with AngularJS. Worked with AngularJS include in project based by ASP.NET for rebuild separate web-pages of site. Designing and implementing HTML email templates and newsletters for marketing campaigns. Working in an Agile development cycle using advanced Scrum methodologies. Performing bug fixes and code review",
             "imgs": [ 
@@ -84,8 +93,8 @@
                     "color": "#c64539"
                 },
                 { 
-                    "name": "tag2", 
-                    "color": "blue" 
+                    "name": "TypeScript", 
+                    "color": "#1e3366" 
                 },
                 { 
                     "name": "tag3", 
@@ -95,13 +104,13 @@
         },
         {
             "id": 5,
-            "name": "partners.ponominalu.ru",
+            "name": "Admin panel for Cultural service LLC (2017)",
             "description": "description about partners.ponominalu.ru",
             "imgs": [ 
                 "5-partners-ponominalu-2017/1.png" 
             ],
             "link": "https://partners.ponominalu.ru",
-            "linkName": "Link Name 2",
+            "linkName": "partners.ponominalu.ru",
             "tags": [
                 { 
                     "name": "tag1", 
@@ -119,37 +128,13 @@
         },
         {
             "id": 6,
-            "name": "ponominalu site 2016",
+            "name": "Ponominalu Website (2016)",
             "description": "description about ponominalu site 2016",
             "imgs": [ 
                 "6-ponominalu-2016/1.png" 
             ],
             "link": "https://partners.ponominalu.ru",
             "linkName": "Link Name 2",
-            "tags": [
-                { 
-                    "name": "tag1", 
-                    "color": "orange" 
-                },
-                { 
-                    "name": "tag2", 
-                    "color": "blue" 
-                },
-                { 
-                    "name": "tag3", 
-                    "color": "green" 
-                }
-            ]
-        },
-        {
-            "id": 7,
-            "name": "PN widget 1.0.0",
-            "description": "description about PN widget angular",
-            "imgs": [ 
-                "7-PN-widget-2016/1.png" 
-            ],
-            "link": "https://partners.ponominalu.ru",
-            "linkName": "partners.ponominalu.ru",
             "tags": [
                 { 
                     "name": "tag1", 
