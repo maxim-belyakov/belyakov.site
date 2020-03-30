@@ -33,17 +33,15 @@ $buttonsImgs:
 }
 
 .carousel {
-  // margin: 0 70px;
   height: 100%;
   overflow: hidden;
 }
 
 .slider {
-  // background-color: #e8c9c9;
   height: 80%;
   overflow-x: hidden;
-  overflow-y: auto;
-  // border: 1px solid;....
+  overflow-y: hidden;
+  // overflow-y: auto;
 }
 
 .sliderAnimation___300FY {
@@ -55,6 +53,7 @@ $buttonsImgs:
 .slide {
   cursor: -webkit-grab;
   margin: 0 70px;
+  height: 100%;
 }
 
 .slideContent {
@@ -184,4 +183,16 @@ $buttonsImgs:
   -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
   filter: grayscale(0%);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.75);
+}
+
+.controllButtons_icon {
+  transition-duration: 0.4s;
+}
+
+.controllButtons_left:hover .controllButtons_icon {
+  transform: scale(1.5, 1.5);
+}
+
+.controllButtons_right:hover .controllButtons_icon {
+  transform: scale(1.5, 1.5);
 }

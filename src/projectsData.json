@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "About me",
-            "description": "",
+            "description": "This is the slide about me, should to show it through different condition in the code",
             "imgs": [],
             "linkName": "",
             "link": "",
