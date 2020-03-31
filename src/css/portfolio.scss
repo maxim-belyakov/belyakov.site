@@ -39,6 +39,7 @@ $buttonsImgs:
 
 .slider {
   height: 80%;
+  outline: none;
   overflow-x: hidden;
   overflow-y: hidden;
   // overflow-y: auto;
@@ -64,10 +65,12 @@ $buttonsImgs:
 .slideContent_picturesSlider {
   grid-row-start: 1;
   margin: 40px;
+  text-align: center;
 }
 
 .slideContent_picture {
-  width: 100%;
+  // max-height: 100%;
+  max-width: 100%;
   box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
@@ -199,3 +202,9 @@ $buttonsImgs:
 .controllButtons_right:hover .controllButtons_icon {
   transform: scale(1.5, 1.5);
 }
+
+
+
+// .carousel__slider-tray-wrap--horizontal, .sliderAnimation___300FY, .carousel__inner-slide, .slideContent, .slideContent_picturesSlider, .slideContent_picture, .slide {
+//   height: 100%;
+// }

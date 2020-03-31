@@ -30,7 +30,7 @@ export default function Portfolio() {
                     <Slider className="slider">
                         {projects.map((project, i) => (                    
                             <Slide index={i} key={i} className="slide">
-                                <div>
+                                <>
                                     {i === 0 ? (
                                         <div style={{textAlign: "center"}}>
                                             <div id="intro-text">
@@ -63,7 +63,7 @@ export default function Portfolio() {
                                         </div>
                                     )}      
                                                                        
-                                </div>                 
+                                </>                 
                             </Slide>
                         ))}
                     </Slider>

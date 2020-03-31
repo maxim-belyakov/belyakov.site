@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
+import { CSSTransition } from "react-transition-group";
 
 import Portfolio from './components/Portfolio';
 import socialIcons from "./JSON/socialIcons"
 
 import './App.css';
+
+const routes = [
+  { path: '/', name: 'Home', Component: Home },
+  { path: '/portfolio', name: 'Portfolio', Component: Portfolio }
+]
 
 export default function App() {
   let location = true;
@@ -26,18 +27,24 @@ export default function App() {
 
   return (
     <Router>
-      <div>
-        {/* <Switch location={background || location}>*/}
-
-        <Switch>
-          <Route exact path="/" children={<Home />} />
-          <Route path="/portfolio" children={<Portfolio />} />
-          {/* <Route path="/img/:id" children={<ImageView />} /> */}
-        </Switch>
-
-        {/* Show the modal when a background page is set */}
-        {/* {background && <Route path="/img/:id" children={<Modal />} />} */}
-     </div>
+      <>
+        {routes.map(({ path, Component }) => (
+          <Route key={path} exact path={path}>
+            {({ match }) => (
+              <CSSTransition
+                in={match != null}
+                timeout={300}
+                classNames="page"
+                unmountOnExit
+              >
+                <div className="page">
+                  <Component />
+                </div>
+              </CSSTransition>
+            )}
+          </Route>
+        ))}
+     </>
     </Router>
   )
 }
