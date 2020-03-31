@@ -4,7 +4,7 @@ import { ButtonBack, ButtonNext, CarouselProvider, Slide, Slider, DotGroup } fro
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import projectsData from "../projectsData"
+import projectsData from "../JSON/projectsData"
 
 import './../css/portfolio.scss';
 
@@ -32,7 +32,14 @@ export default function Portfolio() {
                             <Slide index={i} key={i} className="slide">
                                 <div>
                                     {i === 0 ? (
-                                        <div>1</div>
+                                        <div style={{textAlign: "center"}}>
+                                            <div id="intro-text">
+                                                <h2>About me</h2>
+                                                My name is Maxim Belyakov. I'm a creative professional with more than 5 years of industry experience in <span className="label gamedesign">Frontend Development</span>. What makes me passionate about WEB is the combination of technology and creativity, and how multiple disciplines come together to create an interactive experience. 
+                                                <br/>
+                                                I always try to tell a story.
+                                            </div>
+                                        </div>
                                     ) : (
                                         <div className="slideContent">
                                             <div className="slideContent_picturesSlider" style={{display: "block"}}>

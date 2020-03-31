@@ -126,6 +126,7 @@ $buttonsImgs:
   cursor: pointer;
   background: unset;
   border: unset;
+  outline: none;
 }
 
 .controllButtons_right { 
@@ -137,6 +138,7 @@ $buttonsImgs:
   cursor: pointer;
   background: unset;
   border: unset;
+  outline: none;
 }
 
 .controllButtons_numbers {
@@ -174,6 +176,7 @@ $buttonsImgs:
   border: 0.3vw solid #fff;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
+  outline: none;
 }
 
 .carousel__dot--selected {

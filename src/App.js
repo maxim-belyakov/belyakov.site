@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useHistory,
-  useLocation,
-  useParams
+  Link
 } from "react-router-dom";
+import { SocialIcon } from 'react-social-icons';
 
 import Portfolio from './components/Portfolio';
+import socialIcons from "./JSON/socialIcons"
+
 import './App.css';
 
 export default function App() {
@@ -43,6 +43,10 @@ export default function App() {
 }
 
 function Home() {
+  
+  const socials = socialIcons.message
+  const [iconSocialSize, setIconSocialSize] = useState(45)
+
   return (
     <main>
       <h1>Maxim Belyakov</h1>
@@ -54,17 +58,10 @@ function Home() {
           <Link to="/portfolio">Portfolio projects</Link>
         </h2>
       </section>
-      <section>
-        <h2 className="check">Links</h2>
-        <ul>
-          <li> <a href="https://linkedin.com/in/maxim-belyakov">LinkedIn</a> </li>
-          <li> <a href="mailto:maxim.a.belyakov@gmail.com?subject=Hey, Maxim!">E-mail</a> </li>
-          <li> <a href="https://medium.com/@maxim.a.belyakov">Medium</a> </li>
-          <li> <a href="https://instagram.com/maxim_chai">Instagram</a> </li>
-          <li> <a href="https://github.com/maxim-belyakov">GitHub</a> </li>
-          <li> <a href="https://twitter.com/maxim_chai">Twitter</a> </li>
-          <li> <a href="https://facebook.com/maxim.a.belyakov">Facebook</a> </li>
-        </ul>
+      <section className="socialContainer">
+        {socials.map((social, i) => (
+          <SocialIcon bgColor="#222222" style={{ height: iconSocialSize, width: iconSocialSize }} network={social.name} url={social.link}/>
+        ))}
       </section>
     </main>
   );
