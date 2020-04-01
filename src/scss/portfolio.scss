@@ -45,6 +45,10 @@ $buttonsImgs:
   // overflow-y: auto;
 }
 
+.meText {
+  // text-align: center;
+}
+
 .sliderAnimation___300FY {
   transition: transform .5s;
   transition-timing-function: cubic-bezier(.645,.045,.355,1);
@@ -64,6 +68,7 @@ $buttonsImgs:
 
 .slideContent_picturesSlider {
   grid-row-start: 1;
+  display: block;
   margin: 40px;
   text-align: center;
 }
@@ -82,22 +87,22 @@ $buttonsImgs:
 .slideContent_description {
   grid-row-start: 2;
   grid-row-end: 3;
-  margin: 18px 0 10px;
+  margin: 18px 0;
   font-size: 1.2rem;
   line-height: 1.8rem;
 }
 
 .slideContent_tag {
+  display: inline-block;
   border-radius: 4px;
   font-family: Helvetica;
-  font-size: 0.9em;
+  font-size: 1rem;
   text-align: center;
   color: #fff;
   padding: 5px;
   line-height: normal;
   padding-left: 6px;
   padding-right: 6px;
-  display: inline-block;
   margin-bottom: 0.3em;
   margin-right: 0.3em;
 }
@@ -215,6 +220,14 @@ $buttonsImgs:
     max-height: 300px;
   }
   .carousel__dot {
-    margin: 0 4vw;
+    margin: 0 2%;
+    width: 10%;
+    height: 10vw;
+  }
+  .slideContent_picturesSlider {
+    margin: 1vw;
+  }
+  .slideContent_name {
+    margin-top: 3vw;
   }
 }

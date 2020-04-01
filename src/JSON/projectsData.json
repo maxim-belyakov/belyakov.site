@@ -3,8 +3,14 @@
         {
             "id": 1,
             "name": "About me",
-            "description": "This is the slide about me, should to show it through different condition in the code",
-            "imgs": [],
+            "description": [
+                "I was born in Moscow in 1995. I graduated from high school, in the 8th grade I realised that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
+                "My name is Maxim Belyakov. I'm a creative professional with more than 5 years of industry experience in Frontend Development. What makes me passionate about WEB is the combination of technology and creativity, and how multiple disciplines come together to create an interactive experience.",
+                "I design and build digital products that are intuitive, accessible, beautiful, and fun. Helping start-ups, small businesses, and agencies achieve high quality websites and exceptional user experience."
+            ],
+            "imgs": [
+                "1-about-me/me.png"
+            ],
             "linkName": "",
             "link": "",
             "tags": []
@@ -12,11 +18,14 @@
         {
             "id": 2,
             "name": "InLoop Website (2019)",
-            "description": "Here I Created the project on React what can get CSV files, merge columns and filter it. Designs, develops and maintains a set of enterprise class web app with AngularJS. Worked with AngularJS include in project based by ASP.NET for rebuild separate web-pages of site. Designing and implementing HTML email templates and newsletters for marketing campaigns. Working in an Agile development cycle using advanced Scrum methodologies. Performing bug fixes and code review",
+            "description": [ 
+                "A company that provides customers with a website or widget for news aggregation. This is an intelligent environment that selects news for the client based on the region, topic, and category of news", 
+                "Here I designed, developed and maintained a set of enterprise-class web app. Here I developed product elements such as: filters, search, categories, personal page, favorites. Developed a UX structure for working with companies that provided news for InLoop. Also I created a web application using React that can manage CSV files to clean, filter, and manipulate data inside it."
+            ],
             "imgs": [ 
-                "1-inloop-2019/1.png", 
-                "1-inloop-2019/2.png", 
-                "1-inloop-2019/3.png" 
+                "2-inloop-2019/1.png", 
+                "2-inloop-2019/2.png", 
+                "2-inloop-2019/3.png" 
             ],
             "linkName": "inloop.com",
             "link": "https://inloop.com",
@@ -42,7 +51,9 @@
         {
             "id": 3,
             "name": "Ponominalu Website (2018)",
-            "description": "I've led a team of 4 developers. Together we made a full redesign of the web page, made an advanced filter to show data relevant for the user, implemented navigation that meets today's requirements, updated API to increase optimization. In the end, we had a progressive web app based on Vue.js that provides event organizers and distributors with several ways to sell tickets. Actively collaborated with the design team to build up the best solutions that face customer's expectations.",
+            "description": [ 
+                "I've led a team of 4 developers. Together we made a full redesign of the web page, made an advanced filter to show data relevant for the user, implemented navigation that meets today's requirements, updated API to increase optimization. In the end, we had a progressive web app based on Vue.js that provides event organizers and distributors with several ways to sell tickets. Actively collaborated with the design team to build up the best solutions that face customer's expectations."
+            ],
             "imgs": [ 
                 "3-ponominalu-2018/1.png", 
                 "3-ponominalu-2018/2.png", 
@@ -80,7 +91,9 @@
         {
             "id": 4,
             "name": "PN Widget (2018)",
-            "description": "For this product I lead and execute all phases of event planning and production spanning committee recruitment, training, vendor relationships and on-site facilitation, Working on frontend widget based with Angular 6",
+            "description": [
+                "For this product I lead and execute all phases of event planning and production spanning committee recruitment, training, vendor relationships and on-site facilitation, Working on frontend widget based with Angular 6"
+            ],
             "imgs": [ 
                 "4-PN-widget-2018/1.png",
                 "4-PN-widget-2018/2.png"
@@ -105,7 +118,9 @@
         {
             "id": 5,
             "name": "Admin panel for Cultural service LLC (2017)",
-            "description": "description about partners.ponominalu.ru",
+            "description": [
+                "description about partners.ponominalu.ru"
+            ],
             "imgs": [ 
                 "5-partners-ponominalu-2017/1.png" 
             ],
@@ -125,7 +140,9 @@
         {
             "id": 6,
             "name": "Ponominalu Website (2016)",
-            "description": "description about ponominalu site 2016",
+            "description": [
+                "description about ponominalu site 2016"
+            ],
             "imgs": [ 
                 "6-ponominalu-2016/1.png" 
             ],
@@ -149,7 +166,9 @@
         {
             "id": 8,
             "name": "chitai-gorod.ru",
-            "description": "description chitai-gorod",
+            "description": [
+                "description chitai-gorod"
+            ],
             "imgs": [ 
                 "8-chitai-gorod-2015/1.png" 
             ],

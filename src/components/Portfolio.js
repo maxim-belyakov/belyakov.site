@@ -26,23 +26,32 @@ export default function Portfolio() {
                     step={1}
                     isIntrinsicHeight
                     infinite={true}
+                    currentSlide={1}
                 >
                     <Slider className="slider">
                         {projects.map((project, i) => (                    
                             <Slide index={i} key={i} className="slide">
                                 <>
                                     {i === 0 ? (
-                                        <div style={{textAlign: "center"}}>
-                                            <div id="intro-text">
-                                                <h2>About me</h2>
-                                                My name is Maxim Belyakov. I'm a creative professional with more than 5 years of industry experience in <span className="label gamedesign">Frontend Development</span>. What makes me passionate about WEB is the combination of technology and creativity, and how multiple disciplines come together to create an interactive experience. 
-                                                <br/>
-                                                I always try to tell a story.
+                                        <div className="slideContent meText">
+                                            <div className="slideContent_picturesSlider">
+                                                <img className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
+                                            </div>
+                                            <div class="slideContent_text">
+                                                <h3 className="slideContent_name">{project.name}</h3>
+                                                <p className="slideContent_description">
+                                                    {project.description.map((piece, i) => (
+                                                        <>
+                                                            <span>{piece}</span>
+                                                            <br/><br/>
+                                                        </>
+                                                    ))}
+                                                </p>
                                             </div>
                                         </div>
                                     ) : (
                                         <div className="slideContent">
-                                            <div className="slideContent_picturesSlider" style={{display: "block"}}>
+                                            <div className="slideContent_picturesSlider">
                                                 <img className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
                                             </div>
                                             <div class="slideContent_text">
