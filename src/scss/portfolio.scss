@@ -74,10 +74,14 @@ $buttonsImgs:
 }
 
 .slideContent_picture {
-  max-height: 280%;
+  max-height: 260%;
   max-width: 100%;
   box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+}
+
+.meText .slideContent_picture {
+  max-height: 180%;
 }
 
 .slideContent_text {

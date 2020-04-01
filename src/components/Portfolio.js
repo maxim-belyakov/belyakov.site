@@ -31,45 +31,31 @@ export default function Portfolio() {
                     <Slider className="slider">
                         {projects.map((project, i) => (                    
                             <Slide index={i} key={i} className="slide">
-                                <>
-                                    {i === 0 ? (
-                                        <div className="slideContent meText">
-                                            <div className="slideContent_picturesSlider">
-                                                <img className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
-                                            </div>
-                                            <div class="slideContent_text">
-                                                <h3 className="slideContent_name">{project.name}</h3>
-                                                <p className="slideContent_description">
-                                                    {project.description.map((piece, i) => (
-                                                        <>
-                                                            <span>{piece}</span>
-                                                            <br/><br/>
-                                                        </>
-                                                    ))}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div className="slideContent">
-                                            <div className="slideContent_picturesSlider">
-                                                <img className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
-                                            </div>
-                                            <div class="slideContent_text">
-                                                <h3 className="slideContent_name">{project.name}</h3>
-                                                <p className="slideContent_description">{project.description}</p>
+                                <div className="slideContent" className={"slideContent " + (i === 0 ? 'meText' : '')}>
+                                    <div className="slideContent_picturesSlider">
+                                        <img className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
+                                    </div>
+                                    <div class="slideContent_text">
+                                        <h3 className="slideContent_name">{project.name}</h3>
+                                        {i === 0 ? (
+                                            <>
+                                                {project.description.map((piece, i) => (
+                                                    <p claaName="slideContent_description">{piece}</p>
+                                                ))}
+                                            </>
+                                        ) : (
+                                            <p className="slideContent_description">{project.description}</p>
+                                        )}
 
-                                                <div className="slideContent_tagContainer"> 
-                                                    {project.tags.map((tag, i) => (
-                                                        <span className="slideContent_tag" style={{backgroundColor: tag.color}}>{tag.name}</span>
-                                                    ))}
-                                                </div>
-
-                                                <a className="slideContent_link" target="_blank" href={project.link}>{project.linkName}</a> 
-                                            </div> 
+                                        <div className="slideContent_tagContainer"> 
+                                            {project.tags.map((tag, i) => (
+                                                <span className="slideContent_tag" style={{backgroundColor: tag.color}}>{tag.name}</span>
+                                            ))}
                                         </div>
-                                    )}      
-                                                                       
-                                </>                 
+
+                                        <a className="slideContent_link" target="_blank" href={project.link}>{project.linkName}</a> 
+                                    </div> 
+                                </div>
                             </Slide>
                         ))}
                     </Slider>
