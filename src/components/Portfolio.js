@@ -6,7 +6,7 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 import projectsData from "../JSON/projectsData"
 
-import './../css/portfolio.scss';
+import './../scss/portfolio.scss';
 
 export default function Portfolio() {
     const projects = projectsData.message
@@ -43,9 +43,6 @@ export default function Portfolio() {
                                     ) : (
                                         <div className="slideContent">
                                             <div className="slideContent_picturesSlider" style={{display: "block"}}>
-                                                {/* {project.imgs.map((imgLink, i) => (
-                                                    <img key={i} className="sliderImg" alt={imgLink} src={'projects/' + imgLink}></img>
-                                                ))} */}
                                                 <img className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]}></img>
                                             </div>
                                             <div class="slideContent_text">

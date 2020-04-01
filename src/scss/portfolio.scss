@@ -38,7 +38,7 @@ $buttonsImgs:
 }
 
 .slider {
-  height: 80%;
+  height: 70%;
   outline: none;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -69,7 +69,7 @@ $buttonsImgs:
 }
 
 .slideContent_picture {
-  // max-height: 100%;
+  max-height: 280%;
   max-width: 100%;
   box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -116,7 +116,7 @@ $buttonsImgs:
 // controllButtons
 
 .controllButtons {
-  height: 20%;
+  height: 30%;
   bottom: 0;
 }
 
@@ -159,7 +159,7 @@ $buttonsImgs:
 
 @for $i from 1 through length($buttonsImgs) {
   .controllButtons_numbers .carousel__dot:nth-child(#{$i}) {
-    background: url(nth($buttonsImgs, $i)) no-repeat center center;
+    background-image: url(nth($buttonsImgs, $i));
     font-size: 0px;
   }
 }
@@ -173,13 +173,14 @@ $buttonsImgs:
   width: 7%;
   height: 7vw;
   transform: scale(0.75, 0.75);
-  border-radius: 4vw;
+  border-radius: 5vw;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   border: 0.3vw solid #fff;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
   outline: none;
+  background-size: cover;
 }
 
 .carousel__dot--selected {
@@ -203,8 +204,17 @@ $buttonsImgs:
   transform: scale(1.5, 1.5);
 }
 
-
-
-// .carousel__slider-tray-wrap--horizontal, .sliderAnimation___300FY, .carousel__inner-slide, .slideContent, .slideContent_picturesSlider, .slideContent_picture, .slide {
-//   height: 100%;
-// }
+@media screen and (max-width: 900px) {
+  .slider{
+    overflow-y: auto;
+  }
+  .slideContent {
+    display: block;
+  }
+  .slideContent_picture {
+    max-height: 300px;
+  }
+  .carousel__dot {
+    margin: 0 4vw;
+  }
+}

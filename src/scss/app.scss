@@ -16,9 +16,7 @@ body {
 /* Copy & Lists */
 
 p {
-  line-height: 2rem;
   margin-top: 1.6rem;
-  font-size: 1.6rem;
   margin-bottom: 0;
 }
 
@@ -74,7 +72,7 @@ h1,
   h6 {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding-top: 2rem;
+  margin-top: 2rem;
   margin: 0;
   line-height: 1.5rem;
 }
@@ -88,39 +86,25 @@ h1 {
 h2 {
   font-size: 4.5rem;
   line-height: 6rem;
+  margin-top: 2rem;
 }
 
 h3 {
-  font-size: 1.414rem;
-  padding-top: 2.3rem;
+  font-size: 1.4rem;
+  margin-top: 2.3rem;
 }
 
 h4 {
-  font-size: 0.707rem;
+  font-size: 0.7rem;
 }
 
 h5 {
-  font-size: 0.4713333333333333rem;
+  font-size: 0.5rem;
 }
 
 h6 {
   font-size: 0.3535rem;
 }
-
-/* Tables */
-
-table {
-  margin-top: 1.5rem;
-  border-spacing: 0px;
-  border-collapse: collapse;
-}
-
-table td,
-  table th {
-  padding: 0;
-  line-height: 33px;
-}
-
 /* Code blocks */
 
 
@@ -155,24 +139,29 @@ table td,
 }
 
 
-/* Leading paragraph text */
-
-.lead {
-  font-size: 2.5rem;
-  line-height: 2.9rem;
-}
-
-/* Hug the block above you */
-
-.quote {
-  font-size: 1.4rem;
-}
+/* Paragraphs */
 
 main {
   width: 620px;
   margin: 0 auto;
   height: 100%;
 }
+
+.lead {
+  font-size: 2.5rem;
+  line-height: 2.9rem;
+}
+
+.quote {
+  font-size: 1.4rem;
+}
+
+.emoji {
+  line-height: 2rem;
+  font-size: 1.6rem;
+}
+
+/* Links */
 
 a {
   color: #222;
@@ -183,29 +172,63 @@ a:hover,
   color: #00baff;
 }
 
-.collapsible {  
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
+/* Socials */
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.heigth100per {
-  height: 100%;
-}
-
-.socialContainer {
+.socials {
   padding-top: 2.5rem;
 }
 
-.socialContainer a {
-  margin-right: 10px;
+.socials a {
+  margin-right: 0.6rem;
+}
+
+@media screen and (max-width: 756px) {
+  h1,h2,h3 {
+    margin-top: 4.2vw;
+  }
+
+  h1 {
+    margin-top: 6.3vw;
+    font-size: 11.8vw;
+    line-height: 13.5vw;
+  }
+
+  h2 {
+    font-size: 9.3vw;
+    line-height: 12.5vw;
+  }
+
+  h3 {
+    font-size: 4.2vw;
+  }
+
+  .lead {
+    margin-top: 4vw;
+    font-size: 5.2vw;
+    line-height: 6.1vw;
+  }
+
+  .quote {
+    margin-top: 2.8vw;
+    font-size: 2.9vw;
+  }
+
+  .emoji {
+    margin-top: 3.3vw;
+    font-size: 3.3vw;
+    line-height: 4.1vw;
+  }
+
+  p {
+    font-size: 3.3vw;
+  }
+
+  main {
+    margin: 0 10vw;
+    width: calc(100% - 20vw);
+  }
+
+  .socials {
+    padding-top: 5vw;
+  }
 }
