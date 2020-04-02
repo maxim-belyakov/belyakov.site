@@ -4,9 +4,9 @@
             "id": 1,
             "name": "About me",
             "description": [
-                "I was born in Moscow in 1995. I graduated from high school, in the 8th grade I realised that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
-                "My name is Maxim Belyakov. I'm a creative professional with more than 5 years of industry experience in Frontend Development. What makes me passionate about WEB is the combination of technology and creativity, and how multiple disciplines come together to create an interactive experience.",
-                "I design and build digital products that are intuitive, accessible, beautiful, and fun. Helping start-ups, small businesses, and agencies achieve high quality websites and exceptional user experience."
+                "I was born in Moscow in 1995. Since my first years, I spent a lot of time in creative work: drawing, gluing, modeling. When my family bought a computer, I began to spend a lot of time on the computer. In the 8th grade I realised that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
+                "I graduated from Moscow Industrial University in 2016 as a Bachelor of Computer Science and at this time already worked in my first company as Web Developer. That was just the start as I had to keep improving myself as the industry moved forward. A very welcome challenge! After a 6 months I began work in Cultural service Inc. as Junior Developer and finished after 2,5 yers as Head of Frontend. When I realised that I want to connect my life with my routes and went to Israel. Here I found the startup InLoop and working here as Senior Frontend Developer and responsible for the entire frontend side of the project.",
+                "My philosophy is making things when it can really help people. I trying to build digital products that are intuitive, accessible, beautiful, and fun. Helping start-ups, small businesses, and agencies achieve high-quality websites and exceptional user experience."
             ],
             "imgs": [
                 "1-about-me/me.png"
@@ -19,8 +19,8 @@
             "id": 2,
             "name": "InLoop Website (2019)",
             "description": [ 
-                "A company that provides customers with a website or widget for news aggregation. This is an intelligent environment that selects news for the client based on the region, topic, and category of news", 
-                "Here I designed, developed and maintained a set of enterprise-class web app. Here I developed product elements such as: filters, search, categories, personal page, favorites. Developed a UX structure for working with companies that provided news for InLoop. Also I created a web application using React that can manage CSV files to clean, filter, and manipulate data inside it."
+                "A company that provides customers with a website or widget for news aggregation. This is an intelligent environment that selects news for the client based on the region, topic, and category of news.", 
+                "Here I designed, developed and maintained a set of the enterprise-class web app. This is an elements such as: filters, search, categories, personal page, subscribe page, social sync blocks. Also I developed a UX structure for working with companies that provided news for InLoop. Also I created a web application using React that can manage CSV files to clean, filter, and manipulate data inside it."
             ],
             "imgs": [ 
                 "2-inloop-2019/1.png", 
@@ -92,7 +92,7 @@
             "id": 4,
             "name": "PN Widget (2018)",
             "description": [
-                "For this product I lead and execute all phases of event planning and production spanning committee recruitment, training, vendor relationships and on-site facilitation, Working on frontend widget based with Angular 6"
+                "This is the WebApp for order and selling tickets for events, concerts and lectures. I developed here all steps to purchase, the payment security page, the user interaction with the venue map where you are choosing the place of the seat. The focus was placed on the intuitiveness of the interface. Despite the complexity of the architecture of the concert hall, the client must simply and clearly choose the place where they want to sit."
             ],
             "imgs": [ 
                 "4-PN-widget-2018/1.png",
@@ -152,6 +152,10 @@
                 { 
                     "name": "Angular", 
                     "color": "#d70030" 
+                },
+                { 
+                    "name": "Java", 
+                    "color": "#d74d37"
                 },
                 { 
                     "name": "Gulp", 

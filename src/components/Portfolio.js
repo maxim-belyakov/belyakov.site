@@ -37,15 +37,10 @@ export default function Portfolio() {
                                     </div>
                                     <div class="slideContent_text">
                                         <h3 className="slideContent_name">{project.name}</h3>
-                                        {i === 0 ? (
-                                            <>
-                                                {project.description.map((piece, i) => (
-                                                    <p claaName="slideContent_description">{piece}</p>
-                                                ))}
-                                            </>
-                                        ) : (
-                                            <p className="slideContent_description">{project.description}</p>
-                                        )}
+
+                                        {project.description.map((part, i) => (
+                                            <p claaName="slideContent_description">{part}</p>
+                                        ))}
 
                                         <div className="slideContent_tagContainer"> 
                                             {project.tags.map((tag, i) => (

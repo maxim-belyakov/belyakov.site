@@ -45,10 +45,6 @@ $buttonsImgs:
   // overflow-y: auto;
 }
 
-.meText {
-  // text-align: center;
-}
-
 .sliderAnimation___300FY {
   transition: transform .5s;
   transition-timing-function: cubic-bezier(.645,.045,.355,1);
@@ -66,6 +62,10 @@ $buttonsImgs:
   grid-template-columns: 50% 50%;
 }
 
+.slideContent_name{
+  font-size: 1.6rem;
+}
+
 .slideContent_picturesSlider {
   grid-row-start: 1;
   display: block;
@@ -74,14 +74,25 @@ $buttonsImgs:
 }
 
 .slideContent_picture {
-  max-height: 260%;
+  max-height: 230%;
   max-width: 100%;
   box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
 
+.meText {
+  grid-template-columns: 40% 60%;
+}
+
 .meText .slideContent_picture {
-  max-height: 180%;
+  max-height: 175%;
+  position: relative;
+  bottom: 40px;
+}
+
+.meText .slideContent_name {
+  font-size: 2.4rem;
+  margin: 0;
 }
 
 .slideContent_text {
@@ -97,22 +108,18 @@ $buttonsImgs:
 }
 
 .slideContent_tag {
+  margin-right: 0.3rem;
   display: inline-block;
   border-radius: 4px;
-  font-family: Helvetica;
   font-size: 1rem;
   text-align: center;
   color: #fff;
-  padding: 5px;
+  padding: 3px 7px 5px;
   line-height: normal;
-  padding-left: 6px;
-  padding-right: 6px;
-  margin-bottom: 0.3em;
-  margin-right: 0.3em;
 }
 
 .slideContent_tagContainer {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .slideContent_link {
@@ -184,7 +191,7 @@ $buttonsImgs:
   transform: scale(0.75, 0.75);
   border-radius: 5vw;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-duration: 0.2s;
   border: 0.3vw solid #fff;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
@@ -192,9 +199,14 @@ $buttonsImgs:
   background-size: cover;
 }
 
+.carousel__dot:hover {
+  filter: grayscale(0%);
+  transition-duration: 0.2s;
+}
+
 .carousel__dot--selected {
   transform: scale(0.9);
-  transition-duration: 0.2s;
+  // transition-duration: 0.3s;
   cursor: unset;
   -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
   filter: grayscale(0%);
