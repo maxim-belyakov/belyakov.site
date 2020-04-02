@@ -119,7 +119,7 @@
             "id": 5,
             "name": "Admin panel for Cultural service LLC (2017)",
             "description": [
-                "description about partners.ponominalu.ru"
+                "This is an environment for site owners who can earn extra money on their resources by selling tickets to the best cultural and entertainment events. Here I designed and developed from scrutch the whole project. It allows you to control customer purchases via promo codes, ref-codes for routing ad links, and custom styles for header, footer, and main widget elements. You can also view statistics with charts for orders placed, sales turnover, discounts, bonuses, and the internal currency of the site in your account. And the ability to upload statistics to XML and CSV files."
             ],
             "imgs": [ 
                 "5-partners-ponominalu-2017/1.png" 
@@ -132,6 +132,10 @@
                     "color": "#5fd2f7"
                 },
                 { 
+                    "name": "LESS",
+                    "color": "#182f53"
+                },
+                { 
                     "name": "Lodash",
                     "color": "#181818"
                 }
@@ -141,7 +145,7 @@
             "id": 6,
             "name": "Ponominalu Website (2016)",
             "description": [
-                "description about ponominalu site 2016"
+                "This is the old version of WebSite Cultural Service. Here I developed events-list block, slider for general page and badget for buy items, the feedback page and info-pages with information."
             ],
             "imgs": [ 
                 "6-ponominalu-2016/1.png" 
@@ -171,7 +175,7 @@
             "id": 8,
             "name": "chitai-gorod.ru",
             "description": [
-                "description chitai-gorod"
+                "This is the service for selling books and audiobook and WebApp for reading and listening to the purchased library. Here I have developed the purchase page directly, redesigned the shopping cart and the block for displaying news."
             ],
             "imgs": [ 
                 "8-chitai-gorod-2015/1.png" 
