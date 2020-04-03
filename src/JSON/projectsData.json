@@ -4,7 +4,7 @@
             "id": 1,
             "name": "About me",
             "description": [
-                "I was born in Moscow in 1995. Since my first years, I spent a lot of time in creative work: drawing, gluing, modeling. When my family bought a computer, I began to spend a lot of time on the computer. In the 8th grade I realised that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
+                "I was born in Moscow in 1995. Since my first years, I spent a lot of time in creative work: drawing, gluing, modeling. When my family bought a computer, I began to spend a lot of time on it. In the 8th grade I realised that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
                 "I graduated from Moscow Industrial University in 2016 as a Bachelor of Computer Science and at this time already worked in my first company as Web Developer. That was just the start as I had to keep improving myself as the industry moved forward. A very welcome challenge! After a 6 months I began work in Cultural service Inc. as Junior Developer and finished after 2,5 yers as Head of Frontend. When I realised that I want to connect my life with my routes and went to Israel. Here I found the startup InLoop and working here as Senior Frontend Developer and responsible for the entire frontend side of the project.",
                 "My philosophy is making things when it can really help people. I trying to build digital products that are intuitive, accessible, beautiful, and fun. Helping start-ups, small businesses, and agencies achieve high-quality websites and exceptional user experience."
             ],
@@ -19,7 +19,7 @@
             "id": 2,
             "name": "InLoop Website (2019)",
             "description": [ 
-                "A company that provides customers with a website or widget for news aggregation. This is an intelligent environment that selects news for the client based on the region, topic, and category of news.", 
+                "This is a company that provides customers with a website or widget for news aggregation. This is an intelligent environment that selects news for the client based on the region, topic, and category of news.", 
                 "Here I designed, developed and maintained a set of the enterprise-class web app. This is an elements such as: filters, search, categories, personal page, subscribe page, social sync blocks. Also I developed a UX structure for working with companies that provided news for InLoop. Also I created a web application using React that can manage CSV files to clean, filter, and manipulate data inside it."
             ],
             "imgs": [ 
@@ -92,7 +92,7 @@
             "id": 4,
             "name": "PN Widget (2018)",
             "description": [
-                "This is the WebApp for order and selling tickets for events, concerts and lectures. I developed here all steps to purchase, the payment security page, the user interaction with the venue map where you are choosing the place of the seat. The focus was placed on the intuitiveness of the interface. Despite the complexity of the architecture of the concert hall, the client must simply and clearly choose the place where they want to sit."
+                "This is the WebApp for order and selling tickets for events, concerts, and lectures. I developed here all steps for purchasing, the payment security page, the user interaction with the venue map where you can choose the place of the seat. The focus was placed on the intuitiveness of the interface. Despite the complexity of the architecture of the concert hall, the client has to be able to choose the place where they want to sit without any difficulties."
             ],
             "imgs": [ 
                 "4-PN-widget-2018/1.png",
@@ -119,7 +119,7 @@
             "id": 5,
             "name": "Admin panel for Cultural service LLC (2017)",
             "description": [
-                "This is an environment for site owners who can earn extra money on their resources by selling tickets to the best cultural and entertainment events. Here I designed and developed from scrutch the whole project. It allows you to control customer purchases via promo codes, ref-codes for routing ad links, and custom styles for header, footer, and main widget elements. You can also view statistics with charts for orders placed, sales turnover, discounts, bonuses, and the internal currency of the site in your account. And the ability to upload statistics to XML and CSV files."
+                "This is an environment for site owners who can earn extra money on their resources by selling tickets to the best cultural and entertainment events. Here I designed and developed from scrutch the whole project. It allows you to control customer purchases via promo codes, ref-codes for routing ad links, and custom styles for header, footer, and main widget elements. You can also view statistics with charts for orders placed, sales turnover, discounts, bonuses, and the internal currency of the site in your account. Statistics can be uploaded to XML and CSV files."
             ],
             "imgs": [ 
                 "5-partners-ponominalu-2017/1.png" 
