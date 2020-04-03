@@ -13,11 +13,9 @@ export default function Portfolio() {
 
     return(      
         <div className="Portfolio">
-            <main className="Portfolio_back">
-                <h2 className="check">
-                    <Link to="/">Back</Link>
-                </h2>
-            </main>
+            <div className="Portfolio_back">
+                <Link className="Portfolio_backButton line" to="/">Maxim Belyakov</Link>
+            </div>
 
             <div class="Portfolio_projects">
                 <CarouselProvider
@@ -35,7 +33,7 @@ export default function Portfolio() {
                     <Slider 
                         className="slider"
                         classNameTray="carouselTray"
-                        moveThreshold={0.01}
+                        moveThreshold={0.2}
                         >
                         {projects.map((project, i) => (                    
                             <Slide 

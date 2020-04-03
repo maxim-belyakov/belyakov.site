@@ -4,9 +4,9 @@
             "id": 1,
             "name": "About me",
             "description": [
-                "I was born in Moscow in 1995. Since my first years, I spent a lot of time in creative work: drawing, gluing, modeling. When my family bought a computer, I began to spend a lot of time on it. In the 8th grade I realised that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
-                "I graduated from Moscow Industrial University in 2016 as a Bachelor of Computer Science and at this time already worked in my first company as Web Developer. That was just the start as I had to keep improving myself as the industry moved forward. A very welcome challenge! After a 6 months I began work in Cultural service Inc. as Junior Developer and finished after 2,5 yers as Head of Frontend. When I realised that I want to connect my life with my routes and went to Israel. Here I found the startup InLoop and working here as Senior Frontend Developer and responsible for the entire frontend side of the project.",
-                "My philosophy is making things when it can really help people. I trying to build digital products that are intuitive, accessible, beautiful, and fun. Helping start-ups, small businesses, and agencies achieve high-quality websites and exceptional user experience."
+                "I was born in Moscow in 1995. Since my first years, I spent a lot of time in creative work: drawing, gluing, modeling. When my family bought a computer, I began to spend a lot of time on it. In the 8th class, I realized that I wanted to connect my life with programming and went with a tutor to learn my first programming language.",
+                "I graduated from Moscow Industrial University in 2016 as a Bachelor of Computer Science and at this time already worked in my first company as a Web Developer. That was just the start as I had to keep improving myself as the industry moved forward. A very welcome challenge! After 6 months I began work in Cultural service Inc. as Junior Developer and finished after 2,5 years Head of Frontend. When I realized that I want to connect my life with my routes and went to Israel. Here I found the startup InLoop and working here as Senior Frontend Developer and responsible for the entire frontend side of the project.",
+                "My philosophy is to create things when it can really help people. I trying to build digital products that are intuitive, accessible, beautiful, and fun. Helping start-ups, small businesses, and agencies achieve high-quality websites and exceptional user experience."
             ],
             "imgs": [
                 "1-about-me/me.png"
@@ -119,7 +119,7 @@
             "id": 5,
             "name": "Admin panel for Cultural service LLC (2017)",
             "description": [
-                "This is an environment for site owners who can earn extra money on their resources by selling tickets to the best cultural and entertainment events. Here I designed and developed from scrutch the whole project. It allows you to control customer purchases via promo codes, ref-codes for routing ad links, and custom styles for header, footer, and main widget elements. You can also view statistics with charts for orders placed, sales turnover, discounts, bonuses, and the internal currency of the site in your account. Statistics can be uploaded to XML and CSV files."
+                "This is an environment for site owners who can earn extra money on their resources by selling tickets to the best cultural and entertainment events. Here I designed and developed from scratch the whole project. It allows you to control customer purchases via promo codes, ref-codes for routing advertisement links, and custom styles for header, footer, and main widget elements. You can also view statistics with charts for orders by unique source, sales turnover, discounts, bonuses, and the internal currency of the site in your account. Statistics can be uploaded to XML and CSV files."
             ],
             "imgs": [ 
                 "5-partners-ponominalu-2017/1.png" 
@@ -145,7 +145,7 @@
             "id": 6,
             "name": "Ponominalu Website (2016)",
             "description": [
-                "This is the old version of WebSite Cultural Service. Here I developed events-list block, slider for general page and badget for buy items, the feedback page and info-pages with information."
+                "This is the old version of WebSite Cultural Service. Here I developed events-list block, implement tags, slider for general page, shopping cart for purchasing, the feedback page and error pages."
             ],
             "imgs": [ 
                 "6-ponominalu-2016/1.png" 
@@ -175,7 +175,7 @@
             "id": 8,
             "name": "chitai-gorod.ru",
             "description": [
-                "This is the service for selling books and audiobook and WebApp for reading and listening to the purchased library. Here I have developed the purchase page directly, redesigned the shopping cart and the block for displaying news."
+                "This is the service for selling books and audiobooks and WebApp for reading and listening to the purchased library. Here I have developed the purchase page directly, redesigned the shopping cart and the block for displaying news."
             ],
             "imgs": [ 
                 "8-chitai-gorod-2015/1.png" 

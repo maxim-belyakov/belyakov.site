@@ -164,12 +164,13 @@ main {
 /* Links */
 
 a {
+  transition: .2s ease;
   color: #222;
-}
 
-a:hover,
-  a:focus {
-  color: #00baff;
+  &:hover,
+  a:focus{
+    color: #00baff;
+  }
 }
 
 /* Socials */
@@ -219,10 +220,6 @@ a:hover,
     line-height: 4.1vw;
   }
 
-  p {
-    font-size: 3.3vw;
-  }
-
   main {
     margin: 0 10vw;
     width: calc(100% - 20vw);
@@ -233,8 +230,8 @@ a:hover,
   }
 
   .socials a {
-    width: 9vw!important;
-    height: 9vw!important;
+    width: 8.9vw!important;
+    height: 8.9vw!important;
     margin-right: 2.2vw;
   }
 }

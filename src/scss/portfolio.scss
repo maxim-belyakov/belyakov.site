@@ -1,12 +1,15 @@
-$dark: #373737;
-$light: #f4f4f4;
-$white: #fefefe;
-$highlight1: #c0b283;
-$highlight2: #dcd0c0;
-$font-size--large-headline--mobile: 4rem;
-$font-size--large-headline--desktop: 4.8rem;
-$font-size--large-text--mobile: 1.6rem;
-$font-size--large-text--desktop: 2rem;
+
+$gray: #555;
+$white: #fff;
+$colorSky: #00baff;
+
+$headerH: 15%;
+$mainH: 85%;
+
+$sliderH: 70%;
+$buttonsH: 30%;
+
+$animate: all 0.2s ease-in-out;
 
 $buttonsImgs: 
   '/buttons/1.png',
@@ -24,31 +27,64 @@ $buttonsImgs:
 }
 
 .Portfolio_back {
-  height: 20%;
+	height: calc(15% - 40px);
+	width: 88%;
+	margin: 40px auto 0;
+}
+
+.Portfolio_backButton {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: $gray;
+	transition: $animate;
+  position: relative;  
+  &:hover{
+    cursor: pointer;
+    color: $gray;
+  }
+
+  &:before,
+  &:after {
+	content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 0px;
+    height: 5px;
+    margin: 5px 0 0;
+    transition: $animate;
+    transition-duration: 0.5s;
+    opacity: 0;
+    background-color: $colorSky;
+    left: 0;
+  }
+
+  &:hover:before,
+  &:hover:after{
+    width: 100%;
+    opacity: 1;
+  }
 }
 
 .Portfolio_projects {
-  height: 80%;
+  height: $mainH;
   overflow: hidden;
 }
 
-.carousel {
+.Portfolio_carousel {
   height: 100%;
   overflow: hidden;
-}
-
-.slider {
-  height: 70%;
-  outline: none;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  // overflow-y: auto;
 }
 
 .carouselTray {
   transition: transform .5s;
   transition-timing-function: cubic-bezier(.645,.045,.355,1);
   will-change: transform;
+}
+
+.slider {
+  height: $sliderH;
+  outline: none;
+  overflow: hidden;
 }
 
 .slide {
@@ -66,7 +102,7 @@ $buttonsImgs:
   padding: 0 70px;
 }
 
-.slideContent_name{
+.slideContent_name {
   font-size: 1.6rem;
 }
 
@@ -121,7 +157,7 @@ $buttonsImgs:
   border-radius: 4px;
   font-size: 1rem;
   text-align: center;
-  color: #fff;
+  color: $white;
   padding: 3px 7px 5px;
   line-height: normal;
 }
@@ -169,7 +205,7 @@ $buttonsImgs:
 // controllButtons
 
 .controllButtons {
-  height: 30%;
+  height: $buttonsH;
   bottom: 0;
 }
 
@@ -183,6 +219,10 @@ $buttonsImgs:
   background: unset;
   border: unset;
   outline: none;
+
+  &:hover {
+    transform: scale(1.5, 1.5);
+  }
 }
 
 .controllButtons_right { 
@@ -195,6 +235,10 @@ $buttonsImgs:
   background: unset;
   border: unset;
   outline: none;
+
+  &:hover {
+    transform: scale(1.5, 1.5);
+  }
 }
 
 .controllButtons_numbers {
@@ -226,19 +270,19 @@ $buttonsImgs:
   width: 7%;
   height: 7vw;
   transform: scale(0.75, 0.75);
-  border-radius: 5vw;
+  border-radius: 100px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition-duration: 0.2s;
-  border: 0.3vw solid #fff;
+  border: 0.3vw solid $white;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
   outline: none;
   background-size: cover;
-}
 
-.carousel__dot:hover {
-  filter: grayscale(0%);
-  transition-duration: 0.2s;
+  &:hover {
+    filter: grayscale(0%);
+    transition-duration: 0.2s;
+  }
 }
 
 .carousel__dot--selected {
@@ -254,33 +298,39 @@ $buttonsImgs:
   transition-duration: 0.4s;
 }
 
-.controllButtons_left:hover .controllButtons_icon {
-  transform: scale(1.5, 1.5);
-}
-
-.controllButtons_right:hover .controllButtons_icon {
-  transform: scale(1.5, 1.5);
-}
-
 @media screen and (max-width: 900px) {
   .slider{
     overflow-y: auto;
   }
+
   .slideContent {
     display: block;
   }
+  
   .slideContent_picture {
     max-height: 300px;
   }
+
   .carousel__dot {
-    margin: 0 2%;
-    width: 10%;
-    height: 10vw;
+    margin: 0 1%;
+    width: 12%;
+    height: 12vw;
   }
+
   .slideContent_picturesSlider {
     margin: 1vw;
   }
+
+  .meText .slideContent_picture {
+    position: static;
+  }
+
+  .meText .slideContent_name {
+    margin-top: 5vw;
+  }
+
   .slideContent_name {
-    margin-top: 3vw;
+    margin-top: 5vw;
+    line-height: 6.5vw;
   }
 }
