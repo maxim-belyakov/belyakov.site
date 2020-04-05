@@ -67,39 +67,47 @@ $buttonsImgs:
 
 .Portfolio_projects {
   height: $mainH;
-  overflow: hidden;
 }
 
 .Portfolio_carousel {
   height: 100%;
-  overflow: hidden;
-}
-
-.carouselTray {
-  transition: transform .5s;
-  transition-timing-function: cubic-bezier(.645,.045,.355,1);
-  will-change: transform;
 }
 
 .slider {
   height: $sliderH;
   outline: none;
-  overflow: hidden;
+}
+
+.carousel__slider-tray-wrapper {
+  height: 100%;
+}
+
+.carouselTray {
+  height: 100%;
+  transition: transform .5s;
+  transition-timing-function: cubic-bezier(.645,.045,.355,1);
+  will-change: transform;
 }
 
 .slide {
   cursor: -webkit-grab;
-  // margin: 0 70px;
-  height: 100%;
+  padding-top: 60px;
+  height: calc(100% - 60px);
   display: inline-block;
   vertical-align: top;
   outline: none;
 }
 
+.carousel__inner-slide {
+  height: 100%;
+}
+
 .slideContent {
+  height: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
   padding: 0 70px;
+  overflow: hidden;
 }
 
 .slideContent_name {
@@ -136,7 +144,9 @@ $buttonsImgs:
 }
 
 .slideContent_text {
-  padding-right: 40px;
+  margin-right: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .slideContent_description {
@@ -299,12 +309,14 @@ $buttonsImgs:
 }
 
 @media screen and (max-width: 900px) {
-  .slider{
-    overflow-y: auto;
-  }
+  // .slider{
+  //   overflow-y: auto;
+  //   overflow-x: hidden;
+  // }
 
   .slideContent {
     display: block;
+    overflow: auto;
   }
   
   .slideContent_picture {
