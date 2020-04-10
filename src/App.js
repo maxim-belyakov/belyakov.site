@@ -42,14 +42,19 @@ export default function App() {
 function Home() {
   
   const socials = socialIcons.message
-  const [iconSocialSize, setIconSocialSize] = useState(45)
+  const [iconSocialSize] = useState(45)
+  // const [iconSocialSize, setIconSocialSize] = useState(45)
 
   return (
     <main>
       <h1>Maxim Belyakov</h1>
       <p className="lead">Creating is my passion. Being better than yesterday really makes me happy.</p>
       <p className="quote">Life is 10% what happens to you and 90% how you react to it.</p>
-      <p className="emoji"> 🚀 👽 👾 </p>
+      <p className="emoji">
+        <span role="img" aria-label="rocket">🚀</span>
+        <span role="img" aria-label="alien">👽</span>
+        <span role="img" aria-label="alien-monster">👾</span> 
+      </p>
       <section>
         <h2 className="check">
           <Link to="/portfolio">Portfolio projects</Link>

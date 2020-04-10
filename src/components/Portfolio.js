@@ -41,7 +41,7 @@ export default function Portfolio() {
                                 index={i} 
                                 key={i} 
                                 >
-                                <div className="slideContent" className={"slideContent " + (i === 0 ? 'meText' : '')}>
+                                <div className={"slideContent " + (i === 0 ? 'meText' : '')}>
                                     <div className="slideContent_picturesSlider">
                                         <Image className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]} />
                                     </div>
@@ -58,7 +58,7 @@ export default function Portfolio() {
                                             ))}
                                         </div>
 
-                                        <a className="slideContent_link" target="_blank" href={project.link}>{project.linkName}</a> 
+                                        <a className="slideContent_link" target="_blank" href={project.link} rel="noopener noreferrer">{project.linkName}</a> 
                                     </div> 
                                 </div>
                             </Slide>
