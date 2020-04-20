@@ -1,6 +1,8 @@
 # pull official base image
 FROM node:13.12.0-alpine
 
+LABEL maintainer="maxim.a.belyakov@gmail.com"
+
 # set working directory
 # WORKDIR /app
 
