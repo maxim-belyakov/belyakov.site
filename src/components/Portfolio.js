@@ -11,13 +11,15 @@ import './../scss/portfolio.scss';
 export default function Portfolio() {
     const projects = projectsData.message
 
+    console.log('test')
+
     return(      
         <div className="Portfolio">
             <div className="Portfolio_back">
                 <Link className="Portfolio_backButton line" to="/">Maxim Belyakov</Link>
             </div>
 
-            <div class="Portfolio_projects">
+            <div className="Portfolio_projects">
                 <CarouselProvider
                     className="Portfolio_carousel"
                     visibleSlides={1}
@@ -45,16 +47,16 @@ export default function Portfolio() {
                                     <div className="slideContent_picturesSlider">
                                         <Image className="slideContent_picture" alt={project.imgs[0]} src={'projects/' + project.imgs[0]} />
                                     </div>
-                                    <div class="slideContent_text">
+                                    <div className="slideContent_text">
                                         <h3 className="slideContent_name">{project.name}</h3>
 
                                         {project.description.map((part, i) => (
-                                            <p claaName="slideContent_description">{part}</p>
+                                            <p key={i} className="slideContent_description">{part}</p>
                                         ))}
 
                                         <div className="slideContent_tagContainer"> 
                                             {project.tags.map((tag, i) => (
-                                                <span className="slideContent_tag ripple" style={{backgroundColor: tag.color}}>{tag.name}</span>
+                                                <span key={i} className="slideContent_tag ripple" style={{backgroundColor: tag.color}}>{tag.name}</span>
                                             ))}
                                         </div>
 

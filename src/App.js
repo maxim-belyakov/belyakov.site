@@ -62,7 +62,7 @@ function Home() {
       </section>
       <section className="socials">
         {socials.map((social, i) => (
-          <SocialIcon bgColor="#222222" style={{ height: iconSocialSize, width: iconSocialSize }} network={social.name} url={social.link}/>
+          <SocialIcon key={i} bgColor="#222222" style={{ height: iconSocialSize, width: iconSocialSize }} network={social.name} url={social.link}/>
         ))}
       </section>
     </main>
