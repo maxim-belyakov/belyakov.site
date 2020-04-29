@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { Component, createRef, useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
 import { CSSTransition } from "react-transition-group";
@@ -13,30 +13,39 @@ const routes = [
   { path: '/:portfolio/', name: 'Portfolio', Component: Portfolio }
 ]
 
-export default function App() {
+export default class App extends Component {
 
-  return (
-    <Router>
-      <>
-        {routes.map(({ path, Component }) => (
-          <Route key={path} exact path={path}>
-            {({ match }) => (
-              <CSSTransition
-                in={match != null}
-                timeout={300}
-                classNames="page"
-                unmountOnExit
-              >
-                <div className="page">
-                  <Component />
-                </div>
-              </CSSTransition>
-            )}
-          </Route>
-        ))}
-     </>
-    </Router>
-  )
+  componentDidMount() {
+    const node = this.wrapper.current;
+    /* Uses DOM node  */ 
+  }
+
+  wrapper = createRef();
+
+  render () {
+    return (
+      <Router>
+        <>
+          {routes.map(({ path, Component }) => (
+            <Route key={path} exact path={path}>
+              {({ match }) => (
+                <CSSTransition
+                  in={match != null}
+                  timeout={300}
+                  classNames="page"
+                  unmountOnExit
+                >
+                  <div ref={this.wrapper}>
+                    <Component className="page" />
+                  </div>
+                </CSSTransition>
+              )}
+            </Route>
+          ))}
+      </>
+      </Router>
+    )
+  }
 }
 
 function Home() {
