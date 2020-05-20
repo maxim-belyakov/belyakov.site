@@ -16,7 +16,7 @@ const routes = [
 export default class App extends Component {
 
   componentDidMount() {
-    const node = this.wrapper.current;
+    // const node = this.wrapper.current;
     /* Uses DOM node  */ 
   }
 
