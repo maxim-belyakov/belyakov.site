@@ -134,6 +134,7 @@ $buttonsImgs:
 
 .meText .slideContent_picture {
   max-height: 110%;
+  max-width: 70%;
   position: relative;
   bottom: 40px;
 }
@@ -309,10 +310,14 @@ $buttonsImgs:
 }
 
 @media screen and (max-width: 900px) {
-  // .slider{
-  //   overflow-y: auto;
-  //   overflow-x: hidden;
-  // }
+  .slider{
+    height: 85%;
+  }
+
+  .slide{
+    height: 100%;
+    padding-top: 0;
+  }
 
   .slideContent {
     display: block;
@@ -321,16 +326,21 @@ $buttonsImgs:
   
   .slideContent_picture {
     max-height: 300px;
+    max-width: 100%;
   }
 
   .carousel__dot {
-    margin: 0 1%;
+    margin: 0 1.1%;
     width: 12%;
     height: 12vw;
   }
 
   .slideContent_picturesSlider {
     margin: 1vw;
+  }
+
+  .slideContent_text {
+    margin-right: 0;
   }
 
   .meText .slideContent_picture {
@@ -344,5 +354,9 @@ $buttonsImgs:
   .slideContent_name {
     margin-top: 5vw;
     line-height: 6.5vw;
+  }
+
+  .controllButtons {
+    height: 15%;
   }
 }
