@@ -164,6 +164,7 @@ $buttonsImgs:
 
 .slideContent_tag {
   margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
   display: inline-block;
   border-radius: 4px;
   font-size: 1rem;
@@ -171,6 +172,7 @@ $buttonsImgs:
   color: $white;
   padding: 3px 7px 5px;
   line-height: normal;
+  -webkit-tap-highlight-color: transparent;
 }
 
 // blink tag
@@ -230,6 +232,7 @@ $buttonsImgs:
   background: unset;
   border: unset;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     transform: scale(1.5, 1.5);
@@ -246,6 +249,7 @@ $buttonsImgs:
   background: unset;
   border: unset;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     transform: scale(1.5, 1.5);
