@@ -23,6 +23,8 @@ export default class App extends Component {
   wrapper = createRef();
 
   render () {
+
+    console.log('test-test!')
     return (
       <Router>
         <>
