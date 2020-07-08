@@ -1,4 +1,4 @@
-import React, { Component, createRef, useState } from 'react';
+import React, { Component, useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
 import { CSSTransition } from "react-transition-group";
@@ -16,11 +16,8 @@ const routes = [
 export default class App extends Component {
 
   componentDidMount() {
-    // const node = this.wrapper.current;
     /* Uses DOM node  */ 
   }
-
-  wrapper = createRef();
 
   render () {
     return (
@@ -35,9 +32,7 @@ export default class App extends Component {
                   classNames="page"
                   unmountOnExit
                 >
-                  <div ref={this.wrapper}>
-                    <Component className="page" />
-                  </div>
+                  <Component className="page" />
                 </CSSTransition>
               )}
             </Route>
@@ -52,7 +47,6 @@ function Home() {
   
   const socials = socialIcons.message
   const [iconSocialSize] = useState(45)
-  // const [iconSocialSize, setIconSocialSize] = useState(45)
 
   return (
     <main>
@@ -71,7 +65,7 @@ function Home() {
       </section>
       <section className="socials">
         {socials.map((social, i) => (
-          <SocialIcon key={i} bgColor="#222222" style={{ height: iconSocialSize, width: iconSocialSize }} network={social.name} url={social.link}/>
+          <SocialIcon key={i} bgColor="#222222" target="_blank" style={{ height: iconSocialSize, width: iconSocialSize }} network={social.name} url={social.link}/>
         ))}
       </section>
     </main>
