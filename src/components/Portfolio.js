@@ -11,8 +11,6 @@ import './../scss/portfolio.scss';
 export default function Portfolio() {
     const projects = projectsData.message
 
-    console.log('test')
-
     return(      
         <div className="Portfolio">
             <div className="Portfolio_back">
