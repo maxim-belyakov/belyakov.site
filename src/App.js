@@ -17,7 +17,7 @@ const routes = [
 export default class App extends Component {
 
   componentDidMount() {
-    /* Uses DOM node test */ 
+    /* Uses DOM node  */ 
   }
 
   render () {
