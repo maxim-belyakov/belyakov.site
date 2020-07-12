@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
 import { CSSTransition } from "react-transition-group";
+// import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 import Portfolio from './components/Portfolio';
 import socialIcons from "./JSON/socialIcons"
@@ -32,7 +33,7 @@ export default class App extends Component {
                   classNames="page"
                   unmountOnExit
                 >
-                  <Component className="page" />
+                  <Component />
                 </CSSTransition>
               )}
             </Route>
