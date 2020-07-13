@@ -1,12 +1,13 @@
-import React, { Component, useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { SocialIcon } from 'react-social-icons';
-import { CSSTransition } from "react-transition-group";
+import React from 'react';
+import { Switch, Route, withRouter } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 // import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
+// components
+import Home from "./components/Home";
 import Portfolio from './components/Portfolio';
-import socialIcons from "./JSON/socialIcons"
 
+// SCSS
 import './scss/app.scss';
 
 const routes = [
@@ -14,61 +15,25 @@ const routes = [
   { path: '/:portfolio/', name: 'Portfolio', Component: Portfolio }
 ]
 
-export default class App extends Component {
-
-  componentDidMount() {
-    /* Uses DOM node  */ 
-  }
-
-  render () {
-    return (
-      <Router>
-        <>
-          {routes.map(({ path, Component }) => (
-            <Route key={path} exact path={path}>
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={300}
-                  classNames="page"
-                  unmountOnExit
-                >
-                  <Component />
-                </CSSTransition>
-              )}
-            </Route>
-          ))}
-      </>
-      </Router>
-    )
-  }
-}
-
-function Home() {
-  
-  const socials = socialIcons.message
-  const [iconSocialSize] = useState(45)
-
+function App({ location }) {
   return (
-    <main>
-      <h1>Maxim Belyakov</h1>
-      <p className="lead">Creating is my passion. Being better than yesterday really makes me happy.</p>
-      <p className="quote">Life is 10% what happens to you and 90% how you react to it.</p>
-      <p className="emoji">
-        <span role="img" aria-label="rocket">🚀</span>
-        <span role="img" aria-label="alien">👽</span>
-        <span role="img" aria-label="alien-monster">👾</span> 
-      </p>
-      <section>
-        <h2 className="check">
-          <Link to="/portfolio">Portfolio projects</Link>
-        </h2>
-      </section>
-      <section className="socials">
-        {socials.map((social, i) => (
-          <SocialIcon key={i} bgColor="#222222" target="_blank" style={{ height: iconSocialSize, width: iconSocialSize }} network={social.name} url={social.link}/>
-        ))}
-      </section>
-    </main>
-  );
+    <div>
+      <TransitionGroup className="transition-group">
+        <CSSTransition
+          key={location.key}
+          timeout={{ enter: 300, exit: 300 }}
+          classNames="page"
+        >
+          <section className="route-section">
+            <Switch location={location}>
+              <Route exact path="/" component={Home} />
+              <Route path="/portfolio" component={Portfolio} />
+            </Switch>
+          </section>
+        </CSSTransition>
+      </TransitionGroup>
+    </div>
+  )
 }
+
+export default withRouter(App);
