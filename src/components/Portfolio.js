@@ -28,7 +28,7 @@ export default function Portfolio() {
                     hasMasterSpinner={true}
                     infinite={true}
                     touchEnabled={true}
-                    dragEnabled={true}
+                    dragEnabled={false}
                 >
                     <Slider 
                         className="slider"

@@ -186,7 +186,18 @@ a {
   margin-right: 0.6rem;
 }
 
+@media screen and (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  .socials {
+    padding: 5vw 0;
+  }
+}
+
 @media screen and (max-width: 756px) {
+
   h1,h2,h3 {
     margin-top: 4.2vw;
   }
@@ -226,10 +237,6 @@ a {
   main {
     margin: 0 10vw;
     width: calc(100% - 20vw);
-  }
-
-  .socials {
-    padding-top: 5vw;
   }
 
   .socials a {

@@ -10,11 +10,6 @@ import Portfolio from './components/Portfolio';
 // SCSS
 import './scss/app.scss';
 
-const routes = [
-  { path: '/', name: 'Home', Component: Home },
-  { path: '/:portfolio/', name: 'Portfolio', Component: Portfolio }
-]
-
 function App({ location }) {
   return (
     <div>
