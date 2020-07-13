@@ -18,7 +18,9 @@ $buttonsImgs:
   '/buttons/4.png',
   '/buttons/5.png',
   '/buttons/6.png',
-  '/buttons/7.png';
+  '/buttons/7.png',
+  '/buttons/8.png',
+;
 
 .Portfolio {
   // position: absolute;
@@ -278,7 +280,7 @@ $buttonsImgs:
 
 .carousel__dot {
   position: relative;
-  margin: 0 3.6%;
+  margin: 0 2.7%;
   cursor: pointer;
   display: inline-block;
   white-space: nowrap;
@@ -314,6 +316,19 @@ $buttonsImgs:
 }
 
 @media screen and (max-width: 900px) {
+
+  .Portfolio {
+    overflow: hidden;
+  }
+
+  .controllButtons {
+    height: $buttonsH + 5;
+  }
+
+  .slider {
+    height: $sliderH - 5;
+  }
+
   .slide {
     height: 100%;
     padding-top: 0;
@@ -349,7 +364,7 @@ $buttonsImgs:
   }
 
   .carousel__dot {
-    margin: 0 2.1%;
+    margin: 0 1.2%;
     width: 10%;
     height: 10vw;
     -webkit-tap-highlight-color: #0000;
@@ -389,7 +404,7 @@ $buttonsImgs:
 
 @media screen and (max-width: 600px) {
   .carousel__dot {
-    margin: 0 1.1%;
+    margin: 0 0.2%;
     width: 12%;
     height: 12vw;
     -webkit-tap-highlight-color: #0000;

@@ -173,7 +173,7 @@
         },
         {
             "id": 8,
-            "name": "chitai-gorod.ru",
+            "name": "chitai-gorod.ru (2015)",
             "description": [
                 "This is the service for selling books and audiobooks and WebApp for reading and listening to the purchased library. Here I have developed the purchase page directly, redesigned the shopping cart and the block for displaying news."
             ],
@@ -198,6 +198,32 @@
                 { 
                     "name": "Bootstrap", 
                     "color": "#543b79" 
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Manuliatina Game (2019)",
+            "description": [
+                "This project was carried out just like that. I decided to write an engine for moving around locations like in a visual novel. With the ability to save/load and have interactivity with objects around. The app getting data of locations, music and navigation from databases of MongoDB"
+            ],
+            "imgs": [
+                "9-manuliatina/lake.png"
+            ],
+            "link": "https://manuliatina.com/",
+            "linkName": "manuliatina.com",
+            "tags": [
+                {
+                    "name": "React",
+                    "color": "#5fd2f7"
+                },
+                {
+                    "name": "SCSS",
+                    "color": "#31353a"
+                },
+                {
+                    "name": "MongoDB",
+                    "color": "#4fa84a"
                 }
             ]
         }
