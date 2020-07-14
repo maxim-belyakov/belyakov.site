@@ -21,7 +21,7 @@ export default function Portfolio() {
                 <CarouselProvider
                     className="Portfolio_carousel"
                     visibleSlides={1}
-                    totalSlides={7}
+                    totalSlides={8}
                     step={1}
                     currentSlide={1}
                     // isIntrinsicHeight
