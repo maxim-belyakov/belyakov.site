@@ -1,0 +1,244 @@
+/* Setup */
+
+.containter {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  overflow: hidden;
+  background: url(/gray_bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+
+  /* Copy & Lists */
+
+  p {
+    margin-top: 1.6rem;
+    margin-bottom: 0;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  ol {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  ul li,
+  ol li {
+    line-height: 1.5rem;
+    list-style-type: none;
+  }
+
+  ul ul,
+  ol ul,
+  ul ol,
+  ol ol {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  blockquote {
+    line-height: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  blockquote::after {
+    content: '';
+    background-color: #222;
+    bottom: -24px;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 4%;
+    display: none;
+  }
+
+  /* Headings */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-top: 2rem;
+    margin: 0;
+    line-height: 1.5rem;
+  }
+
+  h1 {
+    font-size: 5.5rem;
+    line-height: 6.2rem;
+    margin-top: 3rem;
+  }
+
+  h2 {
+    font-size: 4.5rem;
+    line-height: 6rem;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    margin-top: 2.3rem;
+  }
+
+  h4 {
+    font-size: 0.7rem;
+  }
+
+  h5 {
+    font-size: 0.5rem;
+  }
+
+  h6 {
+    font-size: 0.3535rem;
+  }
+  /* Code blocks */
+
+
+  /* Soft link */
+
+  .page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .page-enter {
+    opacity: 0;
+  }
+
+  .page-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+  }
+
+  .page-exit {
+    opacity: 1;
+  }
+
+  .page-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+  }
+
+  section.route-section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  /* Paragraphs */
+
+  main {
+    width: 620px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .lead {
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+  }
+
+  .quote {
+    font-size: 1.4rem;
+  }
+
+  .emoji {
+    line-height: 2rem;
+    font-size: 1.6rem;
+  }
+
+  /* Links */
+
+  a {
+    transition: .2s ease;
+    color: #222;
+
+    &:hover,
+    a:focus{
+      color: #00baff;
+    }
+  }
+
+  /* Socials */
+
+  .socials {
+    padding-top: 2.5rem;
+  }
+
+  .socials a {
+    margin-right: 0.6rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    body {
+      overflow: auto;
+    }
+
+    .socials {
+      padding: 5vw 0;
+    }
+  }
+
+  @media screen and (max-width: 756px) {
+
+    h1,h2,h3 {
+      margin-top: 4.2vw;
+    }
+
+    h1 {
+      margin-top: 6.3vw;
+      font-size: 11.8vw;
+      line-height: 13.5vw;
+    }
+
+    h2 {
+      font-size: 9.3vw;
+      line-height: 12.5vw;
+    }
+
+    h3 {
+      font-size: 4.2vw;
+    }
+
+    .lead {
+      margin-top: 4vw;
+      font-size: 5.2vw;
+      line-height: 6.1vw;
+    }
+
+    .quote {
+      margin-top: 2.8vw;
+      font-size: 2.9vw;
+    }
+
+    .emoji {
+      margin-top: 3.3vw;
+      font-size: 3.3vw;
+      line-height: 4.1vw;
+    }
+
+    main {
+      margin: 0 10vw;
+      width: calc(100% - 20vw);
+    }
+
+    .socials a {
+      width: 8.9vw!important;
+      height: 8.9vw!important;
+      margin-right: 2.2vw;
+    }
+  }
+}
