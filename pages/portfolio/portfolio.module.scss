@@ -1,0 +1,68 @@
+@import "../../styles/variables";
+
+.Portfolio {
+  // position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.Portfolio_back {
+  height: calc(15% - 40px);
+  width: 88%;
+  margin: 40px auto;
+}
+
+.Portfolio_backButton {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: $gray;
+  transition: $animate;
+  position: relative;
+  &:hover{
+    cursor: pointer;
+    color: $gray;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 0px;
+    height: 5px;
+    margin: 5px 0 0;
+    transition: $animate;
+    transition-duration: 0.5s;
+    opacity: 0;
+    background-color: $colorSky;
+    left: 0;
+  }
+
+  &:hover:before,
+  &:hover:after{
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.embla {
+  overflow: hidden;
+  //width: 1000px;
+  //height: 500px;
+  background-color: #00baff33;
+  margin: 0 auto;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__viewport.is-draggable {
+  cursor: move;
+  cursor: grab;
+}
+
+.embla__viewport.is-dragging {
+  cursor: grabbing;
+}

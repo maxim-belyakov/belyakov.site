@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from "next/link"
 import { SocialIcon } from 'react-social-icons';
-import styles from '../styles/Home.module.scss'
 import socialIcons from "../JSON/socialIcons"
+import styles from './index.module.scss'
 
 export default function Home() {
   const socials = socialIcons.message;
@@ -31,7 +31,7 @@ export default function Home() {
           <span role="img" aria-label="alien-monster">👾</span>
         </p>
         <section>
-          <h2 className={styles.check}>
+          <h2 className={styles.portfolio}>
             <Link href="/portfolio">Portfolio projects</Link>
           </h2>
         </section>

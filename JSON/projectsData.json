@@ -11,6 +11,7 @@
             "imgs": [
                 "1-about-me/me.png"
             ],
+            "buttonImage": "/buttons/1.png",
             "linkName": "",
             "link": "",
             "tags": []
@@ -27,6 +28,7 @@
                 "2-inloop-2019/2.png", 
                 "2-inloop-2019/3.png" 
             ],
+            "buttonImage": "/buttons/2.png",
             "linkName": "inloop.com",
             "link": "https://inloop.com",
             "tags": [
@@ -65,6 +67,7 @@
             ],
             "link": "https://ponominalu.ru",
             "linkName": "ponominalu.ru",
+            "buttonImage": "/buttons/3.png",
             "tags": [
                 { 
                     "name": "Vue.js", 
@@ -98,6 +101,7 @@
                 "4-PN-widget-2018/1.png",
                 "4-PN-widget-2018/2.png"
             ],
+            "buttonImage": "/buttons/4.png",
             "link": "https://ponominalu.ru/widget/index.html?options_json={%22orderData%22:{},%22event%22:{%22id%22:756082},%22hideHeader%22:false,%22init%22:{%22token%22:%22f094e983-2eb0-4793-a3ae-8145bb3a455d%22,%22user_session%22:%22pa-385e2ff0-a813-4cbf-8230-ffdff2e0afef-202003251406%22,%22promote%22:%22%22,%22isPonominalu%22:true},%22userParams%22:{%22is_poligon%22:false},%22experimental%22:{%22showSubstratesTime%22:false,%22reviewsVenue%22:false,%22tour%22:false,%22agreedDeclination%22:false,%22announcements%22:false,%22vkOauth%22:false,%22seoCalendar%22:false,%22recomendations%22:false,%22promoIos%22:false,%22ampWidget%22:false,%22storybookLoader%22:false,%22gridCSS%22:false,%22debug%22:false,%22test%22:false,%22artistLineUp%22:false,%22gridcss%22:false},%22excludeDates%22:false,%22gtagId%22:%22UA-36442360-15%22,%22devMode%22:false,%22containerId%22:%22pnWidgetContainer%22,%22gtagSession%22:%22GA1.2.810869581.1585137940%22,%22yaMetrikaIdSession%22:%221585137941561090579%22}#/",
             "linkName": "Live Demo",
             "tags": [                
@@ -124,6 +128,7 @@
             "imgs": [ 
                 "5-partners-ponominalu-2017/1.png" 
             ],
+            "buttonImage": "/buttons/5.png",
             "link": "https://partners.ponominalu.ru",
             "linkName": "partners.ponominalu.ru",
             "tags": [
@@ -150,6 +155,7 @@
             "imgs": [ 
                 "6-ponominalu-2016/1.png" 
             ],
+            "buttonImage": "/buttons/6.png",
             "link": "https://dev1.ponominalu.ru",
             "linkName": "Live Demo (foobar:foobar)",
             "tags": [
@@ -180,6 +186,7 @@
             "imgs": [ 
                 "8-chitai-gorod-2015/1.png" 
             ],
+            "buttonImage": "/buttons/7.png",
             "link": "https://www.chitai-gorod.ru/",
             "linkName": "chitai-gorod.ru",
             "tags": [
@@ -210,6 +217,7 @@
             "imgs": [
                 "9-manuliatina/lake.png"
             ],
+            "buttonImage": "/buttons/9.png",
             "link": "https://manuliatina.com/",
             "linkName": "manuliatina.com",
             "tags": [

@@ -1,70 +1,111 @@
-$gray: #555;
-$white: #fff;
-$colorSky: #00baff;
+@import "../../styles/variables";
 
-$headerH: 15%;
-$mainH: 85%;
 
-$sliderH: 80%;
-$buttonsH: 20%;
-
-$animate: all 0.2s ease-in-out;
-
-$buttonsImgs:
-        '/buttons/1.png',
-        '/buttons/2.png',
-        '/buttons/3.png',
-        '/buttons/4.png',
-        '/buttons/5.png',
-        '/buttons/6.png',
-        '/buttons/7.png',
-        '/buttons/8.png',
-;
-
-.Portfolio {
-  // position: absolute;
-  height: 100%;
-  width: 100%;
+.embla__container {
+  display: flex;
 }
-
-.Portfolio_back {
-  height: calc(15% - 40px);
-  width: 88%;
-  margin: 40px auto 0;
-}
-
-.Portfolio_backButton {
-  text-decoration: none;
-  font-size: 1.5rem;
-  color: $gray;
-  transition: $animate;
+.embla__slide {
   position: relative;
-  &:hover{
-    cursor: pointer;
-    color: $gray;
-  }
+  flex: 0 0 100%;
+  //height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 0 70px;
+  overflow: hidden;
+}
 
-  &:before,
+.pictureContainer {
+  grid-row-start: 1;
+  position: relative;
+  display: block;
+  margin: 40px;
+  //text-align: center;
+}
+
+.picture {
+  max-height: 100%;
+  max-width: 100%;
+  box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.info {
+  margin-right: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.name {
+  font-size: 1.6rem;
+}
+
+.description {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin: 18px 0;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+}
+
+.tagContainer {
+  margin: 20px 0;
+}
+
+.tag {
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: center;
+  color: $white;
+  padding: 3px 7px 5px;
+  line-height: normal;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// blink tag
+.ripple {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
   &:after {
     content: "";
+    background: rgba(255,255,255,0.3);
+    display: block;
     position: absolute;
-    bottom: -10px;
-    width: 0px;
-    height: 5px;
-    margin: 5px 0 0;
-    transition: $animate;
-    transition-duration: 0.5s;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    padding-top: 240%;
+    padding-left: 240%;
+    margin-top: -120%;
+    margin-left: -120%;
     opacity: 0;
-    background-color: $colorSky;
-    left: 0;
+    transition: all 1s;
   }
 
-  &:hover:before,
-  &:hover:after{
-    width: 100%;
+  &:active:after {
+    padding-top: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-left: 0;
     opacity: 1;
+    transition: 0s;
   }
+
 }
+
+.link {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  text-decoration: unset;
+}
+
+
+
+// unused
 
 .Portfolio_projects {
   height: $mainH;
@@ -111,24 +152,6 @@ $buttonsImgs:
   overflow: hidden;
 }
 
-.slideContent_name {
-  font-size: 1.6rem;
-}
-
-.slideContent_picturesSlider {
-  grid-row-start: 1;
-  display: block;
-  margin: 40px;
-  text-align: center;
-}
-
-.slideContent_picture {
-  max-height: 100%;
-  max-width: 100%;
-  box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-}
-
 .meText {
   grid-template-columns: 40% 60%;
 }
@@ -145,76 +168,6 @@ $buttonsImgs:
   margin: 0;
 }
 
-.slideContent_text {
-  margin-right: 40px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.slideContent_description {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin: 18px 0;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-}
-
-.slideContent_tagContainer {
-  margin: 20px 0;
-}
-
-.slideContent_tag {
-  margin-right: 0.3rem;
-  margin-bottom: 0.3rem;
-  display: inline-block;
-  border-radius: 4px;
-  font-size: 1rem;
-  text-align: center;
-  color: $white;
-  padding: 3px 7px 5px;
-  line-height: normal;
-  -webkit-tap-highlight-color: transparent;
-}
-
-// blink tag
-.ripple {
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-
-  &:after {
-    content: "";
-    background: rgba(255,255,255,0.3);
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    padding-top: 240%;
-    padding-left: 240%;
-    margin-top: -120%;
-    margin-left: -120%;
-    opacity: 0;
-    transition: all 1s;
-  }
-
-  &:active:after {
-    padding-top: 0;
-    padding-left: 0;
-    margin-top: 0;
-    margin-left: 0;
-    opacity: 1;
-    transition: 0s;
-  }
-
-}
-
-.slideContent_link {
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  text-decoration: unset;
-}
-
 
 // controllButtons
 
@@ -223,7 +176,7 @@ $buttonsImgs:
   bottom: 0;
 }
 
-.controllButtons_left {
+.left {
   position: absolute;
   top: 0;
   left: 0;
@@ -240,7 +193,7 @@ $buttonsImgs:
   }
 }
 
-.controllButtons_right {
+.right {
   position: absolute;
   top: 0;
   right: 0;
@@ -257,9 +210,10 @@ $buttonsImgs:
   }
 }
 
-.controllButtons_numbers {
+.numbers {
   position: relative;
-  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .carousel__dot-group {
