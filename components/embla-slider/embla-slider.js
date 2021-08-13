@@ -8,15 +8,17 @@ import styles from './embla-slider.module.scss'
 
 
 export default function EmblaSlider({data, className}) {
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+  const [viewportRef, embla] = useEmblaCarousel({
+    loop: true,
+    skipSnaps: false
+  });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState([]);
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
-    selectedClass: "",
-    dragFree: true
+    dragFree: false
   });
 
   const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
@@ -52,7 +54,7 @@ export default function EmblaSlider({data, className}) {
             return (
               <div key={project.id} className={styles.embla__slide}>
                 <div className={styles.pictureContainer}>
-                  <Image layout='fill' className={styles.picture} alt={project.imgs[0]} src={'/projects/' + project.imgs[0]} />
+                  <img className={styles.picture} alt={project.imgs[0]} src={'/projects/' + project.imgs[0]} />
                 </div>
                 <div className={styles.info}>
                   <h3 className={styles.name}>{project.name}</h3>
@@ -77,14 +79,16 @@ export default function EmblaSlider({data, className}) {
         {/*<ButtonBack className="controllButtons_left"><FontAwesomeIcon className="controllButtons_icon" size="3x" icon={faAngleLeft} /></ButtonBack>*/}
         {/*<ButtonNext className="controllButtons_right"><FontAwesomeIcon className="controllButtons_icon" size="3x" icon={faAngleRight} /></ButtonNext>*/}
         <div className={styles.numbers} ref={thumbViewportRef}>
-          {data.map((project, i) => (
-              <Thumb
-                  onClick={() => onThumbClick(i)}
-                  selected={i === selectedIndex}
-                  imgSrc={project.buttonImage}
-                  key={project.id}
-              />
-          ))}
+          <div className={styles.numbers__inner}>
+            {data.map((project, i) => (
+                <Thumb
+                    onClick={() => onThumbClick(i)}
+                    selected={i === selectedIndex}
+                    imgSrc={project.buttonImage}
+                    key={project.id}
+                />
+            ))}
+          </div>
         </div>
       </div>
 

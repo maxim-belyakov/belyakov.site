@@ -1,8 +1,10 @@
 import React from "react";
 
+import styles from './buttons.module.scss'
+
 export const PrevButton = ({ enabled, onClick }) => (
     <button
-        className="embla__button embla__button--prev"
+        className={styles.left}
         onClick={onClick}
         disabled={!enabled}
     >
@@ -14,7 +16,7 @@ export const PrevButton = ({ enabled, onClick }) => (
 
 export const NextButton = ({ enabled, onClick }) => (
     <button
-        className="embla__button embla__button--next"
+        className={styles.right}
         onClick={onClick}
         disabled={!enabled}
     >

@@ -1,0 +1,45 @@
+@import "../../../styles/variables";
+
+.left svg, .right svg {
+  width: 35px;
+  height: 35px;
+  fill: $gray;
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 100%;
+  cursor: pointer;
+  background: unset;
+  border: unset;
+  outline: none;
+  transition: $animate;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    transition: $animate;
+    transform: scale(1.25, 1.25);
+  }
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 100%;
+  cursor: pointer;
+  background: unset;
+  border: unset;
+  outline: none;
+  transition: $animate;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    transition: $animate;
+    transform: scale(1.25, 1.25);
+  }
+}

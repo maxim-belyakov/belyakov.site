@@ -1,9 +1,10 @@
 @import "../../styles/variables";
 
 .Portfolio {
-  // position: absolute;
   height: 100%;
   width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 .Portfolio_back {
@@ -47,14 +48,12 @@
 
 .embla {
   overflow: hidden;
-  //width: 1000px;
-  //height: 500px;
-  background-color: #00baff33;
+  //position: relative;
+  height: 85%;
   margin: 0 auto;
 }
 
 .embla__viewport {
-  overflow: hidden;
   width: 100%;
 }
 
