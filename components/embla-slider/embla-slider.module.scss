@@ -1,9 +1,11 @@
 @import "../../styles/variables";
 
-
 .embla__container {
   display: flex;
-  height: 80%;
+  height: $sliderH;
+  @media #{$scr-laptop} {
+    height: 70%;
+  }
 }
 
 .embla__slide {
@@ -16,8 +18,11 @@
 
   &:first-child {
     grid-template-columns: 40% 60%;
-    & .picture {
+    & .pictureContainer {
       width: 60%;
+      @media #{$scr-4k} {
+        width: 50%;
+      }
     }
   }
 
@@ -25,20 +30,15 @@
 
 .pictureContainer {
   grid-row-start: 1;
-  width: 100%;
+  width: 80%;
+  height: 80%;
   overflow: hidden;
   position: relative; /* applied for parent div */
-}
-
-.picture {
-  position: absolute;
-  width: 80%;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%, 20px);
-  box-shadow: 4px 4px 20px -6px rgba(0, 0, 0, 0.25);
+  top: 40px;
+  margin: 0 auto;
+  filter: drop-shadow(0px 0px 10px $gray);
   border-radius: 15px;
-}
+}ы
 
 .info {
   margin-right: 40px;
@@ -187,6 +187,9 @@
   bottom: 0;
   width: 100%;
   display: grid;
+  @media #{$scr-laptop} {
+    height: 30%;
+  }
 }
 
 .numbers {
@@ -206,100 +209,4 @@
 
 .controllButtons_icon {
   transition-duration: 0.4s;
-}
-
-@media screen and (max-width: 900px) {
-
-  .Portfolio {
-    overflow: hidden;
-  }
-
-  .controllButtons {
-    height: $buttonsH + 5;
-  }
-
-  .slider {
-    height: $sliderH - 5;
-  }
-
-  .slide {
-    height: 100%;
-    padding-top: 0;
-  }
-
-  .slideContent {
-    display: block;
-    overflow: auto;
-    padding: 0 40px;
-  }
-
-  .slideContent_picture {
-    max-height: 200px;
-    max-width: 100%;
-  }
-
-  .Portfolio_back {
-    // height: auto;
-    margin: 40px auto 20px;
-  }
-
-  .Portfolio_backButton {
-    &:before,
-    &:after {
-      content: "";
-      display: none;
-    }
-
-    &:hover:before,
-    &:hover:after{
-      display: none;
-    }
-  }
-
-  .carousel__dot {
-    margin: 0 1.2%;
-    width: 10%;
-    height: 10vw;
-    -webkit-tap-highlight-color: #0000;
-  }
-
-  .slideContent_picturesSlider {
-    margin: 1vw;
-  }
-
-  .slideContent_text {
-    margin-right: 0;
-    margin-bottom: 40px;
-  }
-
-  .slideContent_link {
-    font-size: 1.1rem;
-  }
-
-  .meText .slideContent_picture {
-    position: static;
-  }
-
-  .meText .slideContent_name {
-    margin-top: 5vw;
-  }
-
-  .slideContent_name {
-    margin-top: 10px;
-    line-height: 6.5vw;
-  }
-
-  .controllButtons_left, .controllButtons_right {
-    width: 40px;
-  }
-
-}
-
-@media screen and (max-width: 600px) {
-  .carousel__dot {
-    margin: 0 0.2%;
-    width: 12%;
-    height: 12vw;
-    -webkit-tap-highlight-color: #0000;
-  }
 }

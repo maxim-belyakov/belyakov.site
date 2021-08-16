@@ -46,15 +46,41 @@ export default function EmblaSlider({data, className}) {
     embla.on("select", onSelect);
   }, [embla, setScrollSnaps, onSelect]);
 
+  const shimmer = (w, h) => `
+    <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <linearGradient id="g">
+          <stop stop-color="#333" offset="20%" />
+          <stop stop-color="#222" offset="50%" />
+          <stop stop-color="#333" offset="70%" />
+        </linearGradient>
+      </defs>
+      <rect width="${w}" height="${h}" fill="#333" />
+      <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+      <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+    </svg>`
+
+  const toBase64 = (str) =>
+      typeof window === 'undefined'
+          ? Buffer.from(str).toString('base64')
+          : window.btoa(str)
+
   return (
-    <div className={className}>
-      <div ref={viewportRef}>
-        <div className={styles.embla__container}>
-          {data.map(project => {
-            return (
+    <div className={className} ref={viewportRef}>
+      <div className={styles.embla__container}>
+        {data.map(project => {
+          const image = project.imgs;
+          return (
               <div key={project.id} className={styles.embla__slide}>
                 <div className={styles.pictureContainer}>
-                  <img className={styles.picture} alt={project.imgs[0]} src={'/projects/' + project.imgs[0]} />
+                  <Image
+                      alt={image.path}
+                      width={image.width}
+                      height={image.height}
+                      layout="responsive"
+                      src={'/projects/' + image.path}
+                      blurDataURL={'/projects/' + image.path}
+                  />
                 </div>
                 <div className={styles.info}>
                   <h3 className={styles.name}>{project.name}</h3>
@@ -69,15 +95,12 @@ export default function EmblaSlider({data, className}) {
                   <a className={styles.link} target="_blank" href={project.link} rel="noopener noreferrer">{project.linkName}</a>
                 </div>
               </div>
-            )
-          })}
-        </div>
+          )
+        })}
       </div>
       <div className={styles.controllButtons}>
-        <PrevButton className={styles.left} onClick={scrollPrev} enabled={prevBtnEnabled} />
-        <NextButton className={styles.right} onClick={scrollNext} enabled={nextBtnEnabled} />
-        {/*<ButtonBack className="controllButtons_left"><FontAwesomeIcon className="controllButtons_icon" size="3x" icon={faAngleLeft} /></ButtonBack>*/}
-        {/*<ButtonNext className="controllButtons_right"><FontAwesomeIcon className="controllButtons_icon" size="3x" icon={faAngleRight} /></ButtonNext>*/}
+        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
         <div className={styles.numbers} ref={thumbViewportRef}>
           <div className={styles.numbers__inner}>
             {data.map((project, i) => (
@@ -91,7 +114,6 @@ export default function EmblaSlider({data, className}) {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

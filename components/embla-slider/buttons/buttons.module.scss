@@ -19,9 +19,9 @@
   transition: $animate;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
+  &:active {
     transition: $animate;
-    transform: scale(1.25, 1.25);
+    transform: scale(0.85, 0.85);
   }
 }
 
@@ -38,8 +38,8 @@
   transition: $animate;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover {
+  &:active {
     transition: $animate;
-    transform: scale(1.25, 1.25);
+    transform: scale(0.85, 0.85);
   }
 }

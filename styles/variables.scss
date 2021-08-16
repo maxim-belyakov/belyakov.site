@@ -10,6 +10,14 @@ $buttonsH: 20%;
 
 $animate: all 0.1s ease-in-out;
 
+$scr-mobileS: 'screen and (min-width: 320px)';
+$scr-mobileM: 'screen and (min-width: 375px)';
+$scr-mobileL: 'screen and (min-width: 425px)';
+$scr-tablet: 'screen and (min-width: 768px)';
+$scr-laptop: 'screen and (min-width: 1024px)';
+$scr-laptopL: 'screen and (min-width: 1440px)';
+$scr-4k: 'screen and (min-width: 2560px)';
+
 $buttonsImgs:
         '/buttons/1.png',
         '/buttons/2.png',
