@@ -8,9 +8,14 @@
 }
 
 .Portfolio_back {
-  height: calc(15% - 40px);
   width: 88%;
-  margin: 40px auto;
+  height: 7%;
+  margin: 40px auto 0;
+
+  @media #{$scr-laptop} {
+    height: calc(15% - 40px);
+    margin: 40px auto;
+  }
 }
 
 .Portfolio_backButton {
@@ -19,6 +24,7 @@
   color: $gray;
   transition: $animate;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
   &:hover{
     cursor: pointer;
     color: $gray;
@@ -48,7 +54,10 @@
 
 .embla {
   overflow: hidden;
-  //position: relative;
-  height: 85%;
+  height: 93%;
   margin: 0 auto;
+
+  @media #{$scr-laptop} {
+    height: 85%;
+  }
 }

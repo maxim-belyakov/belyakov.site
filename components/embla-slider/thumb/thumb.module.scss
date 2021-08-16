@@ -16,6 +16,7 @@
   transition: $animate;
   display: block;
   margin: 0 auto;
+  -webkit-tap-highlight-color: #0000;
   &:hover {
       filter: grayscale(0%);
       transition: $animate;
@@ -28,7 +29,7 @@
 
 .thumb .iSelected {
   transform: scale(0.8);
-  cursor: not-allowed;;
+  cursor: unset;
   -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
   filter: grayscale(0%);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.75);

@@ -1,7 +1,5 @@
 import Link from "next/link"
 import React from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import EmblaSlider from '../../components/embla-slider/embla-slider'
 import projectsData from "../../JSON/projectsData.json"
 import styles from './portfolio.module.scss'

@@ -9,6 +9,10 @@
     text-decoration: underline;
   }
 
+  .link {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .page-enter {
     opacity: 0;
   }

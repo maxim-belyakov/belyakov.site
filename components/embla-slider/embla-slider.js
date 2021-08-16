@@ -6,15 +6,15 @@ import { Thumb } from "./thumb/thumb"
 import { useEmblaCarousel } from 'embla-carousel/react'
 import styles from './embla-slider.module.scss'
 
-
 export default function EmblaSlider({data, className}) {
   const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
-    skipSnaps: false
+    skipSnaps: false,
+    startIndex: 1,
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
   const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(1);
   const [scrollSnaps, setScrollSnaps] = useState([]);
   const [thumbViewportRef, emblaThumbs] = useEmblaCarousel({
     containScroll: "keepSnaps",
@@ -39,31 +39,25 @@ export default function EmblaSlider({data, className}) {
     setNextBtnEnabled(embla.canScrollNext());
   }, [embla, setSelectedIndex]);
 
+  const handleUserKeyPress = (e) => {
+    const { keyCode } = e;
+    if (keyCode === 37) { scrollPrev() }
+    if (keyCode === 39) { scrollNext() }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
+
   useEffect(() => {
     if (!embla) return;
     onSelect();
     setScrollSnaps(embla.scrollSnapList());
     embla.on("select", onSelect);
   }, [embla, setScrollSnaps, onSelect]);
-
-  const shimmer = (w, h) => `
-    <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-        <linearGradient id="g">
-          <stop stop-color="#333" offset="20%" />
-          <stop stop-color="#222" offset="50%" />
-          <stop stop-color="#333" offset="70%" />
-        </linearGradient>
-      </defs>
-      <rect width="${w}" height="${h}" fill="#333" />
-      <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-      <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-    </svg>`
-
-  const toBase64 = (str) =>
-      typeof window === 'undefined'
-          ? Buffer.from(str).toString('base64')
-          : window.btoa(str)
 
   return (
     <div className={className} ref={viewportRef}>
@@ -79,6 +73,7 @@ export default function EmblaSlider({data, className}) {
                       height={image.height}
                       layout="responsive"
                       src={'/projects/' + image.path}
+                      className={styles.picture}
                       blurDataURL={'/projects/' + image.path}
                   />
                 </div>
@@ -92,7 +87,7 @@ export default function EmblaSlider({data, className}) {
                         <span key={i} className={cn(styles.tag, styles.ripple )} style={{backgroundColor: tag.color}}>{tag.name}</span>
                     ))}
                   </div>
-                  <a className={styles.link} target="_blank" href={project.link} rel="noopener noreferrer">{project.linkName}</a>
+                  {project.link && <a className={styles.link} target="_blank" href={project.link} rel="noopener noreferrer">{project.linkName}</a>}
                 </div>
               </div>
           )

@@ -3,6 +3,7 @@
 .embla__container {
   display: flex;
   height: $sliderH;
+
   @media #{$scr-laptop} {
     height: 70%;
   }
@@ -12,16 +13,22 @@
   position: relative;
   flex: 0 0 100%;
   display: grid;
-  grid-template-columns: 50% 50%;
-  padding: 0 70px;
   overflow: hidden;
+  padding: 0 35px;
+
+  @media #{$scr-laptop} {
+    padding: 0 70px;
+    grid-template-columns: 50% 50%;
+  }
 
   &:first-child {
-    grid-template-columns: 40% 60%;
-    & .pictureContainer {
-      width: 60%;
-      @media #{$scr-4k} {
-        width: 50%;
+    @media #{$scr-laptop} {
+      grid-template-columns: 40% 60%;
+      & .pictureContainer {
+        width: 60%;
+        @media #{$scr-4k} {
+          width: 50%;
+        }
       }
     }
   }
@@ -29,33 +36,57 @@
 }
 
 .pictureContainer {
-  grid-row-start: 1;
-  width: 80%;
-  height: 80%;
-  overflow: hidden;
-  position: relative; /* applied for parent div */
-  top: 40px;
-  margin: 0 auto;
-  filter: drop-shadow(0px 0px 10px $gray);
+  display: none;
+
+  @media #{$scr-laptop} {
+    display: block;
+    grid-row-start: 1;
+    width: 80%;
+    height: 87%;
+    overflow: hidden;
+    position: relative; /* applied for parent div */
+    top: 25px;
+    filter: drop-shadow(0px 0px 10px $gray);
+    margin: 0 auto;
+    border-radius: 15px;
+  }
+}
+
+.picture {
   border-radius: 15px;
-}ы
+}
 
 .info {
-  margin-right: 40px;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @media #{$scr-laptop} {
+    margin-right: 40px;
+  }
 }
 
 .name {
-  font-size: 1.6rem;
+  margin: 10px 0;
+  font-size: 1.2rem;
+
+  @media #{$scr-laptop} {
+    margin: 20px auto;
+    font-size: 1.6rem;
+  }
 }
 
 .description {
   grid-row-start: 2;
   grid-row-end: 3;
-  margin: 18px 0;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
+  margin: 9px 0;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+
+  @media #{$scr-laptop} {
+    margin: 9px 0;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
 }
 
 .tagContainer {
@@ -153,14 +184,6 @@
 
 .carousel__inner-slide {
   height: 100%;
-}
-
-.slideContent {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  padding: 0 70px;
-  overflow: hidden;
 }
 
 .meText {

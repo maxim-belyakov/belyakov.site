@@ -32,7 +32,7 @@ export default function Home() {
         </p>
         <section>
           <h2 className={styles.portfolio}>
-            <Link href="/portfolio">Portfolio projects</Link>
+            <Link className={styles.link} href="/portfolio">Portfolio projects</Link>
           </h2>
         </section>
         <section className={styles.socials}>
