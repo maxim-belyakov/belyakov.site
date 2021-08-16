@@ -8,9 +8,12 @@
                 "I graduated from Moscow Industrial University as a Bachelor of Computer Science in 2016 and by that time I was already working at the first company as a Web Developer. That was just a start and I had to keep improving my skills as the industry moved forward. A welcome challenge! Six months later I started to work at Cultural service Inc. as a Junior Developer and finished after 2,5 years as a Head of Frontend. Then I realized that I want to connect my life with my roots and went to Israel. Here I met the startup InLoop and started to work here as Senior Frontend Developer, being responsible for the entire frontend side of the project.",
                 "My philosophy is to create things that could really help people. I try to create intuitive, accessible, beautiful, and fun digital products. Helping startups, small businesses, and agencies to acquire high-quality websites and an exceptional user experience."
             ],
-            "imgs": [
-                "1-about-me/me.png"
-            ],
+            "imgs": {
+                "width": "728",
+                "height": "820",
+                "path": "1-about-me/me.png"
+            },
+            "buttonImage": "/buttons/1.png",
             "linkName": "",
             "link": "",
             "tags": []
@@ -22,11 +25,12 @@
                 "This is a company that provides customers with a website or widget for news aggregation. This is an intelligent environment that selects news for the client based on the region, topic, and category of news.", 
                 "Here I designed, developed and maintained a set of the enterprise-class web app. This is an elements such as: filters, search, categories, personal page, subscribe page, social sync blocks. Also I developed a UX structure for working with companies that provided news for InLoop. Also I created a web application using React that can manage CSV files to clean, filter, and manipulate data inside it."
             ],
-            "imgs": [ 
-                "2-inloop-2019/1.png", 
-                "2-inloop-2019/2.png", 
-                "2-inloop-2019/3.png" 
-            ],
+            "imgs": {
+                "width": "1900",
+                "height": "935",
+                "path": "2-inloop-2019/1.png"
+            },
+            "buttonImage": "/buttons/2.png",
             "linkName": "inloop.com",
             "link": "https://inloop.com",
             "tags": [
@@ -54,17 +58,14 @@
             "description": [ 
                 "I've led a team of 4 developers. Together we made a full redesign of the web page, made an advanced filter to show data relevant for the user, implemented navigation that meets today's requirements, updated API to increase optimization. In the end, we had a progressive web app based on Vue.js that provides event organizers and distributors with several ways to sell tickets. Actively collaborated with the design team to build up the best solutions that face customer's expectations."
             ],
-            "imgs": [ 
-                "3-ponominalu-2018/1.png", 
-                "3-ponominalu-2018/2.png", 
-                "3-ponominalu-2018/3.png",
-                "3-ponominalu-2018/4.png",
-                "3-ponominalu-2018/5.png",
-                "3-ponominalu-2018/6.png",
-                "3-ponominalu-2018/7.png"
-            ],
+            "imgs": {
+                "width": "1900",
+                "height": "935",
+                "path": "3-ponominalu-2018/1.png"
+            },
             "link": "https://ponominalu.ru",
             "linkName": "ponominalu.ru",
+            "buttonImage": "/buttons/3.png",
             "tags": [
                 { 
                     "name": "Vue.js", 
@@ -94,11 +95,13 @@
             "description": [
                 "This is the WebApp for order and selling tickets for events, concerts, and lectures. I developed here all steps for purchasing, the payment security page, the user interaction with the venue map where you can choose the place of the seat. The focus was placed on the intuitiveness of the interface. Despite the complexity of the architecture of the concert hall, the client has to be able to choose the place where they want to sit without any difficulties."
             ],
-            "imgs": [ 
-                "4-PN-widget-2018/1.png",
-                "4-PN-widget-2018/2.png"
-            ],
-            "link": "https://ponominalu.ru/widget/index.html?options_json={%22orderData%22:{},%22event%22:{%22id%22:756082},%22hideHeader%22:false,%22init%22:{%22token%22:%22f094e983-2eb0-4793-a3ae-8145bb3a455d%22,%22user_session%22:%22pa-385e2ff0-a813-4cbf-8230-ffdff2e0afef-202003251406%22,%22promote%22:%22%22,%22isPonominalu%22:true},%22userParams%22:{%22is_poligon%22:false},%22experimental%22:{%22showSubstratesTime%22:false,%22reviewsVenue%22:false,%22tour%22:false,%22agreedDeclination%22:false,%22announcements%22:false,%22vkOauth%22:false,%22seoCalendar%22:false,%22recomendations%22:false,%22promoIos%22:false,%22ampWidget%22:false,%22storybookLoader%22:false,%22gridCSS%22:false,%22debug%22:false,%22test%22:false,%22artistLineUp%22:false,%22gridcss%22:false},%22excludeDates%22:false,%22gtagId%22:%22UA-36442360-15%22,%22devMode%22:false,%22containerId%22:%22pnWidgetContainer%22,%22gtagSession%22:%22GA1.2.810869581.1585137940%22,%22yaMetrikaIdSession%22:%221585137941561090579%22}#/",
+            "imgs": {
+                "width": "1365",
+                "height": "935",
+                "path": "4-PN-widget-2018/1.png"
+            },
+            "buttonImage": "/buttons/4.png",
+            "link": "",
             "linkName": "Live Demo",
             "tags": [                
                 { 
@@ -121,9 +124,12 @@
             "description": [
                 "This is an environment for site owners who can earn extra money on their resources by selling tickets to the best cultural and entertainment events. Here I designed and developed from scratch the whole project. It allows you to control customer purchases via promo codes, ref-codes for routing advertisement links, and custom styles for header, footer, and main widget elements. You can also view statistics with charts for orders by unique source, sales turnover, discounts, bonuses, and the internal currency of the site in your account. Statistics can be uploaded to XML and CSV files."
             ],
-            "imgs": [ 
-                "5-partners-ponominalu-2017/1.png" 
-            ],
+            "imgs": {
+                "width": "1900",
+                "height": "935",
+                "path": "5-partners-ponominalu-2017/1.png"
+            },
+            "buttonImage": "/buttons/5.png",
             "link": "https://partners.ponominalu.ru",
             "linkName": "partners.ponominalu.ru",
             "tags": [
@@ -147,10 +153,13 @@
             "description": [
                 "This is the old version of WebSite Cultural Service. Here I developed events-list block, implement tags, slider for general page, shopping cart for purchasing, the feedback page and error pages."
             ],
-            "imgs": [ 
-                "6-ponominalu-2016/1.png" 
-            ],
-            "link": "https://dev1.ponominalu.ru",
+            "imgs": {
+                "width": "1900",
+                "height": "935",
+                "path": "6-ponominalu-2016/1.png"
+            },
+            "buttonImage": "/buttons/6.png",
+            "link": "",
             "linkName": "Live Demo (foobar:foobar)",
             "tags": [
                 { 
@@ -177,9 +186,12 @@
             "description": [
                 "This is the service for selling books and audiobooks and WebApp for reading and listening to the purchased library. Here I have developed the purchase page directly, redesigned the shopping cart and the block for displaying news."
             ],
-            "imgs": [ 
-                "8-chitai-gorod-2015/1.png" 
-            ],
+            "imgs": {
+                "width": "1900",
+                "height": "935",
+                "path": "8-chitai-gorod-2015/1.png"
+            },
+            "buttonImage": "/buttons/7.png",
             "link": "https://www.chitai-gorod.ru/",
             "linkName": "chitai-gorod.ru",
             "tags": [
@@ -207,9 +219,12 @@
             "description": [
                 "This project was carried out just like that. I decided to write an engine for moving around locations like in a visual novel. With the ability to save/load and have interactivity with objects around. The app getting data of locations, music and navigation from databases of MongoDB"
             ],
-            "imgs": [
-                "9-manuliatina/lake.png"
-            ],
+            "imgs": {
+                "width": "1900",
+                "height": "935",
+                "path": "9-manuliatina/lake.png"
+            },
+            "buttonImage": "/buttons/8.png",
             "link": "https://manuliatina.com/",
             "linkName": "manuliatina.com",
             "tags": [

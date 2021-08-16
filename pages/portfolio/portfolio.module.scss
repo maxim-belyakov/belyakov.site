@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+
+.Portfolio {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.Portfolio_back {
+  width: 88%;
+  height: 7%;
+  margin: 40px auto 0;
+
+  @media #{$scr-laptop} {
+    height: calc(15% - 40px);
+    margin: 40px auto;
+  }
+}
+
+.Portfolio_backButton {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: $gray;
+  transition: $animate;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  &:hover{
+    cursor: pointer;
+    color: $gray;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 0px;
+    height: 5px;
+    margin: 5px 0 0;
+    transition: $animate;
+    transition-duration: 0.5s;
+    opacity: 0;
+    background-color: $colorSky;
+    left: 0;
+  }
+
+  &:hover:before,
+  &:hover:after{
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.embla {
+  overflow: hidden;
+  height: 93%;
+  margin: 0 auto;
+
+  @media #{$scr-laptop} {
+    height: 85%;
+  }
+}
