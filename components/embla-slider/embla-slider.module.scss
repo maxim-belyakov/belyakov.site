@@ -2,10 +2,23 @@
 
 .embla__container {
   display: flex;
-  height: $sliderH;
+  height: 83%;
 
+  @media #{$scr-mobileM} {
+    height: 82%;
+  }
+  @media #{$scr-tablet} {
+    height: 79%;
+  }
   @media #{$scr-laptop} {
     height: 70%;
+  }
+  @media #{$scr-laptopL} {
+    height: 70%;
+  }
+
+  @media screen and (max-width: 1024px) and (max-height: 565px) {
+    height: 65%;
   }
 }
 
@@ -22,51 +35,64 @@
   }
 
   &:first-child {
-    @media #{$scr-laptop} {
-      grid-template-columns: 40% 60%;
-      & .pictureContainer {
+    & .pictureContainer {
+      width: 40%;
+      @media #{$scr-laptop} {
         width: 60%;
         @media #{$scr-4k} {
           width: 50%;
         }
       }
     }
+    @media #{$scr-laptop} {
+      grid-template-columns: 40% 60%;
+    }
   }
 
 }
 
 .pictureContainer {
-  display: none;
+  width: 80%;
+  margin: 20px auto 10px;
+  display: block;
+  filter: drop-shadow(0px 0px 4px $gray);
+  border-radius: 10px;
+
+  @media screen and (max-width: 1024px) and (max-height: 565px) {
+    display: none;
+  }
 
   @media #{$scr-laptop} {
-    display: block;
     grid-row-start: 1;
     width: 80%;
     height: 87%;
     overflow: hidden;
     position: relative; /* applied for parent div */
     top: 25px;
-    filter: drop-shadow(0px 0px 10px $gray);
     margin: 0 auto;
     border-radius: 15px;
   }
 }
 
 .picture {
-  border-radius: 15px;
+  border-radius: 10px;
+  @media #{$scr-laptop} {
+    border-radius: 15px;
+  }
 }
 
 .info {
   overflow-y: auto;
   overflow-x: hidden;
+  margin: 0 10px;
 
   @media #{$scr-laptop} {
-    margin-right: 40px;
+    margin: 0 40px 0 0 ;
   }
 }
 
 .name {
-  margin: 10px 0;
+  margin: 30px 0 10px;
   font-size: 1.2rem;
 
   @media #{$scr-laptop} {
@@ -94,16 +120,20 @@
 }
 
 .tag {
+  font-size: 0.8rem;
   margin-right: 0.3rem;
   margin-bottom: 0.3rem;
   display: inline-block;
   border-radius: 4px;
-  font-size: 1rem;
   text-align: center;
   color: $white;
-  padding: 3px 7px 5px;
+  padding: 3px 7px 4px;
   line-height: normal;
   -webkit-tap-highlight-color: transparent;
+  @media #{$scr-laptop} {
+    font-size: 1rem;
+    padding: 3px 7px 5px;
+  }
 }
 
 // blink tag
@@ -140,26 +170,25 @@
 }
 
 .link {
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   text-decoration: unset;
+  display: block;
+  margin-bottom: 30px;
+
+  @media #{$scr-laptop} {
+    font-size: 1.3rem;
+    display: inline;
+    margin: auto;
+  }
 }
 
 
 
 // unused
 
-.Portfolio_projects {
-  height: $mainH;
-}
-
 .Portfolio_carousel {
   height: 100%;
-}
-
-.slider {
-  height: $sliderH;
-  outline: none;
 }
 
 .carousel__slider-tray-wrapper {
@@ -206,12 +235,26 @@
 // controllButtons
 
 .controllButtons {
-  height: $buttonsH;
+  height: 10%;
   bottom: 0;
   width: 100%;
   display: grid;
+
+  @media #{$scr-mobileM} {
+    height: 11%;
+  }
+  @media #{$scr-tablet} {
+    height: 15%;
+  }
   @media #{$scr-laptop} {
     height: 30%;
+  }
+  @media #{$scr-laptopL} {
+    height: 22%;
+  }
+
+  @media screen and (max-width: 1024px) and (max-height: 565px) {
+    height: 25%;
   }
 }
 

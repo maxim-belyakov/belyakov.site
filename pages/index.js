@@ -1,16 +1,18 @@
 import Head from 'next/head'
-// import Image from 'next/image'
 import Link from "next/link"
 import { SocialIcon } from 'react-social-icons';
+import useWindowSize from '../components/window-size/window-size'
 import socialIcons from "../JSON/socialIcons"
 import styles from './index.module.scss'
 
 export default function Home() {
+  const { width } = useWindowSize();
   const socials = socialIcons.message;
-  const iconSocialSize = 45;
+  const iconSocialSize = width > 1024 ? '45px' : '9vw';
+
 
   return (
-    <div className={styles.layout}>
+    <>
       <Head>
         <title>Maxim Belyakov - Senior Frontend Developer</title>
         <meta charSet="utf-8"/>
@@ -21,8 +23,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Maxim Belyakov</h1>
+      <main className={styles.home}>
+        <h1 className={styles.title}>Maxim Belyakov</h1>
         <p className={styles.lead}>Creating is my passion. Being better than yesterday really makes me happy.</p>
         <p className={styles.quote}>Life is 10% what happens to you and 90% how you react to it.</p>
         <p className={styles.emoji}>
@@ -30,11 +32,9 @@ export default function Home() {
           <span role="img" aria-label="alien">👽</span>
           <span role="img" aria-label="alien-monster">👾</span>
         </p>
-        <section>
-          <h2 className={styles.portfolio}>
-            <Link className={styles.link} href="/portfolio">Portfolio projects</Link>
-          </h2>
-        </section>
+        <h2 className={styles.portfolio}>
+          <Link href="/portfolio"><a className={styles.link}>Portfolio projects</a></Link>
+        </h2>
         <section className={styles.socials}>
           {socials.map((social, i) => (
               <SocialIcon
@@ -46,6 +46,6 @@ export default function Home() {
           ))}
         </section>
       </main>
-    </div>
+    </>
   )
 }

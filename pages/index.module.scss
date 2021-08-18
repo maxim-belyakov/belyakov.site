@@ -1,145 +1,99 @@
-.layout {
-  .page {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+@import "./styles/variables";
+
+.home {
+  max-width: 77vw;
+  margin: 0 auto 6.5vw;
+  height: 100%;
+
+  @media #{$scr-laptop} {
+    max-width: 620px;
+    margin: 0 auto 60px;
   }
+}
 
-  .portfolio {
-    text-decoration: underline;
+.title {
+  font-size: 13vw;
+  line-height: 12vw;
+  margin-top: 14vw;
+
+  @media #{$scr-laptop} {
+    font-size: 88px;
+    line-height: 100px;
+    margin-top: 60px;
   }
+}
 
-  .link {
-    -webkit-tap-highlight-color: transparent;
+.lead {
+  font-size: 5vw;
+  line-height: 5vw;
+  margin-top: 8vw;
+
+  @media #{$scr-laptop} {
+    font-size: 40px;
+    line-height: 45px;
+    margin-top: 40px;
   }
+}
 
-  .page-enter {
-    opacity: 0;
+.quote {
+  font-size: 3.8vw;
+  margin-top: 7vw;
+
+  @media #{$scr-laptop} {
+    font-size: 22px;
+    margin-top: 40px;
   }
+}
 
-  .page-enter-active {
-    opacity: 1;
-    transition: opacity 300ms ease-in;
+.emoji {
+  line-height: 2.8vw;
+  font-size: 5vw;
+  margin-top: 7vw;
+
+  @media #{$scr-laptop} {
+    line-height: 32px;
+    font-size: 26px;
+    margin-top: 40px;
   }
+}
 
-  .page-exit {
-    opacity: 1;
+.portfolio {
+  font-size: 9.6vw;
+  line-height: 10vw;
+  margin-top: 4vw;
+
+  @media #{$scr-laptop} {
+    font-size: 72px;
+    line-height: 100px;
+    margin-top: 20px;
   }
+}
 
-  .page-exit-active {
-    opacity: 0;
-    transition: opacity 300ms ease-in;
+.link {
+  text-decoration: underline;
+  transition: $animate;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    transition: $animate;
+    color: $colorSky;
   }
+}
 
-  section.route-section {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+/* Socials */
+
+.socials {
+  padding-top: 4vw;
+
+  @media #{$scr-laptop} {
+    padding-top: 40px;
   }
+}
 
-  /* Paragraphs */
+.socials a {
+  margin: 1vw 1vw 0 0;
 
-  main {
-    width: 620px;
-    margin: 0 auto;
-    height: 100%;
-  }
-
-  .lead {
-    font-size: 2.5rem;
-    line-height: 2.9rem;
-  }
-
-  .quote {
-    font-size: 1.4rem;
-  }
-
-  .emoji {
-    line-height: 2rem;
-    font-size: 1.6rem;
-  }
-
-  /* Links */
-
-  a {
-    transition: .2s ease;
-    color: #222;
-
-    &:hover,
-    a:focus{
-      color: #00baff;
-    }
-  }
-
-  /* Socials */
-
-  .socials {
-    padding-top: 2.5rem;
-  }
-
-  .socials a {
-    margin-right: 0.6rem;
-  }
-
-  @media screen and (max-width: 900px) {
-    body {
-      overflow: auto;
-    }
-
-    .socials {
-      padding: 5vw 0;
-    }
-  }
-
-  @media screen and (max-width: 756px) {
-
-    h1,h2,h3 {
-      margin-top: 4.2vw;
-    }
-
-    h1 {
-      margin-top: 6.3vw;
-      font-size: 11.8vw;
-      line-height: 13.5vw;
-    }
-
-    h2 {
-      font-size: 9.3vw;
-      line-height: 12.5vw;
-    }
-
-    h3 {
-      font-size: 4.2vw;
-    }
-
-    .lead {
-      margin-top: 4vw;
-      font-size: 5.2vw;
-      line-height: 6.1vw;
-    }
-
-    .quote {
-      margin-top: 2.8vw;
-      font-size: 2.9vw;
-    }
-
-    .emoji {
-      margin-top: 3.3vw;
-      font-size: 3.3vw;
-      line-height: 4.1vw;
-    }
-
-    main {
-      margin: 0 10vw;
-      width: calc(100% - 20vw);
-    }
-
-    .socials a {
-      width: 8.9vw!important;
-      height: 8.9vw!important;
-      margin-right: 2.2vw;
-    }
+  @media #{$scr-laptop} {
+    margin: 0 10px 0 0;
   }
 }
