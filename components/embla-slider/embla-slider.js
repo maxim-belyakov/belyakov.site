@@ -102,7 +102,7 @@ export default function EmblaSlider({data, className}) {
                 <Thumb
                     onClick={() => onThumbClick(i)}
                     selected={i === selectedIndex}
-                    imgSrc={project.buttonImage}
+                    project={project}
                     key={project.id}
                 />
             ))}

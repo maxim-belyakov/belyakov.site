@@ -15,12 +15,6 @@ export default function Home() {
     <>
       <Head>
         <title>Maxim Belyakov - Senior Frontend Developer</title>
-        <meta charSet="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <meta name="theme-color" content="#000000"/>
-        <meta name="description"
-              content="Maxim Belyakov - Hi, my name is Max 👋 I'm a full time Senior Frontend Developer and part time entrepreneur."/>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.home}>

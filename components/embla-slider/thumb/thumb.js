@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React from "react";
 import styles from './thumb.module.scss'
 
-export const Thumb = ({ selected, onClick, imgSrc }) => {
+export const Thumb = ({ selected, onClick, project }) => {
 
   return (
     <div className={styles.thumb}>
@@ -15,7 +15,7 @@ export const Thumb = ({ selected, onClick, imgSrc }) => {
         )}
         type="button"
       >
-        <Image width={100} height={100} layout='responsive' src={imgSrc} />
+        <Image width={100} height={100} layout='responsive' alt={project.name} src={project.buttonImage} />
       </button>
     </div>
   )
