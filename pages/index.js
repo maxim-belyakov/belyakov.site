@@ -10,15 +10,14 @@ export default function Home() {
   const socials = socialIcons.message;
   const iconSocialSize = width > 1024 ? '45px' : '9vw';
 
-
   return (
     <>
       <Head>
-        <title>Maxim Belyakov - Senior Frontend Developer</title>
+        <title>Maksim Beliakov - Full Stack Engineer</title>
       </Head>
 
       <main className={styles.home}>
-        <h1 className={styles.title}>Maxim Belyakov</h1>
+        <h1 className={styles.title}>Maksim Beliakov</h1>
         <p className={styles.lead}>Creating is my passion. Being better than yesterday really makes me happy.</p>
         <p className={styles.quote}>Life is 10% what happens to you and 90% how you react to it.</p>
         <p className={styles.emoji}>
