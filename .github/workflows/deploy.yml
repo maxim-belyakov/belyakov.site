@@ -16,17 +16,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '14'
           cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Build website
-        run: node --openssl-legacy-provider ./node_modules/.bin/next build
+        run: yarn build
 
       - name: Export static files
-        run: node --openssl-legacy-provider ./node_modules/.bin/next export
+        run: yarn static
 
       - name: Create website archive
         run: |
