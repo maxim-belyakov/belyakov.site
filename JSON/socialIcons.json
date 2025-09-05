@@ -2,11 +2,11 @@
     "message": [
         {
             "name": "linkedin",
-            "link": "https://linkedin.com/in/maxim-belyakov"
+            "link": "https://www.linkedin.com/in/maksim-a-beliakov"
         },
         {
             "name": "email",
-            "link": "mailto:maxim.a.belyakov@gmail.com?subject=Hey, Maxim!"
+            "link": "mailto:maksim.a.beliakov@gmail.com?subject=Hi Maksim,"
         },
         {
             "name": "github",
@@ -18,15 +18,15 @@
         },
         {
             "name": "facebook",
-            "link": "https://facebook.com/maxim.a.belyakov"
+            "link": "https://facebook.com/maxim.a.belyakov/"
         },
         {
             "name": "instagram",
-            "link": "https://www.instagram.com/maxim.a.belyakov"
+            "link": "https://instagram.com/maksim.a.beliakov"
         },
         {
             "name": "twitter",
-            "link": "https://twitter.com/maxim_a_bel"
+            "link": "https://x.com/maxim_a_bel"
         }
     ]
 }
