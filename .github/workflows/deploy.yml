@@ -23,14 +23,10 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build website
-        run: yarn build
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
+        run: node --openssl-legacy-provider ./node_modules/.bin/next build
 
       - name: Export static files
-        run: yarn static
-        env:
-          NODE_OPTIONS: --openssl-legacy-provider
+        run: node --openssl-legacy-provider ./node_modules/.bin/next export
 
       - name: Create website archive
         run: |
