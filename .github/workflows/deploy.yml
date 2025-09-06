@@ -34,12 +34,11 @@ jobs:
           zip -r ../website.zip . -x "*.git*"
 
       - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Add server to known hosts
         run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
           ssh-keyscan -p 22 -H 89.108.64.127 >> ~/.ssh/known_hosts
 
       - name: Upload and deploy archive
