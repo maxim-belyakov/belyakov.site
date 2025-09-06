@@ -1,0 +1,13 @@
+name: Disable GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  disable-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disable Pages
+        run: echo "Pages deployment disabled in favor of custom deployment"
