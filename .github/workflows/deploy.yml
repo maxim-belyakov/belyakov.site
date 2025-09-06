@@ -43,5 +43,5 @@ jobs:
 
       - name: Upload and deploy archive
         run: |
-          scp -P 22 website.zip deploy@89.108.64.127:/tmp/
-          ssh -p 22 deploy@89.108.64.127 'cd /var/www/belyakov.site/ && rm -rf * .* 2>/dev/null || true && unzip -o /tmp/website.zip -d . && rm /tmp/website.zip'
+          scp -P 22 website.zip root@89.108.64.127:/tmp/
+          ssh -p 22 root@89.108.64.127 'cd /var/www/belyakov.site/ && rm -rf * .* 2>/dev/null || true && unzip -o /tmp/website.zip -d . && rm /tmp/website.zip'
