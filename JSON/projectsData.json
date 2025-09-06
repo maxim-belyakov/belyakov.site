@@ -32,8 +32,8 @@
                 "path": "2-sumo-scheduler/1.png"
             },
             "buttonImage": "/buttons/sumo1.png",
-            "linkName": "SUMO Scheduler",
-            "link": "",
+            "linkName": "SUMO1",
+            "link": "https://app.sumoscheduler.com/",
             "tags": [
                 {
                     "name": "React",
