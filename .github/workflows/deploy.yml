@@ -1,4 +1,4 @@
-name: Deploy Next.js Website
+name: Build and Deploy
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js 14
         uses: actions/setup-node@v4
         with:
           node-version: '14'
@@ -28,20 +28,11 @@ jobs:
       - name: Export static files
         run: yarn static
 
-      - name: Create website archive
-        run: |
-          cd out
-          zip -r ../website.zip . -x "*.git*"
-
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          chmod 700 ~/.ssh
-          ssh-keyscan -p 22 -H 89.108.64.127 >> ~/.ssh/known_hosts
-
-      - name: Upload and deploy archive
-        run: |
-          scp -P 22 website.zip root@89.108.64.127:/tmp/
-          ssh -p 22 root@89.108.64.127 'cd /var/www/belyakov.site/html && rm -rf * .* 2>/dev/null || true && unzip -o /tmp/website.zip -d . && rm /tmp/website.zip'
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: /
