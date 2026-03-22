@@ -71,7 +71,8 @@ export default function EmblaSlider({data, className}) {
                       alt={image.path}
                       width={image.width}
                       height={image.height}
-                      layout="responsive"
+                      sizes="100vw"
+                      style={{ width: '100%', height: 'auto' }}
                       src={'/projects/' + image.path}
                       className={styles.picture}
                       blurDataURL={'/projects/' + image.path}

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import posthog from 'posthog-js'
 import '../styles/globals.css'
@@ -24,7 +25,12 @@ function MyApp({ Component, pageProps }) {
   }, [router.events])
 
   return (
-      <Component {...pageProps} />
+      <>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        </Head>
+        <Component {...pageProps} />
+      </>
   )
 }
 export default MyApp

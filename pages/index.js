@@ -26,7 +26,7 @@ export default function Home() {
           <span role="img" aria-label="alien-monster">👾</span>
         </p>
         <h2 className={styles.portfolio}>
-          <Link href="/portfolio"><a className={styles.link}>Portfolio projects</a></Link>
+          <Link href="/portfolio" className={styles.link}>Portfolio projects</Link>
         </h2>
         <section className={styles.socials}>
           {socials.map((social, i) => (

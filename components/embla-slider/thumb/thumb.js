@@ -15,7 +15,7 @@ export const Thumb = ({ selected, onClick, project }) => {
         )}
         type="button"
       >
-        <Image width={100} height={100} layout='responsive' alt={project.name} src={project.buttonImage} />
+        <Image width={100} height={100} sizes="100vw" style={{ width: '100%', height: 'auto' }} alt={project.name} src={project.buttonImage} />
       </button>
     </div>
   )

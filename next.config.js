@@ -1,7 +1,10 @@
 module.exports = {
   reactStrictMode: true,
+  output: 'export',
   images: {
-    loader: "imgix",
-    path: "https://belyakov.site/",
+    unoptimized: true,
+  },
+  compiler: {
+    styledComponents: true,
   },
 }

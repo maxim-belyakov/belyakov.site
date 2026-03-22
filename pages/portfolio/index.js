@@ -8,9 +8,7 @@ export default function Index() {
   return(
       <div className={styles.Portfolio}>
         <div className={styles.Portfolio_back}>
-          <Link href="/" passHref>
-            <a className={styles.Portfolio_backButton}>Back</a>
-          </Link>
+          <Link href="/" className={styles.Portfolio_backButton}>Back</Link>
         </div>
 
         <EmblaSlider className={styles.embla} data={projectsData.message} />
