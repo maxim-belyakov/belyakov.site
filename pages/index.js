@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from "next/link"
 import { SocialIcon } from 'react-social-icons';
-import useWindowSize from '../components/window-size/window-size'
-import socialIcons from "../JSON/socialIcons"
-import styles from './index.module.scss'
+import useWindowSize from '../components/window-size/window-size';
+import socialIcons from "../JSON/socialIcons";
+import styles from './index.module.scss';
 
 export default function Home() {
   const { width } = useWindowSize();
