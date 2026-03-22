@@ -13,10 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 14
+      - name: Setup Node.js 18
         uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '18'
           cache: 'yarn'
 
       - name: Install dependencies
