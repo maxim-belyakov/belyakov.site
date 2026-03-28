@@ -5,7 +5,6 @@ import useWindowSize from '../components/window-size/window-size';
 import socialIcons from "../JSON/socialIcons";
 import styles from './index.module.scss';
 
-// Test change 2
 export default function Home() {
   const { width } = useWindowSize();
   const socials = socialIcons.message;
