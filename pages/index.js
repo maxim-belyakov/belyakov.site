@@ -13,7 +13,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Maksim Beliakov - Full Stack Engineer</title>
+        <title>Maksim Beliakov — Full Stack Engineer & Team Lead</title>
+        <meta
+          name="description"
+          content="Personal site of Maksim Beliakov — Senior Full Stack Engineer with 10+ years across React, TypeScript, AWS and Node.js. Team lead at SUMO Scheduler, ex-EPAM."
+        />
+        <link rel="canonical" href="https://belyakov.site/" />
+        <meta property="og:url" content="https://belyakov.site/" />
+        <meta property="og:title" content="Maksim Beliakov — Full Stack Engineer & Team Lead" />
       </Head>
 
       <main className={styles.home}>

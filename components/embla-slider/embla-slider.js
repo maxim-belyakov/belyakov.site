@@ -68,7 +68,7 @@ export default function EmblaSlider({data, className}) {
               <div key={project.id} className={styles.embla__slide}>
                 <div className={styles.pictureContainer}>
                   <Image
-                      alt={image.path}
+                      alt={`${project.name} — project screenshot`}
                       width={image.width}
                       height={image.height}
                       sizes="100vw"
