@@ -11,7 +11,7 @@
             "imgs": {
                 "width": "728",
                 "height": "820",
-                "path": "1-about-me/me.png"
+                "path": "1-about-me/me.jpg"
             },
             "buttonImage": "/buttons/about-me.png",
             "linkName": "",
@@ -29,7 +29,7 @@
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "2-sumo-scheduler/1.png"
+                "path": "2-sumo-scheduler/1.jpg"
             },
             "buttonImage": "/buttons/sumo1.png",
             "linkName": "SUMO1",
@@ -72,7 +72,7 @@
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "3-epam/1.png"
+                "path": "3-epam/1.jpg"
             },
             "buttonImage": "/buttons/epam-logo.png",
             "linkName": "EPAM Systems",
@@ -107,42 +107,42 @@
         {
             "id": 4,
             "name": "InLoop LLC (2019-2020)",
-            "description": [ 
-                "Senior Frontend Developer at Tel Aviv-based startup providing news aggregation solutions. Created new features using React, such as the ability for users to add, save, and comment on articles and events.", 
+            "description": [
+                "Senior Frontend Developer at Tel Aviv-based startup providing news aggregation solutions. Created new features using React, such as the ability for users to add, save, and comment on articles and events.",
                 "Developed an unprecedented new admin panel for company managers to control all generated content and client support on Redux. Provided developer support, including coding standards, code reviews, local dev environments, and CI.",
                 "This intelligent environment selects news for clients based on region, topic, and category. Also created a web application using React that can manage CSV files to clean, filter, and manipulate data."
             ],
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "4-inloop-2019/1.png"
+                "path": "4-inloop-2019/1.jpg"
             },
             "buttonImage": "/buttons/inloop.png",
             "linkName": "inloop.com",
             "link": "https://inloop.com",
             "tags": [
-                { 
-                    "name": "React", 
-                    "color": "#5fd2f7" 
+                {
+                    "name": "React",
+                    "color": "#5fd2f7"
                 },
-                { 
-                    "name": "Redux", 
-                    "color": "#7348b7" 
+                {
+                    "name": "Redux",
+                    "color": "#7348b7"
                 },
-                { 
-                    "name": "AngularJS", 
-                    "color": "#c64539" 
+                {
+                    "name": "AngularJS",
+                    "color": "#c64539"
                 },
-                { 
-                    "name": "Webpack", 
-                    "color": "#1b75bb" 
+                {
+                    "name": "Webpack",
+                    "color": "#1b75bb"
                 }
             ]
         },
         {
             "id": 5,
             "name": "Cultural Service Inc. (2017-2018)",
-            "description": [ 
+            "description": [
                 "Frontend Development Head leading a team of six people at Moscow-based company. Developed a progressive web app using Vue.js and React, providing event organizers and distributors with several ways to sell tickets.",
                 "Led the team executing all phases of event planning and production spanning committee recruitment, training, and vendor relationships. Recommended solutions for a streamlined, user-friendly interface working closely with the design team.",
                 "Previously worked as Frontend Developer (2016-2017) on web app based on Angular 6, developed adaptive ticket sales website on Play framework with Ajax and PostgreSQL, implemented various APIs integration."
@@ -150,30 +150,30 @@
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "5-cultural-service/1.png"
+                "path": "5-cultural-service/1.jpg"
             },
             "link": "https://ponominalu.ru",
             "linkName": "ponominalu.ru",
             "buttonImage": "/buttons/ponominalu.png",
             "tags": [
-                { 
-                    "name": "Vue.js", 
-                    "color": "#41b883" 
+                {
+                    "name": "Vue.js",
+                    "color": "#41b883"
                 },
-                { 
-                    "name": "React", 
-                    "color": "#5fd2f7" 
+                {
+                    "name": "React",
+                    "color": "#5fd2f7"
                 },
-                { 
-                    "name": "Angular 6", 
+                {
+                    "name": "Angular 6",
                     "color": "#c64539"
                 },
-                { 
-                    "name": "PostgreSQL", 
+                {
+                    "name": "PostgreSQL",
                     "color": "#336791"
                 },
                 {
-                    "name": "Play Framework", 
+                    "name": "Play Framework",
                     "color": "#92c83e"
                 }
             ]
@@ -189,27 +189,27 @@
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "6-early-career/1.png"
+                "path": "6-early-career/1.jpg"
             },
             "buttonImage": "/buttons/chitai-gorod.png",
             "link": "https://www.chitai-gorod.ru/",
             "linkName": "chitai-gorod.ru",
             "tags": [
-                { 
-                    "name": "WordPress", 
-                    "color": "#31353a" 
+                {
+                    "name": "WordPress",
+                    "color": "#31353a"
                 },
-                { 
-                    "name": "JavaScript", 
-                    "color": "#efd81d" 
+                {
+                    "name": "JavaScript",
+                    "color": "#efd81d"
                 },
-                { 
-                    "name": "LESS", 
-                    "color": "#182f53" 
+                {
+                    "name": "LESS",
+                    "color": "#182f53"
                 },
-                { 
-                    "name": "Bootstrap", 
-                    "color": "#543b79" 
+                {
+                    "name": "Bootstrap",
+                    "color": "#543b79"
                 }
             ]
         },
@@ -224,7 +224,7 @@
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "7-manuliatina/lake.png"
+                "path": "7-manuliatina/lake.jpg"
             },
             "buttonImage": "/buttons/manuliatina.png",
             "link": "https://manuliatina.com/",
