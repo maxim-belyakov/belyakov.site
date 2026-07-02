@@ -1,0 +1,6 @@
+# Keep GitHub Linguist language stats focused on the actual site code.
+# The .agents tooling dir contains deploy shell scripts that otherwise
+# get mis-detected as the repo's primary language.
+.agents/** linguist-vendored
+.claude/** linguist-vendored
+*.scss linguist-detectable
