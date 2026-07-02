@@ -20,7 +20,7 @@
         },
         {
             "id": 2,
-            "name": "SUMO Scheduler (2023-now)",
+            "name": "Omnito (2023-now)",
             "description": [
                 "Successfully led a development team of 4 in-house engineers, 4 contractors, and coordinated external contractor teams to deliver a robust scheduling platform for mid- and large-sized enterprises.",
                 "Built a scalable microservices architecture on AWS using Amplify, Lambda (Java & Node.js), GraphQL, and DynamoDB. Delivered a feature-rich frontend with React, Redux, and TypeScript, with a strong emphasis on intuitive UX and distinctive UI.",
@@ -29,11 +29,11 @@
             "imgs": {
                 "width": "1900",
                 "height": "935",
-                "path": "2-sumo-scheduler/1.jpg"
+                "path": "2-omnito/1.jpg"
             },
-            "buttonImage": "/buttons/sumo1.png",
-            "linkName": "SUMO1",
-            "link": "https://app.sumoscheduler.com/",
+            "buttonImage": "/buttons/omnito.png",
+            "linkName": "Omnito",
+            "link": "https://app.omnito.ai/",
             "tags": [
                 {
                     "name": "React",

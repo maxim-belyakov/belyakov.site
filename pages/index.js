@@ -16,7 +16,7 @@ export default function Home() {
         <title>Maksim Beliakov — Full Stack Engineer & Team Lead</title>
         <meta
           name="description"
-          content="Personal site of Maksim Beliakov — Senior Full Stack Engineer with 10+ years across React, TypeScript, AWS and Node.js. Team lead at SUMO Scheduler, ex-EPAM."
+          content="Personal site of Maksim Beliakov — Senior Full Stack Engineer with 10+ years across React, TypeScript, AWS and Node.js. Team lead at Omnito, ex-EPAM."
         />
         <link rel="canonical" href="https://belyakov.site/" />
         <meta property="og:url" content="https://belyakov.site/" />

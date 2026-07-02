@@ -2,7 +2,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 const SITE_URL = 'https://belyakov.site'
 const SITE_NAME = 'Maksim Beliakov'
-const SITE_DESCRIPTION = "Maksim Beliakov — Full Stack Engineer & Team Lead. 10+ years building scalable React, TypeScript, AWS and Node.js products at EPAM, SUMO Scheduler and others."
+const SITE_DESCRIPTION = "Maksim Beliakov — Full Stack Engineer & Team Lead. 10+ years building scalable React, TypeScript, AWS and Node.js products at EPAM, Omnito and others."
 const OG_IMAGE = `${SITE_URL}/og-image.jpg`
 
 const personJsonLd = {

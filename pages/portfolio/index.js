@@ -12,7 +12,7 @@ export default function Index() {
           <title>Portfolio — Maksim Beliakov, Full Stack Engineer</title>
           <meta
             name="description"
-            content="Portfolio of Maksim Beliakov: SUMO Scheduler, EPAM Systems, InLoop, Cultural Service, and personal projects in React, TypeScript, AWS and Node.js."
+            content="Portfolio of Maksim Beliakov: Omnito, EPAM Systems, InLoop, Cultural Service, and personal projects in React, TypeScript, AWS and Node.js."
           />
           <link rel="canonical" href="https://belyakov.site/portfolio/" />
           <meta property="og:url" content="https://belyakov.site/portfolio/" />
