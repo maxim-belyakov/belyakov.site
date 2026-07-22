@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
   useEffect(() => {
+    posthog.capture('$pageview') // initial page load
     const handleRouteChange = () => posthog.capture('$pageview')
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
