@@ -16,7 +16,7 @@
     "classnames": "^2.3.1",
     "embla-carousel": "^4.5.3",
     "next": "14",
-    "posthog-js": "^1.363.1",
+    "posthog-js": "^1.406.2",
     "pure-react-carousel": "^1.27.6",
     "react": "18",
     "react-dom": "18",
