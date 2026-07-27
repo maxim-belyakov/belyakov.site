@@ -35,3 +35,6 @@ yarn-error.log*
 
 # PhpStorm
 .idea
+
+# Claude Code local settings
+.claude/
