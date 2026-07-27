@@ -5,7 +5,7 @@
             "name": "About me",
             "description": [
                 "A flexible, proactive and positive Full Stack Engineer with success in managing development projects. Successfully managed development projects and created new websites with mathematical and logical solutions. An expert at multitasking and can handle multiple projects at once, while still meeting all deadlines.",
-                "I graduated from Moscow State Industrial University as a Bachelor of Computer Science in 2016. Started my career journey from Junior Frontend Developer to Team Leader & Full Stack Engineer, working across different countries including Russia, Israel, and Poland. My experience spans from startups to large enterprises like EPAM Systems.",
+                "I studied Computer Science at Moscow State Industrial University from 2012 to 2014. Started my career journey from Junior Frontend Developer to Team Leader & Full Stack Engineer, working across different countries including Russia, Israel, and Poland. My experience spans from startups to large enterprises like EPAM Systems.",
                 "My philosophy is to create things that could really help people. I try to create intuitive, accessible, beautiful, and fun digital products. Also great at explaining technical information in a clear and understandable way to audiences."
             ],
             "imgs": {
@@ -180,7 +180,7 @@
         },
         {
             "id": 6,
-            "name": "Early Career Projects (2015-2016)",
+            "name": "Early Career Projects (2016)",
             "description": [
                 "Junior Frontend Developer working on various projects including chitai-gorod.ru - a service for selling books and audiobooks with WebApp for reading and listening to purchased library.",
                 "Developed purchase pages, redesigned shopping carts, created news display blocks. Also worked on redesigning and developing existing web pages, minimizing code using CSS and JS, and learning tools like LESS and Stylus for CSS development.",
