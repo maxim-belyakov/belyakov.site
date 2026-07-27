@@ -12,7 +12,7 @@ const personJsonLd = {
   alternateName: 'Maxim Belyakov',
   url: SITE_URL,
   image: OG_IMAGE,
-  jobTitle: 'Senior Full Stack Engineer',
+  jobTitle: 'Full Stack Engineer & Team Lead',
   description: SITE_DESCRIPTION,
   knowsAbout: [
     'React', 'TypeScript', 'Node.js', 'AWS', 'GraphQL',

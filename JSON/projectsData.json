@@ -5,7 +5,7 @@
             "name": "About me",
             "description": [
                 "A flexible, proactive and positive Full Stack Engineer with success in managing development projects. Successfully managed development projects and created new websites with mathematical and logical solutions. An expert at multitasking and can handle multiple projects at once, while still meeting all deadlines.",
-                "I studied Computer Science at Moscow State Industrial University from 2012 to 2014. Started my career journey from Junior Frontend Developer to Team Leader & Full Stack Engineer, working across different countries including Russia, Israel, and Poland. My experience spans from startups to large enterprises like EPAM Systems.",
+                "I studied Computer Science at Moscow State Industrial University from 2012 to 2014. Started my career journey from Junior Frontend Developer to Team Leader & Full Stack Engineer, working across different countries including Russia, Ukraine, Israel, and Poland. My experience spans from startups to large enterprises like EPAM Systems.",
                 "My philosophy is to create things that could really help people. I try to create intuitive, accessible, beautiful, and fun digital products. Also great at explaining technical information in a clear and understandable way to audiences."
             ],
             "imgs": {
@@ -67,7 +67,7 @@
             "description": [
                 "Lead Frontend Developer managing a team of three developers, working on multiple high-performance React websites with Redux and TypeScript. Responsible for EPIC planning and implementation for the next quarter.",
                 "Successfully managed development projects with a branched network of internal service modules. Collaborated with backend teams using Java/Python (FastAPI) and Ruby (Rails) to design and integrate scalable APIs.",
-                "Previously worked as Senior Frontend Developer (2020-2021) developing projects from scratch using React, including graphs, tables, charts, and consoles. Transferred over 100k lines of code from Angular 15 to React and moved FE services to Kubernetes."
+                "Previously worked as Senior Frontend Developer (2020-2021) developing projects from scratch using React, including graphs, tables, charts, and consoles. Transferred over 100k lines of code from Angular 8 to React and moved FE services to Kubernetes."
             ],
             "imgs": {
                 "width": "1900",
@@ -141,11 +141,11 @@
         },
         {
             "id": 5,
-            "name": "Cultural Service Inc. (2017-2018)",
+            "name": "Cultural Service Inc. (2016-2018)",
             "description": [
                 "Frontend Development Head leading a team of six people at Moscow-based company. Developed a progressive web app using Vue.js and React, providing event organizers and distributors with several ways to sell tickets.",
                 "Led the team executing all phases of event planning and production spanning committee recruitment, training, and vendor relationships. Recommended solutions for a streamlined, user-friendly interface working closely with the design team.",
-                "Previously worked as Frontend Developer (2016-2017) on web app based on Angular 6, developed adaptive ticket sales website on Play framework with Ajax and PostgreSQL, implemented various APIs integration."
+                "Previously worked as Frontend Developer (2016-2017) on web app based on Angular, developed adaptive ticket sales website on Play framework with Ajax and PostgreSQL, implemented various APIs integration."
             ],
             "imgs": {
                 "width": "1900",
@@ -165,7 +165,7 @@
                     "color": "#5fd2f7"
                 },
                 {
-                    "name": "Angular 6",
+                    "name": "Angular",
                     "color": "#c64539"
                 },
                 {

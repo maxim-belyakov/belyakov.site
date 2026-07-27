@@ -9,7 +9,7 @@ export default function Index() {
   return(
       <>
         <Head>
-          <title>Portfolio — Maksim Beliakov, Full Stack Engineer</title>
+          <title>Portfolio — Maksim Beliakov, Full Stack Engineer & Team Lead</title>
           <meta
             name="description"
             content="Portfolio of Maksim Beliakov: Omnito, EPAM Systems, InLoop, Cultural Service, and personal projects in React, TypeScript, AWS and Node.js."
