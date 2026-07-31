@@ -181,7 +181,7 @@
         },
         {
             "id": 6,
-            "name": "chitai-gorod.ru — early project (2016)",
+            "name": "Early Career Projects (2016)",
             "description": [
                 "An early-career project from my junior years: chitai-gorod.ru, a service for selling books and audiobooks with a web app for reading and listening to a purchased library.",
                 "Developed purchase pages, redesigned shopping carts, and created news display blocks with WordPress, JavaScript, and Bootstrap. Picked up CSS preprocessors like LESS and Stylus along the way.",
