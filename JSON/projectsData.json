@@ -22,9 +22,9 @@
             "id": 2,
             "name": "Omnito (2023-now)",
             "description": [
-                "Successfully led a development team of 4 in-house engineers, 4 contractors, and coordinated external contractor teams to deliver a robust scheduling platform for mid- and large-sized enterprises.",
-                "Built a scalable microservices architecture on AWS using Amplify, Lambda (Java & Node.js), GraphQL, and DynamoDB. Delivered a feature-rich frontend with React, Redux, and TypeScript, with a strong emphasis on intuitive UX and distinctive UI.",
-                "Implemented AI tools including Notetaker AI for automated meeting summaries, Flowise with Chatflows, and Chatwoot to deploy client-facing AI agents for meeting creation and support. Established and ran Agile/Scrum workflows from scratch."
+                "Team Leader & Full Stack Engineer leading a cross-functional team of 8 (4 in-house engineers and 4 contractors) delivering an enterprise multi-tenant SaaS scheduling platform. Own architecture, code review, mentoring, and delivery across frontend, backend, and infra.",
+                "Designed 40+ serverless microservices on AWS Lambda (Node.js, Java 21, Python) with DynamoDB, AppSync GraphQL, API Gateway, Cognito, SNS/SQS, Step Functions, and S3 — unified by an OpenAPI-driven codegen pipeline shared across frontend and backend. Built the web client in React 18, TypeScript, Redux/Saga, and PrimeReact, and extended it onto Outlook add-ins, Chrome/Edge extensions, and Gmail/Outlook Web embeds.",
+                "Shipped production AI features: an LLM Notetaker auto-summarizing meeting transcripts — 2,000+ summaries per quarter, around 340 engineering hours saved per quarter — plus conversational AI agents built on Flowise and Chatwoot, with reliability tracked via PostHog telemetry. Drove team-wide adoption of AI-assisted development and established Agile/Scrum workflows from scratch."
             ],
             "imgs": {
                 "width": "1900",
@@ -65,7 +65,7 @@
             "id": 3,
             "name": "EPAM Systems (2021-2023)",
             "description": [
-                "Lead Frontend Developer managing a team of three developers, working on multiple high-performance React websites with Redux and TypeScript. Responsible for EPIC planning and implementation for the next quarter.",
+                "Lead Engineer managing a team of three developers, working on multiple high-performance React websites with Redux and TypeScript. Responsible for EPIC planning and implementation for the next quarter.",
                 "Successfully managed development projects with a branched network of internal service modules. Collaborated with backend teams using Java/Python (FastAPI) and Ruby (Rails) to design and integrate scalable APIs.",
                 "Previously worked as Senior Frontend Developer (2020-2021) developing projects from scratch using React, including graphs, tables, charts, and consoles. Transferred over 100k lines of code from Angular 8 to React and moved FE services to Kubernetes."
             ],
@@ -106,11 +106,12 @@
         },
         {
             "id": 4,
-            "name": "InLoop LLC (2019-2020)",
+            "name": "InLoop LLC (2018-2020)",
             "description": [
                 "Senior Frontend Developer at Tel Aviv-based startup providing news aggregation solutions. Created new features using React, such as the ability for users to add, save, and comment on articles and events.",
                 "Developed an unprecedented new admin panel for company managers to control all generated content and client support on Redux. Provided developer support, including coding standards, code reviews, local dev environments, and CI.",
-                "This intelligent environment selects news for clients based on region, topic, and category. Also created a web application using React that can manage CSV files to clean, filter, and manipulate data."
+                "This intelligent environment selects news for clients based on region, topic, and category. Also created a web application using React that can manage CSV files to clean, filter, and manipulate data.",
+                "Joined as Frontend Developer (2018), rebuilding the company's core product UI with AngularJS, ASP.NET, and RESTful APIs for better cross-browser compatibility, and building HTML email templates and marketing newsletters within an Agile Scrum process."
             ],
             "imgs": {
                 "width": "1900",
@@ -143,9 +144,9 @@
             "id": 5,
             "name": "Cultural Service Inc. (2016-2018)",
             "description": [
-                "Frontend Development Head leading a team of six people at Moscow-based company. Developed a progressive web app using Vue.js and React, providing event organizers and distributors with several ways to sell tickets.",
-                "Led the team executing all phases of event planning and production spanning committee recruitment, training, and vendor relationships. Recommended solutions for a streamlined, user-friendly interface working closely with the design team.",
-                "Previously worked as Frontend Developer (2016-2017) on web app based on Angular, developed adaptive ticket sales website on Play framework with Ajax and PostgreSQL, implemented various APIs integration."
+                "Frontend Team Leader (2017-2018) leading a team of six people at Cultural Service Inc., the Moscow-based company behind ponominalu.ru. Developed a progressive web app using Vue.js and React, providing event organizers and distributors with several ways to sell tickets.",
+                "Led the team through all phases of development, from architecture design to production deployment. Recommended solutions for a streamlined, user-friendly interface working closely with the design team, improving user experience and conversion rates.",
+                "Previously worked as Frontend Developer (2016-2017) on a web app based on Angular, developed an adaptive ticket sales website on Play Framework with Ajax and PostgreSQL, and implemented various API integrations. Started here as Junior Frontend Developer (2016), redesigning existing pages and optimizing frontend performance through CSS and JavaScript minification."
             ],
             "imgs": {
                 "width": "1900",
@@ -180,11 +181,11 @@
         },
         {
             "id": 6,
-            "name": "Early Career Projects (2016)",
+            "name": "chitai-gorod.ru — early project (2016)",
             "description": [
-                "Junior Frontend Developer working on various projects including chitai-gorod.ru - a service for selling books and audiobooks with WebApp for reading and listening to purchased library.",
-                "Developed purchase pages, redesigned shopping carts, created news display blocks. Also worked on redesigning and developing existing web pages, minimizing code using CSS and JS, and learning tools like LESS and Stylus for CSS development.",
-                "Assisted teams with testing code in multiple browsers and gained foundational experience in cross-browser compatibility and responsive design principles."
+                "An early-career project from my junior years: chitai-gorod.ru, a service for selling books and audiobooks with a web app for reading and listening to a purchased library.",
+                "Developed purchase pages, redesigned shopping carts, and created news display blocks with WordPress, JavaScript, and Bootstrap. Picked up CSS preprocessors like LESS and Stylus along the way.",
+                "Tested code across multiple browsers and gained foundational experience in cross-browser compatibility and responsive design principles."
             ],
             "imgs": {
                 "width": "1900",
