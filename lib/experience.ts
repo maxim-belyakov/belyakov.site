@@ -58,7 +58,7 @@ export const EXPERIENCE: Role[] = [
     bullets: [
       'Led a team of 3 building high-performance React applications with Redux and TypeScript for enterprise clients, and owned EPIC planning for the following quarter.',
       'Drove code quality through systematic code review, coding standards and CI/CD pipeline work.',
-      'Collaborated with backend teams on Java 17, Python (FastAPI) and MongoDB services, designing and integrating the APIs the frontend consumed.',
+      'Collaborated with backend teams on Java 17 and MongoDB services, designing and integrating the APIs the frontend consumed.',
       'Before that, as Senior Frontend Developer: built data-heavy UIs from scratch, migrated over 100,000 lines from Angular 8 to React, and moved frontend services to Kubernetes as a micro-frontend architecture.',
     ],
     stack: ['React', 'TypeScript', 'Redux', 'Java 17', 'MongoDB', 'Kubernetes'],

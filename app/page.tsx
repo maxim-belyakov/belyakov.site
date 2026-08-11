@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import CopyEmail from '@/components/copy-email'
+import portrait from '@/public/maksim-beliakov.jpg'
 import SiteFooter from '@/components/site-footer'
 import { EXPERIENCE } from '@/lib/experience'
 import { allNoteMeta } from '@/lib/notes'
@@ -12,15 +14,32 @@ export default async function HomePage() {
     <>
       <main id="main" className="mx-auto w-full max-w-3xl px-5 pt-16 pb-24 sm:px-8 sm:pt-24">
         <section aria-labelledby="intro">
-          <h1
-            id="intro"
-            className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
-          >
-            Maksim Beliakov
-          </h1>
-          <p className="mt-3 text-lg text-ink-soft sm:text-xl">
-            Senior AI &amp; Full-Stack Engineer in Warsaw. 10+ years in enterprise SaaS.
-          </p>
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+            {/* Statically imported, so next/image knows the intrinsic size at
+                build time, reserves the box and emits a blur placeholder.
+                priority because it is the largest paint above the fold. */}
+            <Image
+              src={portrait}
+              alt="Maksim Beliakov"
+              width={88}
+              height={88}
+              priority
+              placeholder="blur"
+              sizes="88px"
+              className="h-20 w-20 shrink-0 rounded-full object-cover sm:h-22 sm:w-22"
+            />
+            <div>
+              <h1
+                id="intro"
+                className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
+              >
+                Maksim Beliakov
+              </h1>
+              <p className="mt-2 text-lg text-ink-soft sm:text-xl">
+                Senior AI &amp; Full-Stack Engineer in Warsaw. 10+ years in enterprise SaaS.
+              </p>
+            </div>
+          </div>
 
           <div className="mt-8 space-y-5 text-[1.0625rem] leading-relaxed">
             <p>
