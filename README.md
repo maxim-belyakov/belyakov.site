@@ -21,6 +21,7 @@ This is the cheat sheet. Every route on this site is prerendered at build time, 
 | `/notes` | Static, prerendered at build | none | Index built from the note registry. Same argument. |
 | `/notes/[slug]` | SSG via `generateStaticParams`, `dynamicParams = false` | none | Slugs are known at build. `dynamicParams = false` means an unknown slug is a router-level 404 and no server work happens for it. |
 | `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest` | Static, generated from `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts` | none | Derived from the same registry as the routes, so adding a note updates the sitemap without a second edit. |
+| `/opengraph-image` | Static PNG rendered at build by `next/og` | none | Built from the same strings as the page, so the social card cannot go stale against the copy. Sits at the root of `app/`, so every route inherits it. |
 | `/portfolio` | Permanent redirect to `/#work` | n/a | The old site's second page is now a section of the home page. The URL is indexed, so it gets a 308 rather than a 404. |
 | 404 | Static `app/not-found.tsx` | n/a | Served with a real 404 status. See the note on `loading.tsx` below. |
 
@@ -56,6 +57,8 @@ Everything else, including the whole home page, the work list, the notes index a
 `next/font/local` with variable woff2 files committed under `app/fonts`. Self-hosted rather than `next/font/google` so the build has no network dependency and produces identical output offline. `next/font` still emits the `@font-face` rules, hashes and preloads the files, and generates fallback metrics so there is no layout shift when the font swaps in.
 
 There is one image on the site, the portrait in the hero. It is a static import, so `next/image` knows the intrinsic dimensions at build time, reserves the box, generates the blur placeholder and emits a srcset. It carries `priority` because it is the largest element above the fold and should not wait for the lazy-loading observer.
+
+The Open Graph card is generated rather than stored: `app/opengraph-image.tsx` renders it with `next/og` at build time. The fonts it uses are subset TTFs under `app/og`, because satori cannot read woff2 and the full face is far larger than the card needs.
 
 ## House rules for this repository
 

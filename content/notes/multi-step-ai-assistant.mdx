@@ -8,41 +8,41 @@ export const meta = {
 
 A turn looks like this. A message arrives over a WebSocket connection. A classifier decides what the user is asking for. One of thirteen skills takes the turn from there, gathers what it needs, composes an answer, and that answer streams back token by token while the model is still producing it.
 
-Every interesting decision in that system is in the seams between those steps, so that is what this note is about.
+Every interesting decision is in the seams between those steps.
 
 ## Why a classifier and not one big prompt
 
-The alternative is a single prompt describing every capability with every tool bound to it, and the model deciding what to call. For a handful of capabilities that is the right answer and it is less machinery. The argument for routing shows up as the count grows, and it is three separate arguments pointing the same way.
+The alternative is a single prompt describing every capability with every tool bound to it, and the model deciding what to call. For a handful of capabilities that is the right answer and it is less machinery. Three arguments for routing show up as the count grows.
 
-**Prompt cost scales with capability count, and it scales on every turn.** With one big prompt, a user asking to cancel a meeting still pays for the description of every skill they are not using. With a classifier, the routing call carries a short prompt with a constrained output, and then exactly one skill's prompt is loaded.
+**Prompt cost scales with capability count, on every turn.** With one big prompt, a user asking to cancel a meeting still pays for the description of every skill they are not using. With a classifier, routing carries a short prompt with a constrained output, and then exactly one skill's prompt is loaded.
 
-**Behaviour stays isolated.** In one large prompt, instructions interact. Tightening the wording that makes one capability behave changes another capability that was working, and you find out in production. Thirteen prompts that each know only about their own job do not have that property. This matters more than the token cost. It is the difference between a system you can change and one you can only add to.
+**Behaviour stays isolated.** In one large prompt, instructions interact: tightening the wording that makes one capability behave changes another capability that was working, and you find out in production. Thirteen prompts that each know only their own job do not have that property. That matters more than the token cost. It is the difference between a system you can change and one you can only add to.
 
-**Failures become localisable.** When an answer is wrong in a single-prompt system, "why" has too many answers at once: retrieval missed, or the model picked the wrong tool, or instruction eleven contradicted instruction four. Splitting the first decision out lets you ask a much cheaper question first: did it route correctly? That is a classification problem. It has labels, it has a confusion matrix, and it can be tested without judging free text. Reducing "is this answer good" to "is this label right" for the first hop is most of the value.
-
-The cost is that you have added a component that can be wrong in a new way, and that is worth being precise about.
+**Failures become localisable.** When an answer is wrong in a single-prompt system, "why" has too many answers at once: retrieval missed, or the model picked the wrong tool, or instruction eleven contradicted instruction four. Splitting the first decision out lets you ask a cheaper question first: did it route correctly? That is a classification problem, with labels and a confusion matrix, testable without judging free text.
 
 ## When the classifier is wrong
 
-The two failure modes are not symmetric, and only one of them is dangerous.
+The two failure modes are not symmetric, and only one is dangerous.
 
-**Routing to the wrong skill is loud.** The user asked to move a meeting and got an answer about booking a new one. It is obviously wrong to the person reading it, they rephrase, and the turn is cheap to recover. Annoying, not harmful.
+**Routing to the wrong skill is loud.** The user asked to move a meeting and got an answer about booking a new one. It is obviously wrong to the person reading it, so they rephrase.
 
 **Falling through to the general conversational skill is quiet.** That skill can answer almost anything plausibly, so a misroute here does not look like a misroute. It looks like a mediocre answer, and a system that is confidently vague erodes trust faster than one that is visibly wrong.
 
-Three things follow. First, the fallback has to be honest rather than helpful: the general skill is the retrieval-backed one, and it is told to say it does not have the answer rather than produce something shaped like one. An assistant that says "I do not have that" is recoverable; one that improvises is not.
+So the fallback has to be honest rather than helpful. The general skill is the retrieval-backed one, and the composer is instructed to ground every fact in what retrieval actually returned, and to say it does not have the information rather than fill the gap. An assistant that says "I do not have that" is recoverable; one that improvises is not.
 
-Second, labels that a human has to think about are labels the classifier will confuse. If two intents differ by a distinction you have to explain twice, collapse them into one skill with a branch inside it rather than asking the router to split a hair. The router should only make decisions that are obvious from the sentence alone.
+The other thing that follows is that the conversation is the repair channel. The turn carries a window of recent messages, so a follow-up like "no, I meant the one on Thursday" reclassifies with the previous turn in view.
 
-Third, the conversation itself is the repair channel. The turn carries a bounded window of recent messages, so a follow-up like "no, I meant the one on Thursday" reclassifies with the previous turn in view. Multi-step is not only a feature for the user; it is the mechanism by which the first mistake gets corrected without anyone filing a bug.
+That is worth making structural rather than leaving to luck. The router does not only return a label; it returns a confidence score with it, and below 0.55 the turn produces a clarifying question instead of an answer. The fallback path reports a confidence of zero, so anything the router could not place lands in the same branch.
 
-One thing I deliberately did not add: a confidence threshold on the classification. It is the natural first instinct, and when a model is confidently wrong some fraction of the time, a threshold mostly rejects correct classifications while letting the confident errors through. It reads like a safeguard and behaves like noise.
+This is a different mechanism from the version of a confidence threshold that does not work, and the distinction is the point. A threshold that suppresses answers is a bad idea: a model is confidently wrong often enough that suppression mostly costs you correct answers while the confident errors sail through untouched. A threshold that converts low confidence into a question is not judging whether the answer is good. It decides whether the system has enough to go on, and when it does not, hands the turn back to the person who does.
 
 ## Speculative, parallel context fetching
 
-The obvious sequencing is: classify, hand off to a skill, let the skill ask for what it needs, fetch it, generate. That is correct and it is slow, because it is strictly serial and each fetch is a round trip. A turn might need the user's calendar, the tenant's configuration, a contact record, a vector search against a knowledge base. Chained, they add up, and the user watches a spinner for the sum.
+The obvious sequencing is: classify, hand off to a skill, let the skill ask for what it needs, fetch it, generate. That is correct and slow: it is strictly serial, every fetch is a round trip, and the user watches a spinner for the sum.
 
-The change is to stop waiting for permission. At the start of the turn, before the classifier has said anything, every plausible context fetch goes out in parallel as a future. When the classifier lands and a skill takes over, the skill consumes the futures it needs and the rest are never read.
+The change is to stop waiting for permission. At the start of the turn, before the classifier has said anything, four fetches go out in parallel: recent conversation history, the user's profile, the tenant's meeting types, and calendar events in a window of the next thirty-five days. Retrieval against the knowledge bases is a fifth, issued separately and itself doubled, because there is a personal store and a workspace store. When a skill takes over it consumes the futures it needs, and the rest are never read.
+
+It is not a flat fan-out. Selecting calendar events needs a timezone, and the timezone comes from the profile, so that branch is chained onto the profile fetch rather than started cold. What you build is a small dependency graph: four branches, one of them two-stage, each starting as early as its inputs allow.
 
 The effect on latency is the point. Turn time goes from
 
@@ -56,36 +56,32 @@ to
 max(classify, fetch_a, fetch_b, fetch_c) + generate
 ```
 
-Because classification runs concurrently with the fetches rather than in front of them, routing costs almost nothing in wall-clock terms. You get the isolation of a separate classifier without paying a round trip for it, and that combination is what makes the split worth doing at all.
+Because classification runs concurrently with the fetches rather than in front of them, routing costs almost nothing in wall-clock terms. You get the isolation of a separate classifier without paying a round trip for it, and that is what makes the split worth doing.
 
 ## When speculation does not pay
 
-It is waste by construction: most of what is fetched is thrown away. It is a good trade here for three specific reasons. The fetches are reads and idempotent, so nothing observable happens if a result is discarded. The fan-out is bounded and fixed in the code rather than chosen by the model, so a turn cannot decide to issue forty requests. And the generation call dominates the cost of the turn by a wide margin, so trading redundant reads against a round trip on the critical path is a good exchange.
+It is waste by construction: most of what is fetched is thrown away. It is a good trade here for three reasons. The fetches are reads and idempotent, so nothing observable happens if a result is discarded. The fan-out is bounded and fixed in the code rather than chosen by the model, so a turn cannot decide to issue forty requests. And the generation call dominates the cost of the turn by a wide margin.
 
 Change any of those and it stops being a good idea:
 
-- **Anything with a side effect.** Never speculate on a write. Obvious, and exactly the kind of thing that arrives by accident when a read grows a cache-warming write inside it.
-- **Rate-limited third-party APIs.** Speculating a CRM lookup on every turn spends quota on turns that never needed it, and the failure shows up as throttling during a busy hour rather than as a slow turn. Those stay lazy.
-- **Expensive fetches with a low hit rate.** A fetch used by one skill out of thirteen, which is also the slowest, is almost entirely waste and shortens nobody's critical path.
+- **Anything with a side effect.** Never speculate on a write. Obvious, and exactly what arrives by accident when a read grows a cache-warming write inside it.
+- **Rate-limited third-party APIs.** Speculating a CRM lookup every turn spends quota on turns that never needed it, and the failure shows up as throttling during a busy hour rather than as a slow turn. Those stay lazy.
+- **Expensive fetches with a low hit rate.** A fetch used by one skill out of thirteen, which is also the slowest, shortens nobody's critical path.
 
-The rule that survived: speculate when the fetch is read-only, bounded, and wanted by a decent share of the skills. Otherwise leave it lazy and let the one skill that needs it pay for it.
+The rule that survived: speculate when the fetch is read-only, bounded, and wanted by a decent share of the skills. Otherwise leave it lazy.
 
 ## What streaming breaks
 
-Streaming is the part users notice, and it costs more in engineering discipline than in code.
+**You cannot validate what you have already sent.** Any check over a complete answer has to move in front of the first token or become a visible correction after the fact. Deciding which checks are cheap enough to run before generation is something streaming forces on you and a buffered response does not.
 
-**You cannot validate what you have already sent.** Any check that runs over a complete answer has to move in front of the first token or become a visible correction after the fact. Which checks are cheap enough to run before generation, and which have to become a follow-up message, is a decision streaming forces on you and a buffered response does not.
+**Failure mid-stream has no natural shape.** With a normal response you have a status code, decided before the first byte. Once tokens are flowing, a failure is indistinguishable from an answer that stopped, so the protocol needs two explicit terminal events, finished and failed. Without them the client's only signal is silence, and silence is ambiguous. This is the same class of problem as putting a streaming boundary above a route that can return a 404: the status goes out with the first flush, so anything that wants to change it has to happen before that.
 
-**Failure mid-stream has no natural shape.** With a normal response you have a status code, decided before the first byte. Once tokens are flowing, a failure is indistinguishable from an answer that stopped. The protocol needs two explicit terminal events, finished and failed. Without them the client's only signal is silence, and silence is ambiguous.
+**The token is not the right unit to send.** A frame per token costs a message and a redraw per token, and that is where ragged rendering comes from. The output goes through a coalescing buffer instead: hold until sixty characters, flush on the first sentence or clause boundary after that, force a flush at two hundred and forty so a long unbroken run cannot stall.
 
-This is the same class of problem as putting a streaming boundary above a route that can return a 404: the status goes out with the first flush, so anything that wants to change it has to happen before that. Streaming moves decisions earlier, everywhere.
+**Renderers see half-parsed markup.** A code fence opens dozens of tokens before it closes; a link is a broken bracket for a moment. The renderer has to tolerate an incomplete tree rather than assume valid input, and flushing on boundaries keeps the invalid intermediate states rare instead of one per token.
 
-**Reconnection is a real case, not an edge case.** Connections drop mid-generation, phones sleep, laptops close. Either the turn is lost, or generation is decoupled from delivery so a returning client can be caught up, which means buffering the turn server-side as it is produced and letting a reconnecting client resume without re-rendering what it already has.
-
-**Renderers see half-parsed markup on every frame.** A code fence opens dozens of tokens before it closes. A link is a broken bracket for a moment. The renderer has to tolerate an incomplete tree on every frame rather than assuming valid input, and that is easy to forget until a table renders as garbage for two seconds on every answer.
+**Resuming mid-stream is the thing we did not build.** There is no sequence number and no replay. If the connection drops during generation the client reconnects and reloads the stored conversation: completed turns come back from persistence, a turn that was still generating is gone. The cost lands where the user is least patient, on a long answer over a bad connection. Doing it properly means numbering the stream, persisting the partial turn as it is produced, and letting a returning client continue from an offset. That is a protocol change rather than a buffer change, which is why it did not happen alongside the rest.
 
 ## What I would do differently
 
-One decision I would repeat unchanged: in the retrieval layer, each knowledge base is its own table, so a tenant boundary is structural rather than a filter someone can forget to apply. A missing filter is a data leak; a missing table is an empty result. When the failure modes are that asymmetric, spend the schema.
-
-One I would change: the classifier deserved a labelled dataset and a tracked confusion matrix from the first week, not from the point where misrouting got loud enough to complain about. Everything downstream is easier to judge once you can say what fraction of turns started in the right place.
+The router has a confidence threshold but no labelled dataset and no tracked confusion matrix behind it, and that pairing is the gap. A threshold is a number somebody chose. Without a measured matrix you cannot say what it costs you, which makes it a guess that happens to work rather than a tuned parameter. It deserved a labelled set from the first week: cheap early, expensive to retrofit.
