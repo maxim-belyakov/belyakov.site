@@ -20,7 +20,6 @@ This is the cheat sheet. Every route on this site is prerendered at build time, 
 | `/` | Static, prerendered at build | none | Content lives in `lib/experience.ts` and `lib/notes.ts`. It changes on deploy, so the build is the correct cache boundary. |
 | `/notes` | Static, prerendered at build | none | Index built from the note registry. Same argument. |
 | `/notes/[slug]` | SSG via `generateStaticParams`, `dynamicParams = false` | none | Slugs are known at build. `dynamicParams = false` means an unknown slug is a router-level 404 and no server work happens for it. |
-| `/archive/manuliatina` | Static, prerendered at build | none | Archived project. `noindex` in its metadata and no link from the navigation. |
 | `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest` | Static, generated from `app/sitemap.ts`, `app/robots.ts`, `app/manifest.ts` | none | Derived from the same registry as the routes, so adding a note updates the sitemap without a second edit. |
 | `/portfolio` | Permanent redirect to `/#work` | n/a | The old site's second page is now a section of the home page. The URL is indexed, so it gets a 308 rather than a 404. |
 | 404 | Static `app/not-found.tsx` | n/a | Served with a real 404 status. See the note on `loading.tsx` below. |
@@ -55,6 +54,8 @@ Everything else, including the whole home page, the work list, the notes index a
 ## Fonts and images
 
 `next/font/local` with variable woff2 files committed under `app/fonts`. Self-hosted rather than `next/font/google` so the build has no network dependency and produces identical output offline. `next/font` still emits the `@font-face` rules, hashes and preloads the files, and generates fallback metrics so there is no layout shift when the font swaps in.
+
+There is one image on the site, the portrait in the hero. It is a static import, so `next/image` knows the intrinsic dimensions at build time, reserves the box, generates the blur placeholder and emits a srcset. It carries `priority` because it is the largest element above the fold and should not wait for the lazy-loading observer.
 
 ## House rules for this repository
 
