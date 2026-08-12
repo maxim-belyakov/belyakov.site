@@ -7,7 +7,7 @@ const EM = String.fromCharCode(0x2014)
 const EN = String.fromCharCode(0x2013)
 const PATTERN = new RegExp(`[${EM}${EN}]`)
 
-const ROOTS = ['app', 'components', 'content', 'lib', 'scripts', 'README.md', 'next.config.ts']
+const ROOTS = ['app', 'components', 'content', 'docs', 'lib', 'scripts', 'README.md', 'next.config.ts']
 const SKIP_DIRS = new Set(['node_modules', '.next', '.git'])
 const SKIP_EXT = /\.(woff2|ico|png|jpg|jpeg|pdf|webp|svg)$/i
 

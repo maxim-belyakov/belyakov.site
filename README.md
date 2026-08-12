@@ -6,7 +6,7 @@ Personal site of Maksim Beliakov. Next.js 16 App Router, TypeScript in strict mo
 npm install
 npm run dev        # http://localhost:3000
 npm run build      # production build, prints the route table below
-npm run typecheck  # tsc --noEmit
+npm run typecheck  # next typegen && tsc --noEmit
 npm run lint
 npm run check:dashes   # fails if a long dash sneaks into the sources or content
 ```
@@ -59,6 +59,10 @@ Everything else, including the whole home page, the work list, the notes index a
 There is one image on the site, the portrait in the hero. It is a static import, so `next/image` knows the intrinsic dimensions at build time, reserves the box, generates the blur placeholder and emits a srcset. It carries `priority` because it is the largest element above the fold and should not wait for the lazy-loading observer.
 
 The Open Graph card is generated rather than stored: `app/opengraph-image.tsx` renders it with `next/og` at build time. The fonts it uses are subset TTFs under `app/og`, because satori cannot read woff2 and the full face is far larger than the card needs.
+
+## Deployment
+
+Step by step in [docs/DEPLOY.md](docs/DEPLOY.md), including the DNS records and the order that keeps the live domain from flickering during the switch.
 
 ## House rules for this repository
 
