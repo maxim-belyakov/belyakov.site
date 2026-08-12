@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --color-ink: #14161a;
+  --color-ink-soft: #4a5058;
+  /* 4.81:1 on --color-paper. #767c85 read nicer but only hit 4.06:1, under WCAG AA. */
+  --color-ink-faint: #6b7078;
+  --color-paper: #fbfbf9;
+  --color-paper-alt: #f2f2ee;
+  --color-rule: #dedcd5;
+  --color-accent: #0b4f9e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: #cfe0f5;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+/* Long-form note body. Scoped to .prose-note so it never leaks into the
+   home page, which is laid out with utility classes. */
+@layer components {
+  .prose-note {
+    color: var(--color-ink);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .prose-note > * + * {
+    margin-top: 1.25rem;
+  }
+
+  .prose-note h2 {
+    margin-top: 3rem;
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .prose-note h3 {
+    margin-top: 2.25rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  .prose-note a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-note ul,
+  .prose-note ol {
+    padding-left: 1.25rem;
+  }
+
+  .prose-note ul {
+    list-style: disc;
+  }
+
+  .prose-note ol {
+    list-style: decimal;
+  }
+
+  .prose-note li + li {
+    margin-top: 0.5rem;
+  }
+
+  .prose-note blockquote {
+    border-left: 2px solid var(--color-rule);
+    padding-left: 1rem;
+    color: var(--color-ink-soft);
+  }
+
+  .prose-note code {
+    background-color: var(--color-paper-alt);
+    border: 1px solid var(--color-rule);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  .prose-note pre {
+    background-color: var(--color-paper-alt);
+    border: 1px solid var(--color-rule);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .prose-note pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .prose-note table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .prose-note th,
+  .prose-note td {
+    border: 1px solid var(--color-rule);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .prose-note th {
+    background-color: var(--color-paper-alt);
+    font-weight: 600;
+  }
+
+  .prose-note hr {
+    border: 0;
+    border-top: 1px solid var(--color-rule);
+    margin-top: 2.5rem;
+  }
+}

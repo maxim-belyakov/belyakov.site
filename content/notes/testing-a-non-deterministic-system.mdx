@@ -1,0 +1,87 @@
+export const meta = {
+  slug: 'testing-a-non-deterministic-system',
+  title: 'Testing a non-deterministic system',
+  description:
+    'Assertions stop working once the same input can produce a different answer. Deterministic checks at the bottom, an LLM-as-judge harness above them, human review on a sample, and two production metrics that tell you when it slipped.',
+  cardSummary:
+    'Assertions stop working once the same input can produce a different answer. Deterministic checks, an LLM-as-judge harness, and two production metrics.',
+  published: '2026-08-11',
+}
+
+The backend around our assistant is covered the ordinary way: JUnit 5 with DynamoDB Local and H2, sixteen modules wired together, fake connectors standing in for every third-party integration, roughly 9,700 lines of test code running the real handlers. That works because the same input produces the same output, so a failure means something changed.
+
+The assistant does not have that property. Ask it the same question twice and you get two different sentences, both correct. Everything built on `assertEquals` stops being useful at that point, and the interesting failure is not an exception anyway. It is a fluent, confident, wrong answer. Nothing throws.
+
+## Why the usual answers do not work
+
+Three reflexes come up, and each solves a smaller problem than it looks like it solves.
+
+**Pin the temperature to zero.** This narrows the spread; it does not give you determinism. You are still exposed to the provider shipping a new model snapshot underneath you, and to any change in retrieved context feeding a different prompt. A test that passes today and fails in three weeks with no commit in between is worse than no test, because it trains everyone to ignore the failure.
+
+**Snapshot the answer.** Every snapshot is stale on the next run, so either you approve new snapshots constantly, which means you are not reading them, or the suite is permanently red. Snapshot testing assumes the output is stable and only changes on purpose. That assumption is exactly what is missing.
+
+**Regex the answer.** This tests the phrasing rather than the fact. It fails when the model says the right thing in different words, and passes when the model says a wrong thing in the right shape. Both directions are wrong.
+
+The underlying problem is that "is this answer good" is not one question. It is several, and they have different natures. Some of them are exactly checkable and some are not, and the mistake is treating the whole thing as unverifiable because part of it is.
+
+## Layer one: deterministic checks on the hard facts
+
+A surprising amount of what the assistant produces is not free text at all.
+
+A booking link either points at the right meeting type or it does not. A time it offers is either present in the availability that was fetched for that turn or it is not. A meeting it refers to either exists for that user or it does not. The routing decision from the [first note](/notes/multi-step-ai-assistant) is a label out of a known set, so an expected label against an actual label is a plain comparison.
+
+All of that is assertable, cheaply, with no model in the loop and no flake. So it should be assertions. The rule I would keep on any project like this: never ask a judge a question a string comparison can answer. Every check you push down into this layer is a check that runs in milliseconds, never disagrees with itself, and costs nothing per run.
+
+It also changes what the layers above are for. Once the hard facts are covered, the judge is no longer being asked whether the answer is correct. It is being asked whether the answer is well-formed and grounded, which is a narrower question and one it is better at.
+
+## Layer two: an LLM-as-judge harness
+
+What is left is prose, and prose needs a reader.
+
+The harness lives in the internal ops console, staff only. Question sets are written in advance, imported as CSV, and replayed through the live assistant. A GPT-4o judge at a low temperature grades the answers, results are stored per run, and the UI compares one run against another.
+
+Three choices in that description are the ones worth defending.
+
+**It runs against the live system, not a stub.** Stubbing retrieval would make the harness faster and more repeatable, and it would test the prompt rather than the product. The failure I most want to catch is the one where retrieval came back with nothing useful and the model filled the gap anyway, and that failure only exists when the real retrieval layer is in the loop.
+
+**The judge generates follow-up turns.** A single-turn evaluation cannot see a system that answers the first question well and loses the thread on the second. Since the conversation is also the channel where a misroute gets repaired, a harness that only tests turn one is testing the easy half of the product.
+
+**It compares runs rather than issuing a verdict.** An absolute quality score out of an LLM judge is not a number I would defend to two decimal places. The difference between two runs of the same question set, before and after a prompt change, is a much more honest artefact. The question worth asking of a change is "did this make things worse", and that is a comparison, not a grade.
+
+## Keeping the judge honest
+
+The judge is the same class of system as the thing under test, with the same failure mode: confidently wrong. Four things keep it useful.
+
+Ask it about groundedness rather than quality. Give it the retrieved context alongside the answer and ask whether the answer is supported by that context. "Is this supported by what was retrieved" is much closer to a checkable question than "is this good", and it targets the failure that matters.
+
+Keep the temperature low, not for determinism you will not get, but to narrow the spread so that a difference between runs is more likely to be signal than noise.
+
+Never let the judge re-litigate something layer one already settled. If a link is wrong, that is a failed assertion, not an opinion.
+
+Keep the question set small enough that a person can read an entire run. A suite nobody reads is a suite nobody trusts.
+
+## Layer three: humans on a sample
+
+Whether the judge agrees with a person is itself unmeasured until somebody reads the output. Reading a sample of each run costs minutes and is the only thing that catches the judge drifting, which it will, quietly, after any change to its own prompt or model.
+
+It is also where failure modes nobody wrote a question for turn up. Written question sets encode what their author already knew to worry about. Users do not have that limitation.
+
+## What production tells you that the harness cannot
+
+Question sets are written by people who know the product. Real traffic is not, and two numbers from it are worth watching.
+
+**Empty rate.** The share of turns where the system produced nothing usable. Our meeting-notes pipeline is the clean example: 2,000+ summaries per quarter at an 11% empty rate, tracked in PostHog. Worth saying plainly, since the two get conflated: that pipeline is summarisation over a transcript and has no retrieval in it at all, so its numbers say nothing about how the RAG layer is doing. What makes empty rate a good metric is that it needs no judgement. Something either came out or it did not.
+
+**Escalation rate.** The share of conversations that end up handed to a human. Rising escalation is users voting on quality with an action rather than a rating, and it moves before anyone files a complaint.
+
+Neither number says the answers are good. Both say when something got worse, which is the job you actually need production telemetry to do. The rate at which the router falls below its confidence threshold and asks a clarifying question belongs in the same family, and would be the next one I would put on the dashboard.
+
+## Langfuse is tracing, not evaluation
+
+Worth stating flatly, because "we use Langfuse" is often heard as "we have evals" and the two are different jobs. Langfuse carries the prompts, the responses, the token counts, the latency and the cost per call. It is where you go to answer what a turn cost and which step was slow. The grading happens somewhere else entirely, in the harness above, which is our own code. Observability tells you what happened. A test suite tells you whether it should have.
+
+## What is still missing
+
+Every layer above measures the answer. Nothing measures whether the right chunks came back in the first place, and those two things fail differently: retrieval can return the wrong context and the model can still produce a fluent answer that the judge is happy with. Hit rate and MRR at k over a labelled set of question and document pairs is not a hard thing to build, and its absence is the largest gap in the picture.
+
+The same blind spot has a smaller cousin. The similarity threshold in the retrieval path is set low enough to be, in practice, a no-op. It looks like a safeguard in the code and does not behave like one, which is worse than not having it, because the next person reading that file will believe it is doing something.
