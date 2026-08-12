@@ -6,6 +6,11 @@ export type NoteMeta = {
   title: string
   /** Used verbatim as the meta description and as the card summary on /notes. */
   description: string
+  /**
+   * Optional shorter line for the Open Graph card, which is read at thumbnail
+   * size. Set it when the description would have to be cut mid-sentence.
+   */
+  cardSummary?: string
   /** ISO date. Rendered with a fixed locale so server and client agree. */
   published: string
 }

@@ -8,6 +8,13 @@ import type { MDXComponents } from 'mdx/types'
  */
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    // Markdown emits a bare <table>. On a phone a wide one would push the page
+    // sideways, so it gets a scrolling wrapper instead of overflowing.
+    table: (props) => (
+      <div style={{ overflowX: 'auto' }}>
+        <table {...props} />
+      </div>
+    ),
     a: ({ href, ...props }) => {
       const external = typeof href === 'string' && href.startsWith('http')
       return (

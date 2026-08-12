@@ -6,7 +6,8 @@
 
   --color-ink: #14161a;
   --color-ink-soft: #4a5058;
-  --color-ink-faint: #767c85;
+  /* 4.81:1 on --color-paper. #767c85 read nicer but only hit 4.06:1, under WCAG AA. */
+  --color-ink-faint: #6b7078;
   --color-paper: #fbfbf9;
   --color-paper-alt: #f2f2ee;
   --color-rule: #dedcd5;
@@ -120,6 +121,25 @@
     border: none;
     padding: 0;
     font-size: inherit;
+  }
+
+  .prose-note table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .prose-note th,
+  .prose-note td {
+    border: 1px solid var(--color-rule);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .prose-note th {
+    background-color: var(--color-paper-alt);
+    font-weight: 600;
   }
 
   .prose-note hr {
