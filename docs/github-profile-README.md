@@ -8,7 +8,7 @@
 
 AI & Full-Stack Engineer in Warsaw. For the past three years I have worked on production AI inside an enterprise SaaS product: a multi-step assistant, a retrieval layer built by hand on pgvector, and an evaluation harness for a system whose output is not deterministic. Ten years of React, TypeScript and Java underneath that.
 
-Currently at Omnito, where I am the largest contributor to the core product: 5,954 of 12,483 commits over three years.
+Largest contributor to the core product at Omnito: 5,954 of 12,483 commits over three years, where the next contributor has 1,725.
 
 ---
 
@@ -26,7 +26,6 @@ That AI work belongs to my employer, so it is written up rather than open-source
 - **[belyakov.site](https://github.com/maxim-belyakov/belyakov.site)** - the site the notes above live on. Next.js App Router, TypeScript in strict mode, Tailwind, notes in MDX, every route prerendered.
 - **[compile-time-guidelines](https://github.com/maxim-belyakov/compile-time-guidelines)** - a platform's community guidelines modelled in the TypeScript type system, so a post that is known at authoring time and breaks a rule does not typecheck. The same rules run at runtime for text that only exists at runtime, and both paths converge on one branded type that the publish sink is the only consumer of.
 - **[cocoon.city](https://github.com/maxim-belyakov/cocoon.city)** - a coliving site in React 18, TypeScript, Redux Toolkit and Vite: booking flow, EN and PL localisation, tests in Jest and React Testing Library.
-- **[manuliatina](https://github.com/maxim-belyakov/manuliatina)** - a browser visual novel engine written in React in 2019, driven by a data-driven scene graph.
 
 ---
 
@@ -36,17 +35,9 @@ That AI work belongs to my employer, so it is written up rather than open-source
 
 **Backend and cloud** Java 21 · Node.js · AWS Lambda · API Gateway · DynamoDB · PostgreSQL / pgvector · AppSync GraphQL · Cognito · SAML SSO · OpenAPI-driven codegen
 
-**AI** LangChain4j · GPT-4o · RAG on pgvector · LLM-as-judge evaluation · Langfuse tracing
+**AI** LangChain4j · GPT-4o · RAG on pgvector · LLM-as-judge evaluation · Langfuse tracing · prompt and context engineering
 
 **Testing and process** JUnit 5 integration tests · CI/CD · code review
-
----
-
-### GitHub
-
-<!-- Served from a self-hosted github-readme-stats instance on Vercel (reliable, no rate limits). -->
-![Maksim's GitHub stats](https://github-readme-stats-six-zeta-58.vercel.app/api?username=maxim-belyakov&show_icons=true&hide_border=true&count_private=true)
-![Top languages](https://github-readme-stats-six-zeta-58.vercel.app/api/top-langs/?username=maxim-belyakov&layout=compact&hide_border=true)
 
 ---
 
