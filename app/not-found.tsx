@@ -1,8 +1,20 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteFooter from '@/components/site-footer'
 
 // Root not-found boundary. Served with a real 404 status, which is why no
 // loading.tsx is allowed to sit above a segment that can call notFound().
+// The title flows through the root layout's template, giving
+// "404 Not Found - Maksim Beliakov" instead of the site-wide default that every
+// unmatched URL would otherwise show. robots is restated because the root
+// layout sets index: true; without this the page would carry Next's automatic
+// noindex and the layout's "index, follow" at the same time, which is a
+// contradiction to leave in front of a crawler.
+export const metadata: Metadata = {
+  title: '404 Not Found',
+  robots: { index: false },
+}
+
 export default function NotFound() {
   return (
     <>
