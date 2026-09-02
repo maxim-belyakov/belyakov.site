@@ -12,6 +12,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [{ source: '/portfolio', destination: '/#work', permanent: true }]
   },
+  // The invitation at /i/ is unlisted. robots.txt disallows it and the page
+  // sets its own noindex metadata; this header covers the case where a crawler
+  // reaches the URL without reading either of those.
+  async headers() {
+    return [
+      {
+        source: '/i/:token*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
+      },
+    ]
+  },
 }
 
 const withMDX = createMDX({})

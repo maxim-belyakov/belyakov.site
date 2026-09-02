@@ -148,3 +148,223 @@
     margin-top: 2.5rem;
   }
 }
+
+/* Private invitation at /i/<slug>. Scoped to .invite-* so none of it reaches
+   the rest of the site, which is deliberately plain and monochrome. */
+@layer components {
+  .invite-shell {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1rem 2.5rem;
+    overflow: hidden;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #ffffff 0%, transparent 60%),
+      linear-gradient(160deg, #fff4f8 0%, #ffe6ef 55%, #ffdcea 100%);
+    color: #3a2b31;
+  }
+
+  .invite-frame {
+    width: min(26rem, 100%);
+    padding: 0.75rem;
+    border-radius: 2.75rem;
+    background: #ffd7e5;
+    box-shadow: 0 24px 60px rgba(255, 110, 155, 0.28);
+  }
+
+  .invite-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem 1.5rem 1.75rem;
+    border-radius: 2.25rem;
+    background: #ffffff;
+    text-align: center;
+  }
+
+  /* width and height on the Image tag match each file's intrinsic ratio, so
+     only the width is constrained here and the height follows. */
+  .invite-art {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .invite-final-emoji {
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  .invite-title {
+    margin: 0.25rem 0 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .invite-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: #7c6a71;
+  }
+
+  .invite-choice {
+    margin: 0.25rem 0 0;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    background: #fff0f5;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #b03060;
+  }
+
+  .invite-status {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: #a08d95;
+    min-height: 1.2rem;
+  }
+
+  .invite-yes,
+  .invite-no {
+    width: 100%;
+    padding: 0.95rem 1.25rem;
+    border: none;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .invite-yes {
+    margin-top: 0.75rem;
+    background: linear-gradient(135deg, #ff6f9c 0%, #ff3d75 100%);
+    box-shadow: 0 10px 24px rgba(255, 61, 117, 0.35);
+  }
+
+  .invite-yes:hover {
+    box-shadow: 0 14px 30px rgba(255, 61, 117, 0.45);
+  }
+
+  .invite-yes:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .invite-no {
+    margin-top: 0.4rem;
+    background: #c8c2d2;
+    box-shadow: none;
+  }
+
+  .invite-no:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+        .invite-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.25rem;
+  }
+
+  .invite-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.9rem 0.5rem;
+    border: 2px solid #f6dde5;
+    border-radius: 1.1rem;
+    background: #fffafc;
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .invite-tile:hover {
+    transform: translateY(-2px);
+  }
+
+  .invite-tile-on {
+    border-color: #ff3d75;
+    background: #fff0f5;
+  }
+
+  .invite-tile-emoji {
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+
+  .invite-tile-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .invite-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .invite-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: #ffc4d8;
+  }
+
+  .invite-dot-on {
+    background: #ff3d75;
+  }
+
+  .invite-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .invite-heart {
+    position: absolute;
+    bottom: -2rem;
+    font-size: 1.5rem;
+    animation: invite-rise 2.4s ease-out forwards;
+  }
+
+  @keyframes invite-rise {
+    0% {
+      opacity: 0;
+      translate: 0 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      translate: 0 -85vh;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .invite-heart {
+      animation: none;
+      opacity: 0;
+    }
+
+    .invite-yes,
+    .invite-no,
+    .invite-tile {
+      transition: none;
+    }
+  }
+}
