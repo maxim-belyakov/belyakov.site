@@ -23,13 +23,13 @@ export const EXPERIENCE: Role[] = [
     period: '2023 - Present',
     titles: ['Full-Stack Engineer & Team Leader'],
     bullets: [
-      'Largest contributor to the core product repository: 5,954 of 12,483 commits over three years, where the next contributor has 1,725, and the reviewer who merged three quarters of everything else the team shipped. Led a cross-functional team of 8 on a multi-tenant enterprise SaaS scheduling platform serving 2,563 active tenants.',
+      'Largest contributor to the core product repository over three years - about half the commits, roughly three times the next contributor - and the reviewer who merged three quarters of everything else the team shipped. Led a cross-functional team of 8 on a multi-tenant enterprise SaaS scheduling platform serving around 2,500 active tenants.',
       'Shipped a production multi-step AI assistant. An LLM classifier routes intent to 13 skills, and context fetches are issued speculatively in parallel, so turn latency is the slowest fetch rather than the sum of all of them. Answers stream to the browser over WebSocket.',
       'Built its RAG layer by hand: OpenAI embeddings into a pgvector store implemented over JDBC, tenant isolation enforced by table rather than by query filter, fed by a headless-Chromium crawler on ECS Fargate with idempotent re-sync.',
       'Built an LLM-as-judge evaluation harness into the ops console. It replays scripted question sets through the live assistant, generates follow-up turns and compares runs against each other, which is how a non-deterministic system gets regression-tested. Langfuse covers tracing only.',
       'Shipped the LLM meeting-notes pipeline: 2,000+ summaries per quarter at an 11% empty rate, tracked in PostHog. Integrated and customised a forked Chatwoot deployment, and designed agent workflows on a self-hosted Flowise deployment.',
-      'Designed the backend: a single-dispatcher architecture routing 280 handlers against a 262-operation OpenAPI contract that generates both the Java and the TypeScript models, so the two sides cannot drift. Around 107,000 lines of Java across 21 Lambdas, a 46-table DynamoDB model, an SNS-based async job framework and SAML SSO over Cognito.',
-      'Built and maintained the 236,000-line React 18 / TypeScript client: 93 routes behind role-based guards, 48 Redux modules with redux-saga, extended onto Outlook add-ins and Chrome/Edge extensions, integrated with Salesforce, HubSpot, Microsoft Dynamics, Chargebee and Stripe.',
+      'Designed the backend: a single-dispatcher architecture routing 280 handlers against a 260-operation OpenAPI contract that generates both the Java and the TypeScript models, so the two sides cannot drift. Around 100k lines of Java across 21 Lambdas, a 46-table DynamoDB model, an SNS-based async job framework and SAML SSO over Cognito.',
+      'Built and maintained the 200k-line React 18 / TypeScript client: 93 routes behind role-based guards, 48 Redux modules with redux-saga, extended onto Outlook add-ins and Chrome/Edge extensions, integrated with Salesforce, HubSpot, Microsoft Dynamics, Chargebee and Stripe.',
       'Rolled out Claude Code and Cursor across the team, and set the review standard that holds AI-generated code to the same bar as anything else.',
     ],
     stack: [

@@ -43,17 +43,12 @@ export default async function HomePage() {
 
           <div className="mt-8 space-y-5 text-[1.0625rem] leading-relaxed">
             <p>
-              For the past three years I have been the largest contributor to the core product at
-              Omnito:{' '}
-              <strong className="font-medium">
-                <span className="font-mono tabular-nums">5,954</span> of{' '}
-                <span className="font-mono tabular-nums">12,483</span> commits
-              </strong>
-              , where the next contributor has{' '}
-              <span className="font-mono tabular-nums">1,725</span>, and I merged three quarters of
-              everything else the team shipped. A Java backend on AWS Lambda and a{' '}
-              <span className="font-mono tabular-nums">236,000</span>-line React 18 / TypeScript
-              client.
+              For the past three years I have built and reviewed most of the core product at
+              Omnito: a Java backend on AWS Lambda and a{' '}
+              <span className="font-mono tabular-nums">200k</span>-line React 18 / TypeScript
+              client. I wrote{' '}
+              <strong className="font-medium">about half the commits</strong> in that repository,
+              and I merged three quarters of everything else the team shipped.
             </p>
             <p>
               The part I go deepest on is production AI: a multi-step assistant that routes intent

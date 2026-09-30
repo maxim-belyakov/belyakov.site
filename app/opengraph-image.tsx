@@ -49,7 +49,7 @@ export default async function OpengraphImage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div style={{ fontSize: 30, lineHeight: 1.4, color: INK }}>
-            5,954 of 12,483 commits on the core product at Omnito.
+            Built and reviewed most of the core product at Omnito.
           </div>
           <div style={{ fontSize: 30, lineHeight: 1.4, color: INK_SOFT }}>
             Production AI: a 13-skill assistant, RAG on pgvector, and an LLM-as-judge harness.
