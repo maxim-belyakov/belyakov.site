@@ -1,0 +1,49 @@
+export const meta = {
+  slug: 'generating-both-sides-of-a-contract',
+  title: 'Generating both sides of a contract',
+  description:
+    'One OpenAPI spec of 262 operations generates the Java models the backend compiles against and the 904 TypeScript files the frontend imports. The two sides cannot drift, because drifting would not compile. What that discipline costs.',
+  cardSummary:
+    'One OpenAPI spec generates the Java models the backend compiles against and the 904 TypeScript files the frontend imports. Drift stops being possible.',
+  published: '2026-09-02',
+}
+
+Frontend and backend disagreeing about a field is the most boring bug in web development and one of the most expensive. The field was renamed, the type went from string to enum, a nullable became required. Nothing fails at build. It fails in a browser, in front of a customer, days later.
+
+We removed the category. One OpenAPI specification, 262 operations, 15672 lines across the root file and 32 model files, generates both sides.
+
+## How it is wired
+
+On the backend, the `openapi-generator` Gradle plugin produces Java models, and `compileJava` depends on `generate`. The generated sources are compiled as part of the module. If a handler references a field the spec does not describe, compilation fails.
+
+On the frontend, `openapi-generator-cli` produces 904 TypeScript files into `src/generated-sources/internal-api`, and it runs on every `yarn start` and every `yarn build`. If a component reads a property that no longer exists, TypeScript fails.
+
+The spec is the only place either side can be changed from. Nobody hand-writes a request type on either end, because a hand-written one would be overwritten on the next build.
+
+## What this is really doing
+
+The obvious benefit is that the two sides cannot drift. The more useful one is that **the cost of a contract change becomes visible at the moment you make it**.
+
+Rename a field in the spec, build, and the compiler hands you the complete list of call sites on both sides. That list is the actual size of the change. Without generation, that list exists too, but you discover it incrementally, in production, over a week.
+
+This flips a specific team behaviour. When the blast radius of a contract change is unknown, people avoid contract changes: they add a second field beside the first, they overload an existing one, they return a stringly-typed blob and parse it on the other side. The schema rots because changing it feels dangerous. When the blast radius is a compiler error list, changing the schema is the easy path again.
+
+## The part people skip
+
+Code generation is often sold as "write less code". That is not the point and it is barely even true, because the generated output here is larger than what anyone would write by hand. 904 files is not a saving.
+
+The point is that the generated code is **not editable**. A hand-written client that happens to match the spec today is a client that will diverge from it, quietly, the first time someone fixes something locally instead of in the contract. Generation makes local fixes impossible, which sounds like a restriction and is actually the whole mechanism.
+
+## What it costs
+
+**Generation is now in the critical path of every build.** Every `yarn start` regenerates. Generator upgrades are risky in a way that library upgrades are not, because a generator changing its output shape is a diff across 904 files that nobody will read.
+
+**The spec has to be good, and specs rot differently than code.** A spec that compiles can still be dishonest: a response typed as an object with no properties, an enum that is really a string, a field marked optional because making it required broke something once. The compiler enforces that the two sides agree with the spec. It does not enforce that the spec describes reality. That check is still human, and it is the one that actually slips.
+
+**Generated code is bad at domain modelling.** The generated types are transport types. The temptation is to use them as domain types everywhere, because they are already there, which spreads transport concerns through code that should not know about them.
+
+## One honest footnote
+
+All 262 of our operations are POST. This is not REST by verbs; it is RPC over HTTP with an OpenAPI contract, and calling it anything else in an interview will go badly within about two questions.
+
+That choice loses the things HTTP verbs give you for free: cacheability, idempotency semantics, a proxy that understands what a request means. For an authenticated internal API behind a dispatcher, none of those were load-bearing, and uniformity made the dispatcher simpler. It is a real trade and it is worth stating as one rather than dressing it up.

@@ -5,10 +5,10 @@ export const meta = {
     'Assertions stop working once the same input can produce a different answer. Deterministic checks at the bottom, an LLM-as-judge harness above them, human review on a sample, and two production metrics that tell you when it slipped.',
   cardSummary:
     'Assertions stop working once the same input can produce a different answer. Deterministic checks, an LLM-as-judge harness, and two production metrics.',
-  published: '2026-08-11',
+  published: '2026-08-18',
 }
 
-The backend around our assistant is covered the ordinary way: JUnit 5 with DynamoDB Local and H2, sixteen modules wired together, fake connectors standing in for every third-party integration, roughly 9,700 lines of test code running the real handlers. That works because the same input produces the same output, so a failure means something changed.
+The backend around our assistant is covered the ordinary way: JUnit 5 with DynamoDB Local and H2, sixteen modules wired together, fake connectors standing in for every third-party integration, 9698 lines of test code running the real handlers. That works because the same input produces the same output, so a failure means something changed.
 
 The assistant does not have that property. Ask it the same question twice and you get two different sentences, both correct. Everything built on `assertEquals` stops being useful at that point, and the interesting failure is not an exception anyway. It is a fluent, confident, wrong answer. Nothing throws.
 
@@ -70,7 +70,7 @@ It is also where failure modes nobody wrote a question for turn up. Written ques
 
 Question sets are written by people who know the product. Real traffic is not, and two numbers from it are worth watching.
 
-**Empty rate.** The share of turns where the system produced nothing usable. Our meeting-notes pipeline is the clean example: 2,000+ summaries per quarter at an 11% empty rate, tracked in PostHog. Worth saying plainly, since the two get conflated: that pipeline is summarisation over a transcript and has no retrieval in it at all, so its numbers say nothing about how the RAG layer is doing. What makes empty rate a good metric is that it needs no judgement. Something either came out or it did not.
+**Empty rate.** The share of turns where the system produced nothing usable. Our meeting-notes pipeline is the clean example: 2000+ summaries per quarter at an 11% empty rate, tracked in PostHog. Worth saying plainly, since the two get conflated: that pipeline is summarisation over a transcript and has no retrieval in it at all, so its numbers say nothing about how the RAG layer is doing. What makes empty rate a good metric is that it needs no judgement. Something either came out or it did not.
 
 **Escalation rate.** The share of conversations that end up handed to a human. Rising escalation is users voting on quality with an action rather than a rating, and it moves before anyone files a complaint.
 

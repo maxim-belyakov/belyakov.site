@@ -1,0 +1,47 @@
+export const meta = {
+  slug: 'one-lambda-many-routes',
+  title: 'One Lambda, 280 routes',
+  description:
+    'The default serverless shape is one function per endpoint. We run 280 HTTP handlers across 47 domains behind a single dispatcher that builds its routing table by scanning the classpath on cold start. What that buys, and the three places it hurts.',
+  cardSummary:
+    'The default serverless shape is one function per endpoint. We run 280 handlers behind a single dispatcher that builds its routing table on cold start.',
+  published: '2026-08-24',
+}
+
+The textbook serverless API has one function per endpoint. Each route gets its own deployment unit, its own memory setting, its own concurrency, its own cold start. It is the shape every tutorial draws and the shape the tooling assumes.
+
+Our backend has 280 HTTP handlers across 47 domain packages, and all of them live inside one Lambda.
+
+## How the dispatcher works
+
+On cold start, the function scans its own package with ClassGraph, finds every subclass of `BaseHttpLambda`, instantiates each one, and builds a `Map<routePath, handler>`. API Gateway routes everything to the same function with the route as a path parameter. The dispatcher looks it up, hands the request to the handler, and enforces a 20 second timeout that turns into a 504 if a handler overruns.
+
+Adding an endpoint means adding a class. There is no infrastructure change, no new CloudFormation resource, no new deployment target. The registry builds itself.
+
+## What this actually buys
+
+**One cold start instead of 280.** This is the whole argument, and it is bigger than it sounds. Our handlers share a large object graph: a reflection-based DynamoDB layer with 45 repository classes, 57 integration service classes, a permission model spanning 13 domains. Under function-per-endpoint, every one of those functions pays to construct its share of that graph the first time it is hit, and pays again whenever it scales out or goes cold. A product with uneven traffic across 47 domains means most endpoints are permanently cold. Collapsing them into one function means the warm instance that just served a billing call is the same instance that serves the next calendar call.
+
+**Shared state is actually shared.** Caches, connection pools, and the resolved configuration are built once per instance rather than once per instance per function. With 46 DynamoDB tables and a PostgreSQL connection behind the same request path, that is not a micro-optimisation.
+
+**Deployment is one unit.** 280 endpoints change together, version together, and roll back together. There is no window in which half the API is on the new contract.
+
+## Where it hurts, honestly
+
+**Blast radius.** A memory leak, a bad static initialiser, or an unbounded allocation in any one of 280 handlers degrades all of them. Function-per-endpoint gives you failure isolation for free, and we gave that up on purpose. The mitigation is unglamorous: a hard timeout per handler, a response size cap at 5MB, and enough integration coverage that a handler misbehaving in a new way is usually caught before deploy.
+
+**You cannot tune one route.** Memory, timeout, and reserved concurrency are properties of the function, so they are properties of all 280 routes at once. An endpoint that genuinely needs 3GB forces that number on everything, or it does not get it. We have not hit the case where this was the deciding constraint, but it is a real ceiling and it arrives without warning.
+
+**Cold start grows with the codebase, not with the request.** Classpath scanning is proportional to the number of classes, and the number of classes only goes up. This is the cost that compounds. It is also the one with the clearest escape hatch: the scan result is a pure function of the build, so it can be computed at build time and baked in as a generated registry. We did not need to do that yet, which is a statement about our traffic shape rather than a claim that the problem is not there.
+
+## The pattern repeats
+
+The same ClassGraph scan shows up a second time in the system, in the async job handler. A job is a POJO wrapped in an envelope and published to a single SNS topic; the consumer scans for subclasses of `BaseJobHandler` and routes by job type exactly as the HTTP dispatcher routes by path. 15 job types, one topic, one function.
+
+That is the real finding. Once you have a convention that says "a unit of work is a class with a known base type", the registry is derivable and the infrastructure stops growing with the feature list. The cost is that the convention has to be enforced by discipline rather than by the deployment system refusing to accept a violation.
+
+## When not to do this
+
+If your endpoints have genuinely different resource profiles, if you need per-route concurrency limits, or if you are in a regulated setting where blast radius is an auditable property, the default shape is the default for good reasons.
+
+The case for collapsing is specific: many endpoints, wildly uneven traffic, and a heavy shared object graph that every one of them needs. That describes a multi-tenant B2B product, and it describes ours. It does not describe a public API with three hot routes.

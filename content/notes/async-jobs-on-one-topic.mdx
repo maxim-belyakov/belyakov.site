@@ -1,0 +1,53 @@
+export const meta = {
+  slug: 'async-jobs-on-one-topic',
+  title: 'Fifteen job types, one SNS topic',
+  description:
+    'No queue, no broker, no workflow engine. A job is a class, the envelope carries its type, and one consumer routes by scanning the classpath. Linear backoff, ten attempts, and the thing we deliberately call a delay primitive rather than an orchestrator.',
+  cardSummary:
+    'No queue, no broker, no workflow engine. A job is a class, the envelope carries its type, and one consumer routes by classpath scan.',
+  published: '2026-09-14',
+}
+
+The background work in our product is ordinary: propagate an event to a calendar, generate a pre-call plan, run a feature rollout in chunks, deliver a webhook. 15 job types in total.
+
+The usual answers are a queue with a worker pool, or a workflow engine. We use one SNS topic and one Lambda.
+
+## The shape
+
+`JobUtils.runAsyncJob(job)` takes a plain object, wraps it in an envelope carrying the request context, the handler class name, the serialised body and a retry count, and publishes to a single topic. One consumer function is subscribed. On cold start it scans the classpath for subclasses of `BaseJobHandler` and builds a routing table by job type, the same trick the HTTP dispatcher uses for its 280 routes.
+
+Adding a background job means adding a class. No new topic, no new subscription, no new function, no infrastructure diff.
+
+## Why not SQS
+
+We do not use SQS at all, which usually gets a raised eyebrow, so it is worth being precise about what we gave up.
+
+SQS would give us a visibility timeout, a dead letter queue, batch receives, and backpressure through a bounded in-flight count. Those are real and we have none of them. SNS to Lambda is fire and forget: the topic fans out, Lambda scales to meet it, and nothing in the path says "slow down".
+
+What we got instead is that the retry policy lives in our code rather than in queue configuration. A handler that cannot complete throws `RetryJobException`, and the consumer republishes the same envelope with the retry count incremented and a linear backoff of `15 + retried * 15` seconds. After 10 attempts it stops.
+
+Linear rather than exponential is a deliberate choice for this workload. These jobs mostly fail because a third-party API is rate limiting or briefly down, and the recovery window is minutes, not hours. Exponential backoff over 10 attempts would put the last retry most of a day out, long after anyone cares whether the calendar event propagated. Linear keeps the whole retry budget inside about 14 minutes.
+
+The honest version of the trade: this works because our job volume is bounded by tenant activity rather than by a firehose, and because every job is idempotent by construction. Remove either property and the missing backpressure becomes the whole story.
+
+## Step Functions, named accurately
+
+We have four Step Functions definitions. All four are the same two-state machine: wait N seconds, then invoke a Lambda.
+
+That is a delay primitive, not an orchestrator. There is no branching, no parallel state, no map, no error handling in the state machine. Describing this as "orchestrating workflows with Step Functions" would be a sentence that survives a CV and dies in the first follow-up question.
+
+It is worth saying why a whole AWS service is in the stack to do something that small. Lambda has no native "run this in 20 minutes" and SNS has no delivery delay. The alternatives were a scheduled sweeper polling a DynamoDB table of pending work, or a Step Function per delayed job. The sweeper is more moving parts and more failure modes for the same outcome. Four two-state machines is the boring answer, and boring was right.
+
+## Where the real complexity went
+
+Nothing above is complicated, and that is the point: the machinery is simple enough to hold in your head, so the difficulty moved to where it belongs, which is the jobs themselves.
+
+Retrying means every handler has to be safe to run twice. Our re-sync path for knowledge bases, for example, is delete-by-source then insert, specifically so that a retry after a partial failure converges rather than duplicating. That property is not provided by the transport. It is written into each handler, one at a time, and it is the only part of this design that takes genuine care.
+
+Six EventBridge schedules sit alongside this for the periodic work: hourly credit recalculation, and daily workers that run at 00:00 and 00:01 UTC. Those are cron, and calling them cron is accurate.
+
+## The reusable idea
+
+Infrastructure that grows linearly with your feature list is a tax you pay forever. One topic, one consumer, and a convention that a unit of work is a class with a known base type means the fifteenth job type costs exactly what the second one cost.
+
+The limit is visible from here. One topic means one retry policy and one set of function-level settings for all 15 job types. The first job that genuinely needs a different retry shape or its own concurrency ceiling is the one that splits the topic, and that is a fine moment to pay the cost rather than paying it up front for a problem nobody has.

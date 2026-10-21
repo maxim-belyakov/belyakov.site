@@ -1,0 +1,49 @@
+export const meta = {
+  slug: 'a-reflection-orm-and-28-migrations',
+  title: 'Writing an ORM for a database that does not need one',
+  description:
+    'DynamoDB has an official mapper. We wrote our own on reflection instead, across 46 tables and 45 repositories, and then had to answer the question every schemaless store eventually asks: what is a migration when there is no schema?',
+  cardSummary:
+    'DynamoDB has an official mapper. We wrote our own on reflection across 46 tables, then had to define what a migration means with no schema.',
+  published: '2026-09-25',
+}
+
+Writing your own persistence layer is on every list of things not to do, usually right under writing your own auth. We wrote one anyway: annotations for `@Entity`, `@PrimaryKey` and `@SortKey`, a base `Repository` that resolves the physical table name by environment prefix and reads fields by reflection, and 45 repository classes on top of it covering 46 tables.
+
+This note is about why that was defensible and what it actually cost, because the honest answer to both is more specific than "we needed more control".
+
+## What the official mapper does not do
+
+The AWS SDK mapper handles the common case well: annotate a class, get load, save, query, delete. The friction appears at the edges, and our edges were table naming and composite keys.
+
+Every table in the system is physically named with an environment prefix, so the same entity class has to resolve to different tables in different deployments. And three of our tables use composite keys that are not simply "id plus timestamp": events are partitioned by user with a sort key built from the event date, user data by user with a link as the sort key, integration records by internal identifier with the external one sorting.
+
+None of that is impossible with the stock mapper. All of it is friction that would have been paid at every call site instead of once in a base class. A base `Repository` that knows how to resolve a table and build a composite key means a repository implementation is mostly declarative.
+
+## What it costs, stated plainly
+
+**Reflection moves errors from compile time to runtime.** A mistyped annotation, a field whose type does not match what the table holds, a renamed property that nothing references statically: none of that fails at build. It fails at the first read. This is the real price and it is paid continuously.
+
+**It is undocumented by definition.** A new engineer knows what the AWS mapper does because it has documentation and a community. They learn what ours does by reading it. That cost is invisible when the team is stable and sharp the moment it is not.
+
+**You own the bugs.** Every edge case in serialisation, every type that does not round-trip cleanly, is now your bug rather than an upstream issue with a workaround on a forum.
+
+The thing that makes it worth it is that this layer is small, it does one job, and it stopped changing. A homegrown abstraction that keeps growing is a trap. One that reached its shape and then sat still is just code.
+
+## Migrations against a schemaless store
+
+Here is the question DynamoDB does not answer for you. There is no schema, so there is nothing to migrate in the relational sense, and yet the data absolutely has a shape and that shape absolutely changes.
+
+We treat migrations as ordinary versioned code: 28 migration folders, a `versions.properties` file that assembles the applied set, and `Repository.init()` checking the version at startup. A migration is not a DDL statement. It is a program that walks items and rewrites them.
+
+What this gets right is that the version check is at startup rather than in a deploy script. Code that expects the new shape refuses to run against data that has the old one, which is the property you actually want. A schemaless store will happily serve you an item from two shapes ago with no complaint, and the resulting bug surfaces far from its cause.
+
+What it does not solve is the hard part of any data migration, which is that the rewrite and the deploy are not atomic. For a large table you are serving reads from a mix of shapes while the migration runs, and the only real answer is that reading code tolerates both shapes for a release. There is no clever version of this. It is discipline, and it is the part people forget to plan for.
+
+## The relational exception
+
+Three entities live in PostgreSQL instead: licences, tenants, and a test table. They are there because they are genuinely relational and genuinely low-volume, and because billing and licensing are the places where you want transactions and constraints rather than eventual consistency and hand-written invariants.
+
+That side gets the ordinary treatment, and the contrast is the interesting bit. Liquibase runs through a dedicated Lambda after every deploy, and **it fails the build if a migration fails**. The relational store enforces its own shape, so a migration that cannot apply is a hard stop. The schemaless store cannot enforce anything, so the equivalent safety had to be built: 28 versioned folders, a properties file, and a startup assertion, all to recreate what `ALTER TABLE` gives you for free.
+
+That is the honest summary of schemaless. You do not avoid the schema. You move it into your code and take responsibility for enforcing it yourself.

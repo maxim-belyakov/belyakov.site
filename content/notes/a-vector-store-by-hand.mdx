@@ -1,0 +1,53 @@
+export const meta = {
+  slug: 'a-vector-store-by-hand',
+  title: 'Writing the vector store by hand',
+  description:
+    'The framework ships an embedding store for pgvector. We replaced it with our own over plain JDBC, because of one requirement its filter API could not express. A table per knowledge base, structural tenant isolation, and three gaps worth naming.',
+  cardSummary:
+    'The framework ships an embedding store for pgvector. One requirement its filter API could not express sent us to plain JDBC instead.',
+  published: '2026-10-05',
+}
+
+Our retrieval layer runs on pgvector in PostgreSQL, embeddings from OpenAI, and LangChain4j for the model calls. The framework ships an embedding store implementation for exactly this combination, and we do not use it. We wrote our own over plain JDBC.
+
+The reason is narrower than "we needed more control", and the narrowness is the point.
+
+## The requirement that forced it
+
+Ingested content comes from three source types: pasted text, a document in S3, and a crawled website. Content from any of them can be re-synced, and a re-sync has to be idempotent. Run it twice and you get one copy of the current content, not two copies or a mix of old and new.
+
+The way to get that is delete-by-source then insert. Delete every chunk whose metadata says it came from this source, then write the fresh chunks.
+
+The stock implementation's filter API could express which rows to search. It could not express which rows to delete by their metadata. Everything else about the integration was fine. That one operation was the whole problem.
+
+The choices were to work around it, keeping a separate index of which chunk identifiers belong to which source and deleting by identifier, or to write the store. The workaround means maintaining a second source of truth that can drift from the first, to avoid writing a `DELETE` statement. We wrote the store.
+
+## What it actually is
+
+Each knowledge base gets its own table. Four columns: an identifier, the embedding, the chunk text, and metadata as `jsonb`. Similarity is cosine distance through the `<=>` operator. Ingest batches embeddings 100 at a time against the same model used at query time, which is not optional: embedding a query with a different model than the documents produces results that look plausible and are noise.
+
+Chunking is recursive splitting at 1000 characters for text and documents, 5000 for crawled pages, with 200 characters of overlap. The larger window for crawled content is because a page carries structure that chunking at 1000 tends to cut through the middle of.
+
+Website ingest runs headless Chromium on ECS Fargate, sitemap first with a breadth-first fallback, depth 1 to 3, up to 300 pages, output to S3.
+
+## The part that turned out to matter most
+
+A table per knowledge base was a consequence of the design, not its goal, and it ended up being the most valuable property in the system.
+
+The usual shape is one table with a tenant column and a filter on every query. That works, and it means tenant isolation is a predicate that has to be correct on every single read path, forever, including the read path somebody adds next quarter. One missing `WHERE` clause and a customer sees another customer's documents. It is a class of bug that is catastrophic, easy to introduce, and invisible in testing unless you are specifically looking for it.
+
+With a table per knowledge base, there is no filter to forget. A query that forgets its scope does not return the wrong tenant's data. It fails, because it has no table name.
+
+Retrieval takes the top 3 from two stores, a personal knowledge base and a workspace one, so at most 6 chunks reach the prompt. Neither store can return a row belonging to anyone else, and the reason is structural rather than procedural.
+
+The cost is table count and the operational weight that comes with it. At our scale that is fine. At a scale where knowledge bases are created per end user rather than per workspace it would not be, and the filter approach with a very carefully audited data access layer becomes the right answer again. It is a trade that depends entirely on how many tables you are willing to have.
+
+## Three gaps, named
+
+**There is no vector index.** Queries are sequential scans. At our corpus sizes this is fast enough that adding an approximate index would be optimising something nobody has complained about, and approximate indexes trade recall for speed in ways that need measurement to justify. It is a known limit with a known fix, not an oversight, but it is a limit.
+
+**The similarity threshold is effectively a no-op.** It is set permissively enough that it does not remove anything. Retrieval returns its top 3 regardless of whether those chunks are actually relevant, which means a question with no good answer in the corpus still gets 3 chunks of something.
+
+**There are no retrieval quality metrics.** We trace LLM calls, so we can see what was retrieved and what the model did with it. We cannot answer "did retrieval get worse this month" with a number. That requires a labelled set of queries with known-good documents, and building one is work nobody has prioritised.
+
+The third gap is the one that matters. The first two are tuning. The third is the difference between knowing the system works and believing it does.

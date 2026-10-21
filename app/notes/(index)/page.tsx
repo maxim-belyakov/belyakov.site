@@ -6,14 +6,14 @@ import { allNoteMeta, formatNoteDate } from '@/lib/notes'
 export const metadata: Metadata = {
   title: 'Technical notes',
   description:
-    'Notes on building and testing production AI: routing a multi-step assistant across 13 skills, and regression-testing a non-deterministic system with an LLM-as-judge harness.',
+    'Architecture notes from production work: a dispatcher carrying 280 routes, a generated API contract, a hand-written pgvector store, tenant isolation that fails loudly, and rolling coding agents out to a team.',
   alternates: { canonical: '/notes' },
   openGraph: {
     type: 'website',
     url: '/notes',
     title: 'Technical notes - Maksim Beliakov',
     description:
-      'Notes on building and testing production AI: routing a multi-step assistant across 13 skills, and regression-testing a non-deterministic system with an LLM-as-judge harness.',
+      'Architecture notes from production work: a dispatcher carrying 280 routes, a generated API contract, a hand-written pgvector store, tenant isolation that fails loudly, and rolling coding agents out to a team.',
   },
 }
 
@@ -29,7 +29,7 @@ export default async function NotesIndexPage() {
 
         <h1 className="mt-8 text-3xl font-semibold tracking-tight sm:text-4xl">Technical notes</h1>
         <p className="mt-3 max-w-xl text-ink-soft">
-          Architecture decisions from production AI work, written out at the level of detail I would
+          Architecture decisions from production work, written out at the level of detail I would
           use to answer a follow-up question.
         </p>
 

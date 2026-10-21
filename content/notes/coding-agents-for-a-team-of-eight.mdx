@@ -1,0 +1,59 @@
+export const meta = {
+  slug: 'coding-agents-for-a-team-of-eight',
+  title: 'Coding agents, for a team of eight',
+  description:
+    'Rolling Claude Code and Cursor out to a working team is not a tooling decision. It changes what a pull request means, where the time goes, and what a reviewer is actually for. Notes from doing it, including what did not work.',
+  cardSummary:
+    'Rolling coding agents out to a working team changes what a pull request means and what a reviewer is actually for.',
+  published: '2026-10-21',
+}
+
+I introduced Claude Code and Cursor to a team of eight, wrote the standard for how we use them, and reviewed most of what the team shipped afterwards. This is what I would tell someone about to do the same thing.
+
+The short version: the tooling part takes a week. The part that takes months is that these tools move the bottleneck in your team, and nobody reorganises around the new bottleneck until it has been hurting for a while.
+
+## The rule the whole thing rests on
+
+Delegate generation, not responsibility.
+
+An agent can write the code. It cannot be accountable for the code, because accountability requires someone who will be there when it breaks and who can explain why it was built that way. That person is still the engineer whose name is on the pull request, and nothing about the tool changes that.
+
+Stated like that it sounds obvious. In practice it is the line everything else hangs off, because it answers the question people actually struggle with: what am I supposed to do with the twenty minutes the agent just saved me? The answer is that a good part of it goes into reading the diff properly, which is the work that was being skimped on before the tools arrived and is now the only work that matters.
+
+## What review turns into
+
+Before, review mostly answered two things: is this approach right, and does this code do what the author thinks it does.
+
+After, the first question is unchanged and the second one splits. Generated code is usually locally correct and idiomatic, which removes an entire category of review comment and makes review genuinely harder, because the signals you used to scan for are gone. It looks finished. The failure modes move:
+
+**Edge cases that were never in the prompt.** The agent solves the problem as described. The null case, the empty collection, the concurrent second call, the tenant who has not completed onboarding: absent unless someone thought to mention them, and the code does not look incomplete without them.
+
+**Plausible invention.** A method that does not exist, a config key that was never defined, a library behaviour that would be reasonable and is not real. Homegrown layers draw this out more than anything else, because a reflection-based repository and a hand-rolled permission model are exactly the kind of thing a model will confidently guess the shape of.
+
+**Patterns that are right generally and wrong here.** Generated code reaches for conventional solutions, so a codebase with deliberate unconventional choices gets the convention suggested back at it. Each of those is a small correct-looking change that erodes a decision somebody made on purpose.
+
+**Scope drift.** Asked to fix one thing, the agent tidies three others. The diff is larger than the task and the extra changes are unmotivated. This is the one most likely to be waved through, because every individual extra change looks fine.
+
+## What goes in a standard
+
+The document we wrote is short, and the parts that earned their place are about accountability rather than prompting.
+
+- The diff is read before it is pushed. Not skimmed. A change too large to read is too large to push, and the fix is to ask for less at a time.
+- Generated tests do not count as verification of generated code. The same misunderstanding writes both, and they agree with each other.
+- Anything touching money, permissions, or tenant boundaries gets a second human. Those are the three places where a plausible wrong answer is expensive and quiet.
+- "The agent wrote it" is not an explanation in review. If the author cannot say why the code is shaped that way, the pull request is not ready.
+- The agent's context is the repository's responsibility. Conventions it needs belong in files it reads, not in individual prompts. A convention that lives only in somebody's prompt history is one the next person does not get.
+
+## What did not work
+
+**Treating adoption as uniform.** The same tool changed different people's work by very different amounts, and the largest gains went to those already strongest at specifying a problem precisely. That is not the distribution anyone expects going in.
+
+**Expecting tests to absorb the extra volume.** More code produced means more code to verify, and verification capacity did not change. On the backend, where integration coverage is real, this was mostly fine. On the frontend, which has no tests at all, generation increased throughput into the part of the system with no safety net. That was a worse trade than it looked at the time.
+
+**Hoping the standard would be read.** It was followed where it matched what review actually enforced and ignored where it did not. The review behaviour is the standard. The document only describes it.
+
+## On MCP, precisely
+
+I have used the Model Context Protocol as a client and wired third-party servers into our development loop. I have not written and shipped a server of my own, and I would rather say so than let the distinction blur, because they are different amounts of knowledge.
+
+There is a fair parallel in the product, though. The question MCP answers, how an agent discovers and calls a set of tools, is the question our dispatcher answers for a different consumer: 280 handlers behind an OpenAPI contract of 262 operations, discovered by scanning rather than by hand-maintained registration. The design pressure is the same one. The protocol was not.

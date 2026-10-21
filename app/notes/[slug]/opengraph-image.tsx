@@ -14,7 +14,7 @@ import { loadNote, noteSlugs } from '@/lib/notes'
 
 /**
  * One card per note, so a link to a single note unfurls with that note's own
- * title rather than the site-wide card. Both notes go into LinkedIn Featured
+ * title rather than the site-wide card. Individual notes go into LinkedIn Featured
  * separately, which is the whole reason this file exists.
  *
  * generateStaticParams matches the page, so every card is a PNG produced at

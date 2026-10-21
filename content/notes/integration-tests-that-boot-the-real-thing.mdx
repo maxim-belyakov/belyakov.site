@@ -1,0 +1,47 @@
+export const meta = {
+  slug: 'integration-tests-that-boot-the-real-thing',
+  title: 'Tests that boot the real handlers',
+  description:
+    'Sixteen modules wired together, DynamoDB running locally, H2 standing in for Postgres, and fake connectors for every third party. 9698 lines of test code that exercise production code paths. Also the part of the system with no tests at all.',
+  cardSummary:
+    'Sixteen modules wired together, DynamoDB local, H2 for Postgres, fake connectors for every third party, exercising production code paths.',
+  published: '2026-10-16',
+}
+
+A test that mocks the thing it is testing proves the mock works. This is the failure mode of unit-testing a system whose complexity lives in the wiring rather than in any one function: every piece passes, and the assembled product is broken in a way no test could have seen.
+
+Our backend test suite is built the other way. It boots 16 modules, runs DynamoDB locally with native bindings, stands H2 in for PostgreSQL, and calls the real handlers. 90 files, 9698 lines.
+
+## What gets faked, and what does not
+
+The rule we settled on: **fake what you do not control, run what you do.**
+
+Everything beyond the system boundary is a fake: Salesforce, HubSpot, Microsoft Dynamics, Stripe, Google Maps, and five messaging channels. These are the places where a real call is slow, needs credentials, costs money, or has side effects in somebody else's system.
+
+Everything inside the boundary is real. The dispatcher is the production dispatcher. The repositories are the production repositories, talking to a real DynamoDB over the wire protocol rather than to a stub. The permission checks are the production permission checks. A test calls a handler the way API Gateway calls it, and what happens next is what happens in production.
+
+That distinction decides what the suite can catch. A missing index on a table, a composite key built wrong, a permission rule that denies the case it should allow, a migration that breaks a read path: all of those are wiring, and all of them show up. They would not show up against a mocked repository, because a mocked repository has no indexes and no key structure to get wrong.
+
+The suite covers events, availability, billing on both providers, licences, roles, SSO, authorisation, invitations, Zapier, three CRMs, eight suites of Salesforce webhook cases, seven of messaging webhooks, the assistant, feature rollout, and web push.
+
+## The costs, which are real
+
+**It is slow compared to unit tests.** Booting 16 modules and a local database is seconds, not milliseconds. The suite runs on pull requests rather than on save, and that changes how it is used: it is a gate, not a feedback loop.
+
+**Fakes drift.** A fake Stripe that models what Stripe did when it was written slowly stops modelling Stripe. There is no automatic detection for this. The failure is a test that passes while production breaks, which is the worst kind, and the only mitigation is treating integration changes as a prompt to revisit the fake.
+
+**Failures are less localised.** When a unit test fails, you know which function. When this suite fails, you know which scenario, and the cause could be anywhere along a path that crosses several modules. Good test naming and small scenarios help; they do not make the problem go away.
+
+That is the trade. The suite catches a class of bug that unit tests structurally cannot, and in exchange it is slower and its failures take longer to read.
+
+## The part with no tests
+
+The frontend has zero tests. Not few. Zero.
+
+The infrastructure is installed, the setup file exists, and nobody wrote a test. 236549 lines of hand-written TypeScript across 732 components, 48 reducers and 43 sagas, with nothing automated checking any of it. The continuous integration workflow named `pr-ui-test` runs a linter with warnings treated as errors and a check that test identifiers are unique. It runs no tests, which makes its name the most honest piece of documentation about the state of things.
+
+I would rather state that plainly than let someone discover it, because the shape of it is the interesting part.
+
+The backend got tests because its failures were expensive and invisible: a billing path that silently does the wrong thing costs money and nobody sees it for a month. Frontend failures were cheap and loud: something looks wrong, a user says so that day. Rationally, the backend was the better place to spend the effort, and the same reasoning applied every single time the question came up. Each individual decision was defensible. The accumulated result is not.
+
+The part that bothers me is not coverage. It is that the state machine in those reducers and sagas is the kind of logic that is perfectly testable without a browser, and it has drifted far enough that the first test is now a project rather than an afternoon. Debt compounds by making its own repayment more expensive, and this is a clean example of it.

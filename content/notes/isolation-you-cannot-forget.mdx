@@ -1,0 +1,51 @@
+export const meta = {
+  slug: 'isolation-you-cannot-forget',
+  title: 'Isolation you cannot forget to apply',
+  description:
+    'Multi-tenant leaks are almost never a clever attack. They are a missing filter on a path somebody added last week. Notes on moving isolation out of per-query discipline and into places where omitting it fails loudly.',
+  cardSummary:
+    'Multi-tenant leaks are almost never a clever attack. They are a missing filter on a path somebody added last week.',
+  published: '2026-10-13',
+}
+
+Every multi-tenant system has the same worst bug. Not an exploit, not a privilege escalation chain: a query somewhere that forgot its tenant filter, on a path added in a hurry, returning one customer's data to another.
+
+The defence usually offered is a code review checklist. That is a defence that degrades, because it depends on everyone remembering a rule on every new path, forever, including under deadline. The useful question is narrower: **which isolation decisions can be moved somewhere that fails loudly when omitted, and which are stuck being discipline?**
+
+Across our system the answer splits into three groups.
+
+## Structural: the filter does not exist to be forgotten
+
+Our retrieval layer gives each knowledge base its own physical table rather than a shared table with a tenant column.
+
+That makes isolation a property of table resolution rather than of query construction. There is no predicate to leave off. A query that has not resolved its scope has no table name, so it fails rather than returning somebody else's rows. The failure mode of forgetting is an error, not a leak.
+
+This is the strongest form and it is also the least general. It works here because knowledge bases are coarse, per workspace rather than per user, so the table count stays sane. Applying the same idea to the 46 tables of core product data would be absurd.
+
+## Choke points: one place to be correct
+
+Most of the system cannot be structural, so the next best thing is to make sure there is exactly one place where the check happens and no way around it.
+
+Every one of our 280 HTTP handlers extends a single base class, and that base class is where the request context gets built, where the public and private API split is enforced, and where the user identifier is put into the logging context. A handler does not opt in to authorisation. It cannot construct a request context of its own, because building one is not its job.
+
+The permission model behind that is 13 domains of actions, plus workspace-level flags, plus a separate back-office identity for staff with its own route tree. The surface is wide. The number of places that evaluate it is one.
+
+One detail worth keeping. When a permission check fails, the base class drops its cached context and **retries exactly once**. That is not leniency. The context is signed and cached client-side for 30 minutes, so a genuine permission change inside that window would otherwise present as a spurious denial until the cache expired. Retry once and a stale cache corrects itself; retry forever and a real denial becomes a loop. One is the number that distinguishes a staleness bug from an authorisation bug.
+
+## Discipline: the parts that stay human
+
+Two things resisted both approaches, and pretending otherwise would be the mistake.
+
+**Staff impersonation.** An internal console lets support view the product as a specific customer, which is enormously useful and is also, viewed from the data layer, a legitimate request for another tenant's data. The whole design above exists to make that impossible, and then one feature needs it to be possible. It is gated by a separate identity, a separate route tree, and an explicit flag in the request path, and it remains the piece that gets audited by hand rather than guaranteed by shape.
+
+**Cross-tenant aggregates.** Daily statistics and billing rollups read across tenants by definition. They are few, they are scheduled rather than request-driven, and they are the permanent exception list.
+
+Naming that list is the useful part. A design that claims no exceptions is a design where the exceptions exist and are undocumented.
+
+## Two smaller decisions that paid off
+
+**SAML SSO implemented in the application rather than through identity-provider federation.** We use Cognito for authentication but implemented SAML ourselves with OpenSAML, keyed on email domain. More code to own, and the reason is that enterprise SSO configuration is per customer and arrives with requirements that do not fit a federation setup chosen a year earlier. Owning the assertion handling meant customer-specific quirks were our code to change rather than a provider limit to work around.
+
+**A hard cap on response size.** Responses above 5MB are rejected. It reads like an infrastructure guard, and the real value is that it bounds how bad a mistake can get. The accidental unfiltered query that returns everything does not quietly succeed and ship a dataset over the wire. It errors, loudly, in testing, because the volume alone trips the limit.
+
+That is the thread connecting all of it. You cannot make mistakes impossible. You can arrange for the common ones to be loud.
