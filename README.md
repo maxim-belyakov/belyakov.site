@@ -67,5 +67,5 @@ Step by step in [docs/DEPLOY.md](docs/DEPLOY.md), including the DNS records and 
 ## House rules for this repository
 
 - Short hyphens only. No em dash and no en dash, anywhere: copy, code, comments, metadata. `npm run check:dashes` enforces it and the check runs in CI.
-- No rounded numbers. `5,954 commits`, not "about 6,000".
+- Large numbers are rounded to `k`. `6k of the 12k commits`, not `5954 of 12483`. The precise form is harder to read and carries no more meaning; the exact figures stay available for the follow-up question.
 - Every claim on this site has to survive a follow-up question at a technical interview.

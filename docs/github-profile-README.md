@@ -8,7 +8,7 @@
 
 AI & Full-Stack Engineer in Warsaw. For the past three years I have worked on production AI inside an enterprise SaaS product: a multi-step assistant, a retrieval layer built by hand on pgvector, and an evaluation harness for a system whose output is not deterministic. Ten years of React, TypeScript and Java underneath that.
 
-Largest contributor to the core product at Omnito: 5,954 of 12,483 commits over three years, where the next contributor has 1,725.
+Largest contributor to the core product at Omnito: 6k of the 12k commits over three years, where the next contributor has 1.7k.
 
 ---
 
